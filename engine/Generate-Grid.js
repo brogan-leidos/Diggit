@@ -14,6 +14,7 @@ export function generateGrid(gameGrid) {
   
   // Determine what kinds of objects to spawn (also determined by rarity)
   var objectList = assignTypesToDensity(settings, density);
+  gameGrid.objects = objectList;
   
   // Spawn those bad boys
   gameGrid.lowerGrid = placeObjects(settings, objectList);
