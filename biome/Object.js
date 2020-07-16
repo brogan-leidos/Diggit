@@ -4,4 +4,8 @@ export default class Object {
     this.description = description;
     this.rarity = rarity;
   }
+  
+  getDimensions() {
+    return;
+  }
 }
