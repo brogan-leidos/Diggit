@@ -7,7 +7,8 @@
 // Generates 2 layers of the grid
 // Layer 1: the underlying loot layer, this is where the objects go
 // Layer 2: The overlaying dirt layer. This determines how hard it is to dig down
-export function generateGrid(settings) {     
+export function generateGrid(gameGrid) {
+  var settings = gameGrid.settings;
   // Determine how many items to spawn (Determined by the richness of the vein)
   var density = calculateDensity(settings.rarity, settings.temp);
   
@@ -15,25 +16,73 @@ export function generateGrid(settings) {
   var objectList = assignTypesToDensity(settings, density);
   
   // Spawn those bad boys
-  var lowerGrid = placeObjects(settings, objectList);
+  gameGrid.lowerGrid = placeObjects(settings, objectList);
   
   // Generate a dirt layer to cover everything
+  gameGrid.upperGrid = generateUpperGrid(settings);   
   
-  
-  
-  return;
+  return gameGrid;
 }
 
-function initializeGrid(width, height) {
+function initializeGrid(width, height, value="0") {
   var grid = [];
   for (var x = 0; x < width; x++) {
     grid[x] = new Array();
     for (var y = 0; y < height; y++) {
-       grid[x][y] = '0';
+       grid[x][y] = value;
     }
   }
   
   return grid;
+}
+
+function growPlotAtSpot(grid, x, y) {
+    if (x > grid.length) || (y > grid[0].length) || (x < 0) || (y < 0) { 
+        return false;
+    }
+    
+    var odds = 0;
+    // check adjacent spots for plot
+    if (grid[x+1][y]  > 1) { odds++ }
+    if (grid[x-1][y]  > 1) { odds++ }
+    if (grid[x][y+1]  > 1) { odds++ }
+    if (grid[x][y-1]  > 1) { odds++ }
+    // if its adjacent increase the odds
+    var roll = Math.floor(Math.random() * 10 + 1) + odds;    
+    if (roll > 5) {
+        return true;
+    }    
+    return false;    
+}
+
+function placePlot(grid, x, y) {
+    grid[x][y] += 1;
+    if (growPlotAtSpot(grid, x+1, y)){
+        grid = placePlot(grid, x+1, y);  
+    }
+    if (growPlotAtSpot(grid, x-1, y)){
+        grid = placePlot(grid, x-1, y);  
+    }
+    if (growPlotAtSpot(grid, x, y+1)){
+        grid = placePlot(grid, x, y+1);  
+    }
+    if (growPlotAtSpot(grid, x, y-1)){
+        grid = placePlot(grid, x, y-1);
+    }
+    return grid;
+}
+
+function generateUpperGrid(settings) {
+   var grid = initializeGrid(settings.width, settings.height, 1);
+   var numPlots = settings.width * settings.height / 10;
+   
+   for (var i=0; i < numPlots; i++){
+       var x = Math.floor(Math.random() * grid.length);
+       var y = Math.floor(Math.random() * grid[0].length);
+       grid = placePlot(grid, x, y);   
+   }
+    
+   return grid;
 }
 
 // Rarity should be a number between 0 (there is nothing) to 1 (Doesnt get better than this)
@@ -98,30 +147,47 @@ function assignTypesToDensity(settings, density) {
     return objectList;
 }
 
-function checkIfValidSpot(grid, xOrigin, yOrigin, object) {
+function checkSpotValidity(grid, xOrigin, yOrigin, object) {
     // TODO: Allow for rotation, and revamp w/h system to allow for more interesting shapes
+    if (xOrigin + object.width >= grid.length) {
+        return false;
+    }
+    else if (yOrigin + object.height >= grid[0].length) {
+        return false;
+    }
+    
     for (var xScan=0; xScan < object.width; xScan++) {
         for (var yScan=0; yScan < object.height; yScan++){
-            if (grid[xScan][yScan] != 0) {
+            if (grid[xOrigin + xScan][yOrigin + yScan] != 0) {
                 return false;
             }
         }
-    }
-    
+    }    
     return true;
+}
+
+function placeObject(grid, xOrigin, yOrigin, object) {
+    for (var x=0; x < object.width; x++) {
+        for (var y=0; y < object.height; y++) {
+            grid[xOrigin + x][yOrigin + y] = object;   
+        }
+    }
+    return grid;
 }
 
 function placeObjects(settings, objectList) {
     var grid = initializeGrid(settings.width, settings.height);
     for (var i=0; i < objectList.length; i++){
-        // Pick a random spot to slap this thing down
-        var x = Math.floor(Math.random() * settings.width + 1);
-        var y = Math.floor(Math.random() * settings.height + 1);
-        
-        if (checkIfValidSpot(grid, x, y, objectList[i])){
-          //place   
-        }
-        
-        objectList[i]   
+        var continueLoop = true;
+        while (continueLoop) {
+            // Pick a random spot to slap this thing down
+            var x = Math.floor(Math.random() * settings.width + 1);
+            var y = Math.floor(Math.random() * settings.height + 1);        
+            if(checkSpotValidity(grid, x, y, objectList[i])) {
+                grid = placeObject(grid, x, y, objectList[i]);
+                continueLoop = false;
+            }
+        }        
     }
+    return grid;
 }
