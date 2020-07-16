@@ -5,6 +5,10 @@ var gameGrid = new GameGrid();
 
 export default () => {
     gameGrid = GenerateGrid(gameGrid);
+    var settings = {
+        width = 5,
+        height = 5,
+        
     
 };
 
