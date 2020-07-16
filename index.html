@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mob 5e Tool</title>	
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+	
+<body>
+<div class="header">
+<h2> 5e Mob Attack Helper</h2>
+</div>
+
+<div class="addMobArea">
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					Add <br> Mobs
+				</td>
+				<td>
+					<div>
+						Undead
+					</div>
+					<div>
+						<button id="addSkeleton">Skeleton</button>
+						<button id="addZombie">Zombie</button>
+						<button id="addGhoul">Ghoul</button>
+					</div>
+					<div>
+						Animals
+					</div>
+					<div>
+						<button id="addWolf">Wolf</button>
+					</div>
+					<div>
+						Animate Objects
+					</div>
+					<div>
+						<button id="addTiny">Tiny</button>
+						<button id="addSmall">Small</button>
+						<button id="addMedium">Medium</button>
+						<button id="addLarge">Large</button>
+						<button id="addHuge">Huge</button>
+				  	</div>
+
+					<div>
+						Other
+					</div>
+					<div>
+						<button id="addBlank">New Creature</button>
+					</div>
+				</td>
+				<td>
+					<div>
+						Demons
+					</div>
+					<div>
+						<button id="addDretch">Dretch</button>
+						<button id="addMane">Mane</button>
+					</div>
+				</td>
+				<td>
+					How to use: <br>
+					1. Be sure to set the Target AC in the first box <br>
+					2. Create a "Mob", either from a pre-set, or customize your own. Make as many as suite your needs. <br>
+					3. Clicking the Launch Attack button will cause all active mobs to make a single attack against the target! <br>
+				</td>
+			</tr>			
+		</tbody>
+	</table>
+</div>
+
+<div class="acArea">
+	<label for=targetAc>Target AC:</label> 
+	<input id="targetAc" value=10 type="number" />
+	<!-- Launch attack -->
+	<button id="goButton" style="font-size:16px;margin-left:10px;color:red"><b>LAUNCH ATTACK</b></button>
+	<div id="discoveryTag" style="margin: 0px 0px 0px 5px; display:none"> <i>(Discovery mode active)</i></div>
+</div>
+
+
+
+<!-- Mob Area -->
+<div id="mobBlockArea" style="float:left"></div>
+
+<div id="infoAreaDiv" style="margin: 0px 0px 0px 15px;float:left;display:none">
+	<table style="border: thin solid #000000;">
+		<tbody>
+			<tr>
+				<td>
+				<div id="infoArea"">				
+
+				</div>
+			  </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+																	
+</body>
+    
+<script type="module" src="./index.js"></script>
+</html>
