@@ -118,11 +118,13 @@ function calculateDensity(settings) {
 }
 
 function spawnObjectFromList(spawnList) {
-   for (var i=0; i < spawnList.length; i++) {
-      if (Math.random() <= spawnList[i].rarity){
-        return spawnList[i];
-      }
-   }
+    while(true) {
+        for (var i=0; i < spawnList.length; i++) {
+            if (Math.random() <= spawnList[i].rarity){
+                return spawnList[i];
+            }
+        }
+    }
 }
 
 // Density is [Large, Med, Small]
