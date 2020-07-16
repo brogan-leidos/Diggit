@@ -1,6 +1,7 @@
 export default class GameGrid {
   constructor() {
-    this.grid = [];
+    this.lowerGrid = [];
+    this.upperGrid = [];
     this.objects = [];
     this.settings = null;
   }
