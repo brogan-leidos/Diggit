@@ -1,3 +1,3 @@
-export class Generic extends Biome {
+export default class Generic extends Biome {
   return 1;
 }
