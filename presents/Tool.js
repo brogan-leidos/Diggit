@@ -4,7 +4,8 @@ export default class Tool {
         this.power = 0;
         this.durability = 0;
         
-        mineSpot(spot) {
+        // Given a point (x,y) return all spots affected by the mine
+        mineSpot(spot, height, width) {
             return;
         }
         
