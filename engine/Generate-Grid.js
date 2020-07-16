@@ -1,12 +1,13 @@
+/* SETTINGS OBJECT:
+    Has: Rarity, temp, width, height, biome
+
+*/
+
 
 // Generates 2 layers of the grid
 // Layer 1: the underlying loot layer, this is where the objects go
 // Layer 2: The overlaying dirt layer. This determines how hard it is to dig down
-export function generateGrid(settings) {
-    
-  // Initialize the grid
-  var lowerGrid = initializeGrid(settings.width, settings.height);
-  
+export function generateGrid(settings) {     
   // Determine how many items to spawn (Determined by the richness of the vein)
   var density = calculateDensity(settings.rarity, settings.temp);
   
@@ -14,6 +15,7 @@ export function generateGrid(settings) {
   var objectList = assignTypesToDensity(settings, density);
   
   // Spawn those bad boys
+  var lowerGrid = placeObjects(settings, objectList);
   
   // Generate a dirt layer to cover everything
   
@@ -94,4 +96,32 @@ function assignTypesToDensity(settings, density) {
     }
     
     return objectList;
+}
+
+function checkIfValidSpot(grid, xOrigin, yOrigin, object) {
+    // TODO: Allow for rotation, and revamp w/h system to allow for more interesting shapes
+    for (var xScan=0; xScan < object.width; xScan++) {
+        for (var yScan=0; yScan < object.height; yScan++){
+            if (grid[xScan][yScan] != 0) {
+                return false;
+            }
+        }
+    }
+    
+    return true;
+}
+
+function placeObjects(settings, objectList) {
+    var grid = initializeGrid(settings.width, settings.height);
+    for (var i=0; i < objectList.length; i++){
+        // Pick a random spot to slap this thing down
+        var x = Math.floor(Math.random() * settings.width + 1);
+        var y = Math.floor(Math.random() * settings.height + 1);
+        
+        if (checkIfValidSpot(grid, x, y, objectList[i])){
+          //place   
+        }
+        
+        objectList[i]   
+    }
 }
