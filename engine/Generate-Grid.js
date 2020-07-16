@@ -11,7 +11,7 @@ export function generateGrid(settings) {
   var density = calculateDensity(settings.rarity, settings.temp);
   
   // Determine what kinds of objects to spawn (also determined by rarity)
-  var objectList = assignTypesToDensity(density);
+  var objectList = assignTypesToDensity(settings, density);
   
   // Spawn those bad boys
   
@@ -65,9 +65,33 @@ function calculateDensity(settings) {
   return [numLarge, numMed, numSmall];
 }
 
+function spawnObjectFromList(spawnList) {
+   for (var i=0; i < spawnList.length; i++) {
+      if (Math.random() <= spawnList[i].rarity){
+        return spawnList[i];
+      }
+   }
+}
+
 // Density is [Large, Med, Small]
-function assignTypesToDensity(density) {
-  // Fetch biome list at some later date
-  
-  
+function assignTypesToDensity(settings, density) {
+    // Fetch biome list at some later date
+    var objectList = [];
+    
+    var spawnList = settings.biome.getLargeObjects();
+    for (var i=0; i < density[0]; i++) {      
+        objectList.push(spawnObjectFromList(spawnList));
+    }
+
+    var spawnList = settings.biome.getMediumObjects();
+    for (var i=0; i < density[1]; i++) {      
+        objectList.push(spawnObjectFromList(spawnList));
+    }
+
+    var spawnList = settings.biome.getSmallObjects();
+    for (var i=0; i < density[2]; i++) {      
+        objectList.push(spawnObjectFromList(spawnList));
+    }
+    
+    return objectList;
 }
