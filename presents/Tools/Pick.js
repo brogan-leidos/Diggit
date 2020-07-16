@@ -8,7 +8,7 @@ export default class Pick extends Tool {
     this.durability = -1;
     
     // Return an array of surrounding spots and the damage done to them
-    mineSpot(spot) {
+    mineSpot(spot, height, width) {
       return;
     }
     
