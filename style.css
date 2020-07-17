@@ -23,8 +23,12 @@
   padding-left: 1%;
   height: 100%;
   width: 100%;
-  position: fixed;
-  
+  position: fixed;  
+}
+
+.gameSection td {
+  border: 1px solid #ddd;
+  padding: 8px 13px 8px 13px; 
 }
 
 .healthBar {
