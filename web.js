@@ -68,3 +68,7 @@ function refreshGrid(grid) {
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
     return htmlResult;
 }
+
+function clickSpot() {
+    alert("test works");
+}
