@@ -3,7 +3,7 @@ export default class Biome {
     this.temp = 0; 
   }
 
-  getLargeObjects();
-  getMedObjects();
-  getSmallObjects();
+  getLargeObjects() { return; }
+  getMedObjects() { return; }
+  getSmallObjects() { return; }
 }
