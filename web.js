@@ -50,8 +50,13 @@ function refreshGrid(grid) {
     for (var i=0; i < gameGrid.lowerGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.lowerGrid[i].length; j++) {
-                var object = gameGrid.lowerGrid[i][j];
+            var object = gameGrid.lowerGrid[i][j];
+            if (object == "0") {
+                htmlResult += "<td>0</td>";
+            }
+            else {
                 htmlResult += "<td>" + gameGrid.lowerGrid[i][j].Name.toString() + "</td>"
+            }
         }
         htmlResult += "</tr>";        
     }
