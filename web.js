@@ -45,7 +45,7 @@ function refreshGrid() {
                 } else {
                     bgColor = gameGrid.lowerGrid[i][j].Color;
                 }
-                htmlResult += "<td style=\"background-color:" + bgColor + "\">""</td>"
+                htmlResult += "<td style=\"background-color:" + bgColor + "\"></td>"
             }
             else {
                 htmlResult += "<td id="+i+","+j+" class=\"dirt\">" + gameGrid.upperGrid[i][j].toString() + "</td>"
