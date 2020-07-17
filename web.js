@@ -34,22 +34,29 @@ function refreshGrid(grid) {
     
     var htmlResult = "";
     
+    htmlResult += "<table><tbody>";    
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
-        hmtlResult += "<tr>";
+        htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
                 htmlResult += "<td>" + gameGrid.upperGrid[i].toString() + "</td>"
         }
-    }
-    
+        htmlResult += "</tr>";
+    }    
+    htmlResult += "</tbody></table>";
+
     htmlResult += "Divider time";
     
-    
+    htmlResult += "<table><tbody>";
     for (var i=0; i < gameGrid.lowerGrid.length; i++) {
         hmtlResult += "<tr>";
         for (var j=0; j < gameGrid.lowerGrid[i].length; j++) {
                 htmlResult += "<td>" + gameGrid.lowerGrid[i].toString() + "</td>"
         }
+        htmlResult += "</tr>";        
     }
+    htmlResult += "</tbody></table>";
+
+    
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
