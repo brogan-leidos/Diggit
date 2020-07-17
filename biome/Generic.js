@@ -1,4 +1,5 @@
 import Object from './objects/Object.js'
+import Biome from './Biome.js'
 
 export default class Generic extends Biome {
   constructor() {
