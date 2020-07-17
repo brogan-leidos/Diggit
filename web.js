@@ -74,7 +74,7 @@ function updateInfoSection(spotId) {
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);   
-    var infoSection = document.getElementsByClassName("infoSection");
+    var infoSection = document.getElementsByClassName("infoSection")[0];
     
     var object = gameGrid.lowerGrid[x][y];
     if (object != "0") {
