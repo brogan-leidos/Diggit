@@ -38,7 +38,12 @@ function refreshGrid(grid) {
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
+            if (gameGrid.upperGrid[i][j] == 0) {
+                htmlResult += "<td>" + gameGrid.lowerGrid[i][j] == "0" ? gameGrid.upperGrid[i][j] : gameGrid.lowerGrid[i][j].Name + "</td>"
+            }
+            else {
                 htmlResult += "<td>" + gameGrid.upperGrid[i][j].toString() + "</td>"
+            }
         }
         htmlResult += "</tr>";
     }    
@@ -69,6 +74,6 @@ function refreshGrid(grid) {
     return htmlResult;
 }
 
-function clickSpot() {
+function clickSpot(x, y) {
     alert("test works");
 }
