@@ -39,16 +39,11 @@ function refreshGrid() {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
             if (gameGrid.upperGrid[i][j] <= 0) {
-                var bgColor = "white";
-                if (gameGrid.lowerGrid[i][j] == "0") {
-                    bgColor = "#363940";
-                } else {
-                    bgColor = gameGrid.lowerGrid[i][j].Color;
-                }
+                var bgColor = gameGrid.lowerGrid[i][j] == "0" ? "#363940" : gameGrid.lowerGrid[i][j].Color;
                 htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}"></td>`
             }
             else {
-                htmlResult += `<td id="${i},${j}" class="exposed">${gameGrid.upperGrid[i][j].toString()}</td>`
+                htmlResult += `<td id="${i},${j}" class="dirt">${gameGrid.upperGrid[i][j].toString()}</td>`
             }
         }
         htmlResult += "</tr>";
