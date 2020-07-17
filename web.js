@@ -38,8 +38,15 @@ function refreshGrid() {
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
-            if (gameGrid.upperGrid[i][j] == 0) {
-                htmlResult += "<td>" + gameGrid.lowerGrid[i][j] == "0" ? gameGrid.upperGrid[i][j] : gameGrid.lowerGrid[i][j].Name + "</td>"
+            if (gameGrid.upperGrid[i][j] <= 0) {
+                var append = "";
+                var bgColor = "white";
+                if (gameGrid.lowerGrid[i][j] == "0") {
+                    bgColor = "#363940";
+                } else {
+                    append = gameGrid.lowerGrid[i][j].Color;
+                }
+                htmlResult += "<td style=\"background-color:" + bgColor + "\">" + append + "</td>"
             }
             else {
                 htmlResult += "<td id="+i+","+j+" class=\"dirt\">" + gameGrid.upperGrid[i][j].toString() + "</td>"
