@@ -87,12 +87,14 @@ function generateUpperGrid(settings) {
 //        grid = placePlot(grid, x, y, 0);   
 //    }
     
-   for (var x=0; x < grid.length; x++) {
-       for (var y=0; y < grid[x].length; y++) {
-           if (Math.random() > .5) {
-               grid[x][y]++;
-           }
-       }       
+   for (var i=0; i < 2; i++) {
+       for (var x=0; x < grid.length; x++) {
+           for (var y=0; y < grid[x].length; y++) {
+               if (Math.random() > .5) {
+                   grid[x][y]++;
+               }
+           }       
+       }
    }
     
    return grid;
