@@ -6,10 +6,11 @@ export default class Pick extends Tool {
     this.Name = "Pick";
     this.power = 1;
     this.durability = -1;
+    this.damage = 5;
     
     // Return an array of surrounding spots and the damage done to them
-    mineSpot(spot, height, width) {
-      return;
+    getMinableSpots(x, y) {
+      return [[x,y],[x+1,y],[x-1,y],[x,y+1],[x,y-1]];
     }
     
     
