@@ -1,5 +1,5 @@
 export default class Biome {
-  constructor() {
+  constructor() {    
     this.temp = 0; 
   }
 
