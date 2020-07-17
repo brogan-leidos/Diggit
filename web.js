@@ -1,5 +1,5 @@
 import GameGrid from './engine/GameGrid.js'
-import {GenerateGrid} from './engine/Generate-Grid.js'
+import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Generic from './biome/Generic.js'
 
@@ -19,8 +19,8 @@ function createGameGrid() {
     var height = document.getElementById("height").value;
     var rarity = document.getElementById("rarity").value;
     
-    gameGrid = GenerateGrid(gameGrid);
-    gameGrid.settings = new GameGridSEttings(width, height, rarity, new Generic());
+    gameGrid = generateGrid(gameGrid);
+    gameGrid.settings = new GameGridSettings(width, height, rarity, new Generic());
     
     return gameGrid;
 }
