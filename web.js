@@ -2,6 +2,7 @@ import GameGrid from './engine/GameGrid.js'
 import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Generic from './biome/Generic.js'
+import Tool from './present/Tool.js'
 
 
 var gameGrid = new GameGrid();
