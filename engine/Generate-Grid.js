@@ -172,8 +172,9 @@ function placeObjects(settings, objectList) {
             var y = Math.floor(Math.random() * settings.height + 1);        
             if(checkSpotValidity(grid, x, y, objectList[i])) {
                 grid = placeObject(grid, x, y, objectList[i]);
-                continueLoop += 1;
+                break;
             }
+            continueLoop += 1;
         }        
     }
     return grid;
