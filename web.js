@@ -45,10 +45,10 @@ function refreshGrid() {
                 } else {
                     bgColor = gameGrid.lowerGrid[i][j].Color;
                 }
-                htmlResult += "<td style=\"background-color:" + bgColor + "\"></td>"
+                htmlResult += "<td id=" + i + "," + j + "class=\"exposed\" style=\"background-color:" + bgColor + "\"></td>"
             }
             else {
-                htmlResult += "<td id="+i+","+j+" class=\"dirt\">" + gameGrid.upperGrid[i][j].toString() + "</td>"
+                htmlResult += "<td id=" + i + "," + j + " class=\"dirt\">" + gameGrid.upperGrid[i][j].toString() + "</td>"
             }
         }
         htmlResult += "</tr>";
@@ -58,15 +58,31 @@ function refreshGrid() {
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
     
-    var eventsList = document.getElementsByClassName("dirt");
-    for (var i=0; i < eventsList.length; i++){
-        document.getElementById(eventsList[i].id).addEventListener('click', (e) => {
-            var spotId = e.target.id;
-            clickSpot(spotId);
+    var dirtList = document.getElementsByClassName("dirt");
+    for (var i=0; i < dirtList.length; i++){
+        dirtList[i].addEventListener('click', (e) => {
+            clickSpot(e.target.id);
+        });
+    }
+    
+    var exposedList = document.getElementsByClassName("exposed");
+    for (var i=0; i < exposedList.length; i++){
+        exposedList[i].addEventListener('mouseenter', (e) => {
+            updateInfoSection(e.target.id);
         });
     }
     
     return htmlResult;
+}
+
+function updateInfoSection(spotId) {
+    spotId = spotId.split(",");
+    var x = parseInt(spotId[0]);
+    var y = parseInt(spotId[1]);   
+    var infoSection = document.getElementsByClassName("infoSection");
+    
+    var object = gameGrid.innerGrid[x][y];
+    infoSection.innerHTML = object.Name;
 }
 
 function clickSpot(spotId) {
