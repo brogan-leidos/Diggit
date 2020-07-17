@@ -11,19 +11,21 @@ var selectedTool = new Tool();
 var availableTools = [];
 
 export default () => {
-    // Early debug
-    availableTools.push(new Pick());
-    selectedTool = availableTools[0];
-    refreshToolArea();
-    refreshHealthBar();
+    firstLaunch();
 
-    
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
     });
     
 };
+
+function firstLaunch() {
+    availableTools.push(new Pick());
+    selectedTool = availableTools[0];
+    refreshToolArea();
+    refreshHealthBar();
+}
 
 function createGameGrid() {
     var width = document.getElementById("width").value;
