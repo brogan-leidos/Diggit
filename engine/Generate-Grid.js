@@ -23,6 +23,7 @@ export function generateGrid(gameGrid) {
   gameGrid.upperGrid = generateUpperGrid(settings);   
   
   // Health will vary with biomes
+  gameGrid.maxHealth = 100;
   gameGrid.healthRemaining = 100;
     
   return gameGrid;
