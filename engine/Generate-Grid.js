@@ -10,7 +10,7 @@
 export function generateGrid(gameGrid) {
   var settings = gameGrid.settings;
   // Determine how many items to spawn (Determined by the richness of the vein)
-  var density = calculateDensity(settings.rarity, settings.temp);
+  var density = calculateDensity(settings);
   
   // Determine what kinds of objects to spawn (also determined by rarity)
   var objectList = assignTypesToDensity(settings, density);
