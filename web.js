@@ -1,5 +1,5 @@
 import GameGrid from './engine/GameGrid.js'
-import GenerateGrid from './engine/Generate-Grid.js'
+import {GenerateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Generic from './biome/Generic.js'
 
