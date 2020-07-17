@@ -22,6 +22,9 @@ export function generateGrid(gameGrid) {
   // Generate a dirt layer to cover everything
   gameGrid.upperGrid = generateUpperGrid(settings);   
   
+  // Health will vary with biomes
+  gameGrid.healthRemaining = 100;
+    
   return gameGrid;
 }
 
