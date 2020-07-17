@@ -121,6 +121,9 @@ function mineClickedSpot(spotId) {
         
         gameGrid.upperGrid[mineX][mineY] -= power;
         gameGrid.healthRemaining -= selectedTool.damage;
+        refreshHealthBar();
+        
+        
         selectedTool.durability--;
         
         if (selectedTool.durability == 0){
@@ -146,4 +149,11 @@ function refreshToolArea() {
             selectedTool = availableTools[eventId];            
         });    
     }    
+}
+
+function refreshHealthBar() {
+    var bar = document.getElementsByClass("healthBar")[0];
+    bar.styles.width = `${gameGrid.healthRemaining / gameGrid.maxHealth * 100}%`;
+    
+    
 }
