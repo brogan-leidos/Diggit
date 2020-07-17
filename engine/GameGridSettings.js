@@ -1,7 +1,7 @@
 export default class GameGridSettings {
-  constructor(height, width, rarity, biome) {
-    this.width = 0;
-    this.height = 0;
+  constructor(width, height, rarity, biome) {
+    this.width = width;
+    this.height = height;
     this.rarity = rarity;
     this.biome = biome;   
   }
