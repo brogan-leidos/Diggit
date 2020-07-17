@@ -38,7 +38,7 @@ function initializeGrid(width, height, value="0") {
 }
 
 function growPlotAtSpot(grid, x, y) {
-    if (x > grid.length) || (y > grid[0].length) || (x < 0) || (y < 0) { 
+    if (x > grid.length || y > grid[0].length || x < 0 || y < 0) { 
         return false;
     }
     
