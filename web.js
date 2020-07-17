@@ -7,10 +7,17 @@ import Generic from './biome/Generic.js'
 var gameGrid = new GameGrid();
 
 export default () => {
-    gameGrid = GenerateGrid(gameGrid);
-    gameGrid.settings = new GameGridSettings(5, 5, .5, new Generic());
-    
-    
+    document.getElementById('generateButton').addEventListener('click', () => {
+        createGrid();
+    });
     
 };
 
+function createGrid() {
+    var width = document.getElementById("width").value;
+    var height = document.getElementById("height").value;
+    var rarity = document.getElementById("rarity").value;
+    
+    gameGrid = GenerateGrid(gameGrid);
+    gameGrid.settings = new GameGridSEttings(width, height, rarity, new Generic());
+}
