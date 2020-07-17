@@ -24,7 +24,7 @@ function firstLaunch() {
     availableTools.push(new Pick());
     selectedTool = availableTools[0];
     refreshToolArea();
-    refreshHealthBar();
+    refreshHealthBar(); 
 }
 
 function createGameGrid() {
