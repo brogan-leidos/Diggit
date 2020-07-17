@@ -21,11 +21,7 @@ export default () => {
         refreshGrid();
     });
     
-    document.getElementById('selectTool-Pick').addEventListener('click', () => {
-        gameGrid = createGameGrid();
-        refreshGrid();
-    });
-    
+    updateToolArea();
 };
 
 function createGameGrid() {
@@ -133,4 +129,21 @@ function mineClickedSpot(spotId) {
     }
 
     refreshGrid();
+}
+
+// This is called after a change to the tools array is made, either with the addition or deletion of a tool
+function updateToolArea() {
+    var area = document.getElementById("toolArea");
+    var newHTML = ""
+    for (var i=0; i < availableTools.length; i++) {
+        newHTML += `<button id="selectTool-${i}>${availableTools[i].Name}</button>`;   
+    }
+    
+    area.innerHTML = newHTML;
+    for (var i=0; i < availableTools.length; i++) {
+        document.getElementById('selectTool-${i}').addEventListener('click', (e) => {
+            var eventId = parseInt(e.target.id.split("-")[1]);
+            selectedTool = availableTools[eventId];            
+        });    
+    }    
 }
