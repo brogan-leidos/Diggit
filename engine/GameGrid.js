@@ -3,6 +3,7 @@ export default class GameGrid {
     this.lowerGrid = [];
     this.upperGrid = [];
     this.objects = [];
+    this.healthRemaining = 0;
     this.settings = null;
   }
 }
