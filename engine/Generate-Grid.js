@@ -56,19 +56,23 @@ function growPlotAtSpot(grid, x, y) {
     return false;    
 }
 
-function placePlot(grid, x, y) {
+function placePlot(grid, x, y, itteration) {
     grid[x][y] += 1;
+    if (itteration >= 10) {
+        return grid;
+    }
+    
     if (growPlotAtSpot(grid, x+1, y)){
-        grid = placePlot(grid, x+1, y);  
+        grid = placePlot(grid, x+1, y, itteration+1);  
     }
     if (growPlotAtSpot(grid, x-1, y)){
-        grid = placePlot(grid, x-1, y);  
+        grid = placePlot(grid, x-1, y, itteration+1);  
     }
     if (growPlotAtSpot(grid, x, y+1)){
-        grid = placePlot(grid, x, y+1);  
+        grid = placePlot(grid, x, y+1, itteration+1);  
     }
     if (growPlotAtSpot(grid, x, y-1)){
-        grid = placePlot(grid, x, y-1);
+        grid = placePlot(grid, x, y-1, itteration+1);
     }
     return grid;
 }
@@ -80,7 +84,7 @@ function generateUpperGrid(settings) {
    for (var i=0; i < numPlots; i++){
        var x = Math.floor(Math.random() * grid.length);
        var y = Math.floor(Math.random() * grid[0].length);
-       grid = placePlot(grid, x, y);   
+       grid = placePlot(grid, x, y, 0);   
    }
     
    return grid;
