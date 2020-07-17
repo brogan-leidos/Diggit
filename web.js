@@ -48,26 +48,6 @@ function refreshGrid(grid) {
         htmlResult += "</tr>";
     }    
     htmlResult += "</tbody></table>";
-
-    htmlResult += "Divider time";
-    
-    htmlResult += "<table><tbody>";
-    for (var i=0; i < gameGrid.lowerGrid.length; i++) {
-        htmlResult += "<tr>";
-        for (var j=0; j < gameGrid.lowerGrid[i].length; j++) {
-            var object = gameGrid.lowerGrid[i][j];
-            if (object == "0") {
-                htmlResult += "<td>0</td>";
-            }
-            else {
-                htmlResult += "<td>" + gameGrid.lowerGrid[i][j].Name.toString() + "</td>"
-            }
-        }
-        htmlResult += "</tr>";        
-    }
-    htmlResult += "</tbody></table>";
-
-    
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
