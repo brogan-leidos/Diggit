@@ -15,6 +15,7 @@ export default () => {
     availableTools.push(new Pick());
     selectedTool = availableTools[0];
     refreshToolArea();
+    refreshHealthBar();
 
     
     document.getElementById('generateButton').addEventListener('click', () => {
