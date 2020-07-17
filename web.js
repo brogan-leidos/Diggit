@@ -77,7 +77,12 @@ function updateInfoSection(spotId) {
     var infoSection = document.getElementsByClassName("infoSection");
     
     var object = gameGrid.lowerGrid[x][y];
-    infoSection.innerHTML = object.Name;
+    if (object != "0") {
+        infoSection.innerHTML = object.Name;
+    }
+    else {
+        infoSection.innerHTML = "Empty";
+    }
 }
 
 function clickSpot(spotId) {
