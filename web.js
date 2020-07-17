@@ -103,14 +103,20 @@ function mineClickedSpot(spotId) {
     var minableSpots = selectedTool.getMinableSpots(x,y);
     for (var i=0; i < minableSpots.length; i++) {
         var mineX = minableSpots[i][0];
-        var mineY = minableSpots[i][0];
+        var mineY = minableSpots[i][1];
+        var power = minableSpots[i][2];
         
         if (mineX >= gameGrid.width || mineX < 0 || mineY >= gameGrid.height || mineY < 0) {
             continue;
         }
         
-        gameGrid.upperGrid[mineX][mineY] -= selectedTool.power;
+        gameGrid.upperGrid[mineX][mineY] -= power;
         gameGrid.healthRemaining -= selectedTool.damage;
+        selectedTool.durability--;
+        
+        if (selectedTool.durability == 0){
+            //Oh no it broke!
+        }
     }
 
     refreshGrid();
