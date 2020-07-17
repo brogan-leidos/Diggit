@@ -50,7 +50,7 @@ function growPlotAtSpot(grid, x, y) {
     if (grid[x][y-1]  > 1) { odds++ }
     // if its adjacent increase the odds
     var roll = Math.floor(Math.random() * 10 + 1) + odds;    
-    if (roll > 5) {
+    if (roll > 6) {
         return true;
     }    
     return false;    
