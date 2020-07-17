@@ -153,7 +153,10 @@ function refreshToolArea() {
 
 function refreshHealthBar() {
     var bar = document.getElementsByClass("healthBar")[0];
-    bar.styles.width = `${gameGrid.healthRemaining / gameGrid.maxHealth * 100}%`;
+    var percentRemaining = gameGrid.healthRemaining / gameGrid.maxHealth * 100;
+    bar.styles.width = `${percentRemaining}%`;
     
-    
+    if (percentRemaining >= 60) { bar.styles.color = "green"; }
+    if (percentRemaining < 60 && percentRemaining > 30) { bar.styles.color = "yellow"; }
+    if (percentRemaining <= 30) { bar.styles.color = "red"; }        
 }
