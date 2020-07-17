@@ -37,45 +37,45 @@ function initializeGrid(width, height, value="0") {
   return grid;
 }
 
-function growPlotAtSpot(grid, x, y) {
-    if (x > grid.length || y > grid[0].length || x < 0 || y < 0) { 
-        return false;
-    }
+// function growPlotAtSpot(grid, x, y) {
+//     if (x > grid.length || y > grid[0].length || x < 0 || y < 0) { 
+//         return false;
+//     }
     
-    var odds = 0;
-    // check adjacent spots for plot
-    if (grid[x+1][y]  > 1) { odds++ }
-    if (grid[x-1][y]  > 1) { odds++ }
-    if (grid[x][y+1]  > 1) { odds++ }
-    if (grid[x][y-1]  > 1) { odds++ }
-    // if its adjacent increase the odds
-    var roll = Math.floor(Math.random() * 10 + 1) + odds;    
-    if (roll > 6) {
-        return true;
-    }    
-    return false;    
-}
+//     var odds = 0;
+//     // check adjacent spots for plot
+//     if (grid[x+1][y]  > 1) { odds++ }
+//     if (grid[x-1][y]  > 1) { odds++ }
+//     if (grid[x][y+1]  > 1) { odds++ }
+//     if (grid[x][y-1]  > 1) { odds++ }
+//     // if its adjacent increase the odds
+//     var roll = Math.floor(Math.random() * 10 + 1) + odds;    
+//     if (roll > 6) {
+//         return true;
+//     }    
+//     return false;    
+// }
 
-function placePlot(grid, x, y, itteration) {
-    grid[x][y] += 1;
-    if (itteration >= 10) {
-        return grid;
-    }
+// function placePlot(grid, x, y, itteration) {
+//     grid[x][y] += 1;
+//     if (itteration >= 10) {
+//         return grid;
+//     }
     
-    if (growPlotAtSpot(grid, x+1, y)){
-        grid = placePlot(grid, x+1, y, itteration+1);  
-    }
-    if (growPlotAtSpot(grid, x-1, y)){
-        grid = placePlot(grid, x-1, y, itteration+1);  
-    }
-    if (growPlotAtSpot(grid, x, y+1)){
-        grid = placePlot(grid, x, y+1, itteration+1);  
-    }
-    if (growPlotAtSpot(grid, x, y-1)){
-        grid = placePlot(grid, x, y-1, itteration+1);
-    }
-    return grid;
-}
+//     if (growPlotAtSpot(grid, x+1, y)){
+//         grid = placePlot(grid, x+1, y, itteration+1);  
+//     }
+//     if (growPlotAtSpot(grid, x-1, y)){
+//         grid = placePlot(grid, x-1, y, itteration+1);  
+//     }
+//     if (growPlotAtSpot(grid, x, y+1)){
+//         grid = placePlot(grid, x, y+1, itteration+1);  
+//     }
+//     if (growPlotAtSpot(grid, x, y-1)){
+//         grid = placePlot(grid, x, y-1, itteration+1);
+//     }
+//     return grid;
+// }
 
 function generateUpperGrid(settings) {
    var grid = initializeGrid(settings.width, settings.height, 1);
@@ -165,14 +165,14 @@ function spawnObjectFromList(spawnList) {
 function placeObjects(settings, objectList) {
     var grid = initializeGrid(settings.width, settings.height);
     for (var i=0; i < objectList.length; i++){
-        var continueLoop = true;
-        while (continueLoop) {
+        var continueLoop = 0;
+        while (continueLoop < 1000) {
             // Pick a random spot to slap this thing down
             var x = Math.floor(Math.random() * settings.width + 1);
             var y = Math.floor(Math.random() * settings.height + 1);        
             if(checkSpotValidity(grid, x, y, objectList[i])) {
                 grid = placeObject(grid, x, y, objectList[i]);
-                continueLoop = false;
+                continueLoop += 1;
             }
         }        
     }
