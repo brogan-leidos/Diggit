@@ -9,7 +9,7 @@ var gameGrid = new GameGrid();
 export default () => {
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
-        refreshGrid(gameGrid);
+        refreshGrid();
     });
     
 };
@@ -25,7 +25,7 @@ function createGameGrid() {
     return gameGrid;
 }
 
-function refreshGrid(grid) {
+function refreshGrid() {
     var gameSection = document.getElementById("gameSection");
     gameSection.innerHTML = "";
     
@@ -64,5 +64,12 @@ function refreshGrid(grid) {
 }
 
 function clickSpot(spotId) {
-    alert(spotId);
+    spotId = spotId.split(",");
+    var x = parseInt(spotId[0]);
+    var y = parseInt(spotId[1]);
+    // Get current tool
+    
+    // Mine the space
+    gameGrid.upperGrid[x][y]--;
+    refreshGrid();
 }
