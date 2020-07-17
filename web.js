@@ -39,14 +39,13 @@ function refreshGrid() {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
             if (gameGrid.upperGrid[i][j] <= 0) {
-                var append = "";
                 var bgColor = "white";
                 if (gameGrid.lowerGrid[i][j] == "0") {
                     bgColor = "#363940";
                 } else {
-                    append = gameGrid.lowerGrid[i][j].Color;
+                    bgColor = gameGrid.lowerGrid[i][j].Color;
                 }
-                htmlResult += "<td style=\"background-color:" + bgColor + "\">" + append + "</td>"
+                htmlResult += "<td style=\"background-color:" + bgColor + "\">""</td>"
             }
             else {
                 htmlResult += "<td id="+i+","+j+" class=\"dirt\">" + gameGrid.upperGrid[i][j].toString() + "</td>"
