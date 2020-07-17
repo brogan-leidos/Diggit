@@ -79,12 +79,20 @@ function placePlot(grid, x, y, itteration) {
 
 function generateUpperGrid(settings) {
    var grid = initializeGrid(settings.width, settings.height, 1);
-   var numPlots = settings.width * settings.height / 10;
+//    var numPlots = settings.width * settings.height / 10;
    
-   for (var i=0; i < numPlots; i++){
-       var x = Math.floor(Math.random() * grid.length);
-       var y = Math.floor(Math.random() * grid[0].length);
-       grid = placePlot(grid, x, y, 0);   
+//    for (var i=0; i < numPlots; i++){
+//        var x = Math.floor(Math.random() * grid.length);
+//        var y = Math.floor(Math.random() * grid[0].length);
+//        grid = placePlot(grid, x, y, 0);   
+//    }
+    
+   for (var x=0; x < grid.length; x++) {
+       for (var y=0; y < grid[x].length; y++) {
+           if (Math.random() > .5) {
+               grid[x][y]++;
+           }
+       }       
    }
     
    return grid;
