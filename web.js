@@ -19,8 +19,8 @@ function createGameGrid() {
     var height = document.getElementById("height").value;
     var rarity = document.getElementById("rarity").value;
     
-    gameGrid = generateGrid(gameGrid);
-    gameGrid.settings = new GameGridSettings(width, height, rarity, new Generic());
+    var settings = new GameGridSettings(width, height, rarity, new Generic());
+    gameGrid = generateGrid(settings);
     
     return gameGrid;
 }
