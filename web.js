@@ -54,8 +54,9 @@ function refreshGrid(grid) {
     
     var eventsList = document.getElementsByClassName("dirt");
     for (var i=0; i < eventsList.length; i++){
-        document.getElementById(eventsList[i].id).addEventListener('click', () => {
-            clickSpot(eventsList[i].id);
+        document.getElementById(eventsList[i].id).addEventListener('click', (e) => {
+            var spotId = e.target.id;
+            clickSpot(spotId);
         });
     }
     
