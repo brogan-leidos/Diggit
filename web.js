@@ -42,7 +42,7 @@ function refreshGrid(grid) {
                 htmlResult += "<td>" + gameGrid.lowerGrid[i][j] == "0" ? gameGrid.upperGrid[i][j] : gameGrid.lowerGrid[i][j].Name + "</td>"
             }
             else {
-                htmlResult += "<td>" + gameGrid.upperGrid[i][j].toString() + "</td>"
+                htmlResult += "<td id="+i+","+j+" class=\"dirt\">" + gameGrid.upperGrid[i][j].toString() + "</td>"
             }
         }
         htmlResult += "</tr>";
@@ -51,9 +51,17 @@ function refreshGrid(grid) {
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
+    
+    var eventsList = document.getElementsByClassName("dirt");
+    for (var i=0; i < eventsList.length; i++){
+        document.getElementById(eventsList[i].id).addEventListener('click', () => {
+            clickSpot(eventsList[i].id);
+        });
+    }
+    
     return htmlResult;
 }
 
-function clickSpot(x, y) {
-    alert("test works");
+function clickSpot(spotId) {
+    alert(spotId);
 }
