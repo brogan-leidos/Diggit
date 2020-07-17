@@ -14,14 +14,14 @@ export default () => {
     // Early debug
     availableTools.push(new Pick());
     selectedTool = availableTools[0];
-    
+    refreshToolArea();
+
     
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
     });
     
-    updateToolArea();
 };
 
 function createGameGrid() {
@@ -132,7 +132,7 @@ function mineClickedSpot(spotId) {
 }
 
 // This is called after a change to the tools array is made, either with the addition or deletion of a tool
-function updateToolArea() {
+function refreshToolArea() {
     var area = document.getElementById("toolArea");
     var newHTML = ""
     for (var i=0; i < availableTools.length; i++) {
