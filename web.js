@@ -48,7 +48,7 @@ function refreshGrid(grid) {
     
     htmlResult += "<table><tbody>";
     for (var i=0; i < gameGrid.lowerGrid.length; i++) {
-        hmtlResult += "<tr>";
+        htmlResult += "<tr>";
         for (var j=0; j < gameGrid.lowerGrid[i].length; j++) {
                 htmlResult += "<td>" + gameGrid.lowerGrid[i].toString() + "</td>"
         }
