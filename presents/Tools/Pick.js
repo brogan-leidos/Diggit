@@ -10,7 +10,7 @@ export default class Pick extends Tool {
     
     // Return an array of surrounding spots and the damage done to them
     getMinableSpots(x, y) {
-      return [[x,y],[x+1,y],[x-1,y],[x,y+1],[x,y-1]];
+      return [[x, y, this.power],[x+1, y, this.power],[x-1, y, this.power],[x, y+1, this.power],[x, y-1, this.power]];
     }
     
     
