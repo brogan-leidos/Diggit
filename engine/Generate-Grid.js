@@ -129,16 +129,6 @@ function calculateDensity(settings) {
   return [numLarge, numMed, numSmall];
 }
 
-function spawnObjectFromList(spawnList) {
-    while(true) {
-        for (var i=0; i < spawnList.length; i++) {
-            if (Math.random() <= spawnList[i].rarity){
-                return spawnList[i];
-            }
-        }
-    }
-}
-
 // Density is [Large, Med, Small]
 function assignTypesToDensity(settings, density) {
     // Fetch biome list at some later date
@@ -160,6 +150,33 @@ function assignTypesToDensity(settings, density) {
     }
     
     return objectList;
+}
+
+function spawnObjectFromList(spawnList) {
+    while(true) {
+        for (var i=0; i < spawnList.length; i++) {
+            if (Math.random() <= spawnList[i].rarity){
+                return spawnList[i];
+            }
+        }
+    }
+}
+
+function placeObjects(settings, objectList) {
+    var grid = initializeGrid(settings.width, settings.height);
+    for (var i=0; i < objectList.length; i++){
+        var continueLoop = true;
+        while (continueLoop) {
+            // Pick a random spot to slap this thing down
+            var x = Math.floor(Math.random() * settings.width + 1);
+            var y = Math.floor(Math.random() * settings.height + 1);        
+            if(checkSpotValidity(grid, x, y, objectList[i])) {
+                grid = placeObject(grid, x, y, objectList[i]);
+                continueLoop = false;
+            }
+        }        
+    }
+    return grid;
 }
 
 function checkSpotValidity(grid, xOrigin, yOrigin, object) {
@@ -186,23 +203,6 @@ function placeObject(grid, xOrigin, yOrigin, object) {
         for (var y=0; y < object.height; y++) {
             grid[xOrigin + x][yOrigin + y] = object;   
         }
-    }
-    return grid;
-}
-
-function placeObjects(settings, objectList) {
-    var grid = initializeGrid(settings.width, settings.height);
-    for (var i=0; i < objectList.length; i++){
-        var continueLoop = true;
-        while (continueLoop) {
-            // Pick a random spot to slap this thing down
-            var x = Math.floor(Math.random() * settings.width + 1);
-            var y = Math.floor(Math.random() * settings.height + 1);        
-            if(checkSpotValidity(grid, x, y, objectList[i])) {
-                grid = placeObject(grid, x, y, objectList[i]);
-                continueLoop = false;
-            }
-        }        
     }
     return grid;
 }
