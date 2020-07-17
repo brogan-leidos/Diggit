@@ -5,6 +5,7 @@ import Generic from './biome/Generic.js'
 
 
 var gameGrid = new GameGrid();
+var selectedTool = new Object();
 
 export default () => {
     document.getElementById('generateButton').addEventListener('click', () => {
@@ -56,7 +57,7 @@ function refreshGrid() {
     var dirtList = document.getElementsByClassName("dirt");
     for (var i=0; i < dirtList.length; i++){
         dirtList[i].addEventListener('click', (e) => {
-            clickSpot(e.target.id);
+            mineClickedSpot(e.target.id);
         });
     }
     
@@ -85,7 +86,7 @@ function updateInfoSection(spotId) {
     }
 }
 
-function clickSpot(spotId) {
+function mineClickedSpot(spotId) {
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
