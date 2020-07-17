@@ -38,7 +38,7 @@ function refreshGrid(grid) {
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
-                htmlResult += "<td>" + gameGrid.upperGrid[i].toString() + "</td>"
+                htmlResult += "<td>" + gameGrid.upperGrid[i][j].toString() + "</td>"
         }
         htmlResult += "</tr>";
     }    
@@ -50,7 +50,7 @@ function refreshGrid(grid) {
     for (var i=0; i < gameGrid.lowerGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.lowerGrid[i].length; j++) {
-                htmlResult += "<td>" + gameGrid.lowerGrid[i].toString() + "</td>"
+                htmlResult += "<td>" + gameGrid.lowerGrid[i][j].toString() + "</td>"
         }
         htmlResult += "</tr>";        
     }
