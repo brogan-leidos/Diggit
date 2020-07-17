@@ -2,7 +2,7 @@ import GameGrid from './engine/GameGrid.js'
 import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Generic from './biome/Generic.js'
-import Tool from './presents/Tool.js'
+import Tool from './presents/tools/Tool.js'
 import Pick from './presents/tools/Pick.js'
 
 
