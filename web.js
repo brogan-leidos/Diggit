@@ -3,13 +3,25 @@ import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Generic from './biome/Generic.js'
 import Tool from './present/Tool.js'
+import Pick from './present/tools/Pick.js'
 
 
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
+var availableTools = [];
 
 export default () => {
+    // Early debug
+    availableTools.push(new Pick());
+    selectedTool = availableTools[0];
+    
+    
     document.getElementById('generateButton').addEventListener('click', () => {
+        gameGrid = createGameGrid();
+        refreshGrid();
+    });
+    
+    document.getElementById('selectTool-Pick').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
     });
