@@ -104,10 +104,8 @@ function highlightValidSpaces(spotId) {
         spotToLight.style.borderColor = "#ddd";
     }
     
-    for (var i=0; i < highlightedSpots.length; i++) {
-        var highlightX = highlightedSpots[i][0];
-        var highlightY = highlightedSpots[i][1];       
-        var spotToLight = document.getElementById(`${highlightX},${highlightY]}`);
+    for (var i=0; i < highlightedSpots.length; i++) {     
+        var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
         spotToLight.style.borderColor = 'red';
     }
   
