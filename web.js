@@ -23,6 +23,10 @@ export default () => {
         refreshGrid();
     });
     
+    document.getElementById('showInventoryButton').addEventListener('click', () => {
+        showInventory();
+    });
+    
 };
 
 function firstLaunch() {
@@ -223,6 +227,16 @@ function harvestWall() {
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
+}
+
+function showInventory() {
+    var area = document.getElementById("debugArea");
+    var htmlAppend = "";
+    var keys = Object.keys(inventory.inventory);
+    for(var i=0; i < keys.length; i++) {
+        htmlAppend += inventory.inventory[i] + "x " + i;
+    }
+    area.innerHTML = htmlAppend;
 }
 
 function refreshDebugArea() {
