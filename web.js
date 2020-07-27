@@ -71,7 +71,7 @@ function drawGridWithOverlay() {
                 var image = gameGrid.lowerGrid[i][j] != "0" ? gameGrid.lowerGrid[i][j].ImagePath != "" ? gameGrid.lowerGrid[i][j].ImagePath : "" : ""
                 styles += `background-color:${bgColor};`;
                 if (image != "") {
-                    styles += `background:url(${image});`
+                    styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
                 }
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
