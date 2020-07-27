@@ -159,7 +159,7 @@ function refreshHealthBar() {
     var bar = document.getElementsByClassName("healthBar")[0];
     var percentRemaining = gameGrid.healthRemaining / gameGrid.maxHealth * 100;
     bar.style.width = `${percentRemaining}%`;
-    bar.innerHTML = `${percentRemaining}%};
+    bar.innerHTML = `${percentRemaining}%}`;
     
     if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
     if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
