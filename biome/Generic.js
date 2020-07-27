@@ -9,14 +9,15 @@ export default class Generic extends Biome {
   
   getSmallObjects() {
     var objects = [];
-    objects.push(new Object("Ruby", "A sparkling red gem",           .1, 1, 1, "#de283a"));
-    objects.push(new Object("Sapphire", "A sparkling blue gem",      .1, 1, 1, "#3063f0"));
-    objects.push(new Object("Emerald", "A sparkling green gem",      .1, 1, 1, "#0ef083"));
-    objects.push(new Object("Amythest", "A sparkling violet gem",    .1, 1, 1, "#9c56c4"));
-    objects.push(new Object("Diamond", "A very precious gem",        .01, 1, 1, "#e3e3e3"));
-    objects.push(new Object("Copper Node", "A small node of copper", .4, 1, 1, "#d4ad22"));
-    objects.push(new Object("Iron Node", "A small node of iron",     .3, 1, 1, "#949494"));
-    objects.push(new Object("Gold Nugget", "A small gold nugget",    .2, 1, 1, "#ffea00"));
+    objects.push(new Object("Ruby", "A sparkling red gem",                   .1, 1, 1, "#de283a"));
+    objects.push(new Object("Sapphire", "A sparkling blue gem",              .1, 1, 1, "#3063f0"));
+    objects.push(new Object("Emerald", "A sparkling green gem",              .1, 1, 1, "#0ef083"));
+    objects.push(new Object("Amythest", "A sparkling violet gem",            .1, 1, 1, "#9c56c4"));
+    objects.push(new Object("Diamond", "A very precious gem",                .01, 1, 1, "#e3e3e3"));
+    objects.push(new Object("Copper Node", "A small node of copper",         .4, 1, 1, "#d4ad22"));
+    objects.push(new Object("Iron Node", "A small node of iron",             .3, 1, 1, "#949494"));
+    objects.push(new Object("Gold Nugget", "A small gold nugget",            .2, 1, 1, "#ffea00"));
+    objects.push(new Object("Green Moss", "A patch of common green moss",    .65, 1, 1, "#154518"));
     
     return objects;
   }
