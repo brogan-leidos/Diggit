@@ -15,6 +15,7 @@ var selectedTool = new Tool();
 var inventory = new Inventory();
 
 var highlightedSpots = [];
+var fullyRevealedItems = [];
 
 export default () => {
     firstLaunch();
@@ -64,9 +65,10 @@ function drawGridWithOverlay() {
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
-            if (gameGrid.upperGrid[i][j] <= 0) {
+            if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them
                 var bgColor = gameGrid.lowerGrid[i][j] == "0" ? "#363940" : gameGrid.lowerGrid[i][j].Color;
-                htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}"></td>`
+                var borderColor = gameGrid.lowerGrid[i][j] == "0" ? "grey" : gameGrid.lowerGrid[i][j].FullyRevealed ? "green" : "grey";
+                htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}; border:1px solid ${borderColor}"></td>`
             }
             else {
                 htmlResult += `<td id="${i},${j}" class="dirt">${gameGrid.upperGrid[i][j].toString()}</td>`
@@ -142,6 +144,7 @@ function updateInfoSection(spotId) {
     }
 }
 
+// Destroy the appropriate dirt layer, lower tool durability, damage the wall, and reveal objects as necessary
 function mineClickedSpot(spotId) {
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
@@ -169,8 +172,16 @@ function mineClickedSpot(spotId) {
         breakCurrentTool();
     }
 
+    for (var i=0; i < gameGrid.objects.length; i++) {
+        if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
+            gameGrid.objects[i].FullyRevealed = true;
+        }            
+    }
+    
     refreshGrid();
 }
+
+
 
 function breakCurrentTool() {
     var area = document.getElementById("toolDurability");
@@ -229,14 +240,7 @@ function harvestWall() {
     // go through object list, check what has been fully uncovered and collect it
     var htmlAppend = ""
     for (var i=0; i < gameGrid.objects.length; i++) {
-        var occupiedSpots = gameGrid.objects[i].getOccupiedSpots();
-        var fullyUncovered = true;
-        for (var spot=0; spot < occupiedSpots.length; spot++) {
-            if (parseInt(gameGrid.upperGrid[occupiedSpots[spot][0]][occupiedSpots[spot][1]]) > 0) {
-                fullyUncovered = false;
-            }
-        }
-        if (fullyUncovered) {
+        if (checkIfObjectIsFullyRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
             var asdf = inventory.inventory[gameGrid.objects[i].Name];
             if (inventory.inventory[gameGrid.objects[i].Name] !== undefined) {
@@ -248,6 +252,17 @@ function harvestWall() {
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
+}
+
+function checkIfObjectIsRevealed(object) {
+    var occupiedSpots = object.getOccupiedSpots();
+    var fullyUncovered = true;
+    for (var spot=0; spot < occupiedSpots.length; spot++) {
+        if (parseInt(gameGrid.upperGrid[occupiedSpots[spot][0]][occupiedSpots[spot][1]]) > 0) {
+            fullyUncovered = false;
+        }
+    }
+    return fullyUncovered;
 }
 
 function showInventory() {
