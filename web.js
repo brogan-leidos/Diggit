@@ -70,7 +70,8 @@ function drawGridWithOverlay() {
                 htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}"></td>`
             }
             else {
-                htmlResult += `<td id="${i},${j}" class="dirt">${gameGrid.upperGrid[i][j].toString()}</td>`
+                var bgcolor = getColorFromDirtValue(gameGrid.upperGrid[i][j]);
+                htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor}">${gameGrid.upperGrid[i][j].toString()}</td>`
             }
         }
         htmlResult += "</tr>";
@@ -81,6 +82,19 @@ function drawGridWithOverlay() {
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
+}
+
+function getColorFromDirtValue(value) {
+    switch (value) {
+        case "0": 
+            return "white"
+        case "1":
+            return "#e6ceac";
+        case "2":
+            return "#9c9386";
+        case "3":
+            return "#6e6c69";        
+    }    
 }
 
 function assignEventsToGrid() {
