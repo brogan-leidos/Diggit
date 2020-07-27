@@ -6,7 +6,7 @@ export default class Hammer extends Tool {
     this.Name = "Hammer";
     this.power = 2;
     this.durability = -1;
-    this.damage = 15;
+    this.damage = 20;
   } 
   
   // Return an array of surrounding spots and the damage done to them
