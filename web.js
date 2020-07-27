@@ -11,6 +11,8 @@ import Hammer from './presents/Tools/Hammer.js'
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
 var availableTools = [];
+var inventory = [];
+
 var highlightedSpots = [];
 
 export default () => {
@@ -188,7 +190,30 @@ function refreshHealthBar() {
     
     if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
     if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
-    if (percentRemaining <= 30) { bar.style.backgroundColor = "red"; }        
+    if (percentRemaining <= 30) { bar.style.backgroundColor = "red"; }
+    
+    if (gameGrid.healthRemaining <= 0) {
+        harvestWall();        
+    }
+}
+
+// collect the LOOT
+function harvestWall() {
+    // go through object list, check what has been fully uncovered and collect it
+    var htmlAppend = ""
+    for (var i=0; i < gameGrid.objects.length; i++) {
+        var occupiedSpots = gameGrid.objects[i].getOccupiedSpots();
+        var fullyUncovered = true;
+        for (var spot=0; spot < occupiedSpots.length; spot++) {
+            if (gameGrid.upperGrid[ocucpiedSpots[spot][0]][ocucpiedSpots[spot][1]] > 0) {
+                fullyUncovered = false;
+            }
+        }
+        if (fullyUncovered) {
+            htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";   
+        }        
+    }
+    document.getElementById("debugArea").innerHTML = htmlAppend;
 }
 
 function refreshDebugArea() {
