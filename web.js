@@ -96,7 +96,7 @@ function highlightValidSpaces(spotId) {
     
     var highlightMemory = [];
     if (typeof highlightedSpots !== "undefined") {
-        var highlightMemory = highlightedSpots;
+        highlightMemory = highlightedSpots;
     }
 
     var potentialSpots = selectedTool.getMinableSpots(x,y);
