@@ -156,7 +156,7 @@ function refreshToolArea() {
 }
 
 function refreshHealthBar() {
-    var bar = document.getElementsByClass("healthBar")[0];
+    var bar = document.getElementsByClassName("healthBar")[0];
     var percentRemaining = gameGrid.healthRemaining / gameGrid.maxHealth * 100;
     bar.styles.width = `${percentRemaining}%`;
     
