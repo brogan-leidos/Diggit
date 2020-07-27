@@ -182,6 +182,10 @@ function updateInfoSection(spotId) {
 
 // Destroy the appropriate dirt layer, lower tool durability, damage the wall, and reveal objects as necessary
 function mineClickedSpot(spotId) {
+    if(!checkIfStillStanding()) {
+        return;
+    }
+    
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
@@ -217,7 +221,9 @@ function mineClickedSpot(spotId) {
     refreshGrid();
 }
 
-
+function checkIfStillStanding() {
+    return gameGrid.healthRemaining > 0;   
+}
 
 function breakCurrentTool() {
     var area = document.getElementById("toolDurability");
