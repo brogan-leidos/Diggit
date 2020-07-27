@@ -9,6 +9,7 @@ import Pick from './presents/Tools/Pick.js'
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
 var availableTools = [];
+var highlightedSpots = [];
 
 export default () => {
     firstLaunch();
@@ -89,7 +90,8 @@ function highlightValidSpaces(spotId) {
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
     
-    selectedTool.getMinableSpots(x,y);
+    highlightedSpots = selectedTool.getMinableSpots(x,y);
+    
 }
 
 function updateInfoSection(spotId) {
@@ -120,18 +122,17 @@ function mineClickedSpot(spotId) {
         
         if (mineX >= gameGrid.width || mineX < 0 || mineY >= gameGrid.height || mineY < 0) {
             continue;
-        }
-        
+        }        
         gameGrid.upperGrid[mineX][mineY] -= power;
-        gameGrid.healthRemaining -= selectedTool.damage;
-        refreshHealthBar();
-        
-        
-        selectedTool.durability--;
-        
-        if (selectedTool.durability == 0){
-            //Oh no it broke!
-        }
+    }
+    
+    gameGrid.healthRemaining -= selectedTool.damage;
+    refreshHealthBar();
+
+    selectedTool.durability--;
+
+    if (selectedTool.durability == 0){
+        //Oh no it broke!
     }
 
     refreshGrid();
