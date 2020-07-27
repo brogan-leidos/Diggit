@@ -65,8 +65,8 @@ function drawGridWithOverlay() {
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
-            if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them
-                var bgColor = gameGrid.lowerGrid[i][j] == "0" ? "#363940" : gameGrid.lowerGrid[i][j].Color;
+            if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color
+                var bgColor = gameGrid.lowerGrid[i][j] == "0" ? "#eee" : gameGrid.lowerGrid[i][j].Color;
                 htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}"></td>`
             }
             else {
