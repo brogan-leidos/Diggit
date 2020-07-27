@@ -159,8 +159,9 @@ function refreshHealthBar() {
     var bar = document.getElementsByClassName("healthBar")[0];
     var percentRemaining = gameGrid.healthRemaining / gameGrid.maxHealth * 100;
     bar.style.width = `${percentRemaining}%`;
+    bar.innerHTML = `${percentRemaining}%};
     
-    if (percentRemaining >= 60) { bar.styles.color = "green"; }
-    if (percentRemaining < 60 && percentRemaining > 30) { bar.styles.color = "yellow"; }
-    if (percentRemaining <= 30) { bar.styles.color = "red"; }        
+    if (percentRemaining >= 60) { bar.style.color = "green"; }
+    if (percentRemaining < 60 && percentRemaining > 30) { bar.style.color = "yellow"; }
+    if (percentRemaining <= 30) { bar.style.color = "red"; }        
 }
