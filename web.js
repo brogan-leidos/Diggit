@@ -86,13 +86,13 @@ function drawGridWithOverlay() {
 
 function getColorFromDirtValue(value) {
     switch (value) {
-        case "0": 
+        case 0: 
             return "white"
-        case "1":
+        case 1:
             return "#e6ceac";
-        case "2":
+        case 2:
             return "#9c9386";
-        case "3":
+        case 3:
             return "#6e6c69";        
     }    
 }
