@@ -9,6 +9,7 @@ TODO:
  - Add ability to actually collect loot
  - Add a shop or something where you can spend your loot
  - Think/Add some more tools
+ - Replace solid colors with images
 
 BUGS:
  - Not a bug, but need to change hitting system to account for future pressure points
