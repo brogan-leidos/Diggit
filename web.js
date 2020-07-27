@@ -37,6 +37,8 @@ function createGameGrid() {
     
     gameGrid.settings = new GameGridSettings(width, height, rarity, new Generic());
     gameGrid = generateGrid(gameGrid);
+
+    refreshHealthBar(); 
     
     return gameGrid;
 }
