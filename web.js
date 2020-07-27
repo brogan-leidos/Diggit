@@ -234,7 +234,7 @@ function showInventory() {
     var htmlAppend = "";
     var keys = Object.keys(inventory.inventory);
     for(var i=0; i < keys.length; i++) {
-        htmlAppend += inventory.inventory[keys[i]] + "x " + keys[i];
+        htmlAppend += inventory.inventory[keys[i]] + "x " + keys[i] + "<br>";
     }
     area.innerHTML = htmlAppend;
 }
