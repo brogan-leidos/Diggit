@@ -29,6 +29,8 @@
 .gameSection td {
   border: 1px solid #ddd;
   padding: 8px 13px 8px 13px; 
+  width: 26px;
+  height: 16px;
 }
 
 .healthBar {
