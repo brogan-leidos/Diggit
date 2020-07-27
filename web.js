@@ -94,18 +94,14 @@ function highlightValidSpaces(spotId) {
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
     
-    var highlightMemory = [];
-    var asdf = typeof highlightedSpots;
-    var aspojdf = highlightedSpots.length;
-    
+    var highlightMemory = [];    
     
     if (highlightedSpots.length != 0) {
         highlightMemory = highlightedSpots;
     }
 
-    var potentialSpots = selectedTool.getMinableSpots(x,y);
-    
-    highlightedSpots = potentialSpots.filter(a => a[0] >= gameGrid.settings.width && a[0] < 0 && a[1] >= gameGrid.settings.height && a[1] < 0);
+    var potentialSpots = selectedTool.getMinableSpots(x,y);    
+    highlightedSpots = potentialSpots.filter(a => a[0] < gameGrid.settings.width && a[0] >= 0 && a[1] < gameGrid.settings.height && a[1] >= 0);
     
     for (var i=0; i < highlightMemory.length; i++) {
         var spotToLight = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
