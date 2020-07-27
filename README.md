@@ -11,7 +11,7 @@ TOOD:
 
 
 BUGS:
- - When a full row is excavated it gets smooooooooooshed
+ - Not a bug, but need to change hitting system to account for future pressure points
 
 
 
