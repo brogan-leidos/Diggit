@@ -220,7 +220,7 @@ function refreshDebugArea() {
     var area = document.getElementById("debugArea");
     var htmlAppend = "";
     for(var i=0; i < gameGrid.objects.length; i++) {
-        htmlAppend += gameGrid.objects[i].Name + "<br>";
+        htmlAppend += gameGrid.objects[i].Name + " | " + gameGrid.objects[i].origin + "<br>";
     }
     area.innerHTML = htmlAppend;
 }
