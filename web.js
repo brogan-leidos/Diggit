@@ -30,7 +30,7 @@ export default () => {
 };
 
 function firstLaunch() {
-    inventory.availableTools.push(new Pick(), new Hammer());
+    inventory.availableTools.push(new Pick(), new Hammer(), new Drill());
     selectedTool = inventory.availableTools[0];
     refreshToolArea();
     refreshHealthBar(); 
@@ -162,12 +162,29 @@ function mineClickedSpot(spotId) {
     refreshHealthBar();
 
     selectedTool.durability--;
+    refreshDurabilityArea();
 
     if (selectedTool.durability == 0){
-        //Oh no it broke!
+        breakCurrentTool();
     }
 
     refreshGrid();
+}
+
+function breakCurrentTool() {
+    var area = document.getElementById("toolDurability");
+    area.innerHTML = "";
+    area.innerHTML = "Oh no, your " + selectedTool.Name + " broke!"
+    
+    inventory.availableTools = inventory.availableTools.filter(a => a.Name != selectedTool.Name);
+    selectedTool = inventory.availableTools[0];
+    refreshToolArea();
+}
+
+function refreshDurabilityArea() {    
+    var area = document.getElementById("toolDurability");
+    area.innerHTML = "";
+    area.innerHTML = selectedTool.durability + " durability";   
 }
 
 // This is called after a change to the tools array is made, either with the addition or deletion of a tool
@@ -183,7 +200,8 @@ function refreshToolArea() {
         var elementName = `selectTool-${i}`;
         document.getElementById(elementName).addEventListener('click', (e) => {
             var eventId = parseInt(e.target.id.split("-")[1]);
-            selectedTool = inventory.availableTools[eventId];            
+            selectedTool = inventory.availableTools[eventId];
+            refreshDurabilityArea();
         });    
     }    
 }
