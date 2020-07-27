@@ -95,16 +95,16 @@ function highlightValidSpaces(spotId) {
     var highlightMemory = highlightedSpots;
     highlightedSpots = selectedTool.getMinableSpots(x,y);
     
-    for (var i=0; i < highlightedSpots.length; i++) {
-        var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
-        spotToLight.style.borderColor = 'red';
-    }
-    
     for (var i=0; i < highlightMemory.length; i++) {
         var spotToLight = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
         spotToLight.style.borderColor = "#ddd";
     }
     
+    for (var i=0; i < highlightedSpots.length; i++) {
+        var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
+        spotToLight.style.borderColor = 'red';
+    }
+  
 }
 
 function updateInfoSection(spotId) {
