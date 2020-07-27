@@ -147,7 +147,7 @@ function refreshToolArea() {
     
     area.innerHTML = newHTML;
     for (var i=0; i < availableTools.length; i++) {
-        document.getElementById('selectTool-${i}').addEventListener('click', (e) => {
+        document.getElementById(`selectTool-${i}`).addEventListener('click', (e) => {
             var eventId = parseInt(e.target.id.split("-")[1]);
             selectedTool = availableTools[eventId];            
         });    
