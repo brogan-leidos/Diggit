@@ -120,7 +120,7 @@ function mineClickedSpot(spotId) {
         var mineY = minableSpots[i][1];
         var power = minableSpots[i][2];
         
-        if (mineX >= gameGrid.width || mineX < 0 || mineY >= gameGrid.height || mineY < 0) {
+        if (mineX >= gameGrid.settings.width || mineX < 0 || mineY >= gameGrid.settings.height || mineY < 0) {
             continue;
         }        
         gameGrid.upperGrid[mineX][mineY] -= power;
