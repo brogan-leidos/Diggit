@@ -74,12 +74,14 @@ function refreshGrid() {
         dirtList[i].addEventListener('click', (e) => {
             mineClickedSpot(e.target.id);
         });
+        dirtList[i].addEventListener('mouseenter', (e) => {
+            highlightValidSpaces(e.target.id);;
+        });
     }
     
     var exposedList = document.getElementsByClassName("exposed");
     for (var i=0; i < exposedList.length; i++){
         exposedList[i].addEventListener('mouseenter', (e) => {
-            highlightValidSpaces(e.target.id);
             updateInfoSection(e.target.id);
         });
     }
