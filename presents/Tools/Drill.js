@@ -6,7 +6,7 @@ export default class Drill extends Tool {
     this.Name = "Drill";
     this.power = 1;
     this.durability = 25;
-    this.damage = 1;
+    this.damage = 2;
   } 
   
   // Return an array of surrounding spots and the damage done to them
