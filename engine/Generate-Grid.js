@@ -41,55 +41,8 @@ function initializeGrid(width, height, value="0") {
   return grid;
 }
 
-// function growPlotAtSpot(grid, x, y) {
-//     if (x > grid.length || y > grid[0].length || x < 0 || y < 0) { 
-//         return false;
-//     }
-    
-//     var odds = 0;
-//     // check adjacent spots for plot
-//     if (grid[x+1][y]  > 1) { odds++ }
-//     if (grid[x-1][y]  > 1) { odds++ }
-//     if (grid[x][y+1]  > 1) { odds++ }
-//     if (grid[x][y-1]  > 1) { odds++ }
-//     // if its adjacent increase the odds
-//     var roll = Math.floor(Math.random() * 10 + 1) + odds;    
-//     if (roll > 6) {
-//         return true;
-//     }    
-//     return false;    
-// }
-
-// function placePlot(grid, x, y, itteration) {
-//     grid[x][y] += 1;
-//     if (itteration >= 10) {
-//         return grid;
-//     }
-    
-//     if (growPlotAtSpot(grid, x+1, y)){
-//         grid = placePlot(grid, x+1, y, itteration+1);  
-//     }
-//     if (growPlotAtSpot(grid, x-1, y)){
-//         grid = placePlot(grid, x-1, y, itteration+1);  
-//     }
-//     if (growPlotAtSpot(grid, x, y+1)){
-//         grid = placePlot(grid, x, y+1, itteration+1);  
-//     }
-//     if (growPlotAtSpot(grid, x, y-1)){
-//         grid = placePlot(grid, x, y-1, itteration+1);
-//     }
-//     return grid;
-// }
-
 function generateUpperGrid(settings) {
    var grid = initializeGrid(settings.width, settings.height, 1);
-//    var numPlots = settings.width * settings.height / 10;
-   
-//    for (var i=0; i < numPlots; i++){
-//        var x = Math.floor(Math.random() * grid.length);
-//        var y = Math.floor(Math.random() * grid[0].length);
-//        grid = placePlot(grid, x, y, 0);   
-//    }
     
    for (var i=0; i < 2; i++) {
        for (var x=0; x < grid.length; x++) {
@@ -159,13 +112,11 @@ function assignTypesToDensity(settings, density) {
 }
 
 function spawnObjectFromList(spawnList) {
-    while(true) {
-        for (var i=0; i < spawnList.length; i++) {
-            if (Math.random() <= spawnList[i].rarity){
-                return spawnList[i];
-            }
-        }
-    }
+    var dropNum = Math.random() - settings.rarity;
+    var genList = spawnList.filter(a => a.rarity <= dropNum);
+    
+    var pickFromGen = Math.floor(Math.random() * genList.length)
+    return genList[pickFromGen];  
 }
 
 function placeObjects(settings, objectList) {
