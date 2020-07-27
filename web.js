@@ -95,7 +95,7 @@ function highlightValidSpaces(spotId) {
     var y = parseInt(spotId[1]);
     
     var highlightMemory = [];
-    if (highlightedSpots != undefined) {
+    if (highlightedSpots !== undefined) {
         var highlightMemory = highlightedSpots;
     }
 
