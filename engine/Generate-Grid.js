@@ -95,23 +95,23 @@ function assignTypesToDensity(settings, density) {
     
     var spawnList = settings.biome.getLargeObjects();
     for (var i=0; i < density[0]; i++) {      
-        objectList.push(spawnObjectFromList(spawnList));
+        objectList.push(spawnObjectFromList(spawnList, settings));
     }
 
     var spawnList = settings.biome.getMediumObjects();
     for (var i=0; i < density[1]; i++) {      
-        objectList.push(spawnObjectFromList(spawnList));
+        objectList.push(spawnObjectFromList(spawnList, settings));
     }
 
     var spawnList = settings.biome.getSmallObjects();
     for (var i=0; i < density[2]; i++) {      
-        objectList.push(spawnObjectFromList(spawnList));
+        objectList.push(spawnObjectFromList(spawnList, settings));
     }
     
     return objectList;
 }
 
-function spawnObjectFromList(spawnList) {
+function spawnObjectFromList(spawnList, settings) {
     var dropNum = Math.random() - settings.rarity;
     var genList = spawnList.filter(a => a.rarity <= dropNum);
     
