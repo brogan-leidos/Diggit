@@ -46,13 +46,13 @@ function createGameGrid() {
     return gameGrid;
 }
 
-function refreshGrid() {
-    var gameSection = document.getElementById("gameSection");
-    gameSection.innerHTML = "";
-    
-    // Display upper grid and then lower grid
-    // Generate a table based on the given grids
-    
+function refreshGrid() {    
+    drawGridWithOverlay()       
+    assignEventsToGrid()         
+}
+
+// Replaces gameSection with new HTML representing current gameGrid
+function drawGridWithOverlay() {
     var htmlResult = "";
     
     htmlResult += "<table><tbody>";    
@@ -71,9 +71,13 @@ function refreshGrid() {
     }    
     htmlResult += "</tbody></table>";
     
+    var gameSection = document.getElementById("gameSection");  
+    
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
-    
+}
+
+function assignEventsToGrid() {
     var dirtList = document.getElementsByClassName("dirt");
     for (var i=0; i < dirtList.length; i++){
         dirtList[i].addEventListener('click', (e) => {
@@ -90,8 +94,6 @@ function refreshGrid() {
             updateInfoSection(e.target.id);
         });
     }
-    
-    return htmlResult;
 }
 
 function highlightValidSpaces(spotId) {
