@@ -6,7 +6,7 @@ export default class Pick extends Tool {
     this.Name = "Pick";
     this.power = 1;
     this.durability = -1;
-    this.damage = 4;
+    this.damage = 8;
   } 
   
   // Return an array of surrounding spots and the damage done to them
