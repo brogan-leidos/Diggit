@@ -38,7 +38,8 @@ function createGameGrid() {
     gameGrid.settings = new GameGridSettings(width, height, rarity, new Generic());
     gameGrid = generateGrid(gameGrid);
 
-    refreshHealthBar(); 
+    refreshHealthBar();
+    refreshDebugArea();
     
     return gameGrid;
 }
@@ -188,4 +189,13 @@ function refreshHealthBar() {
     if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
     if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
     if (percentRemaining <= 30) { bar.style.backgroundColor = "red"; }        
+}
+
+function refreshDebugArea() {
+    var area = document.getElementById("debugArea");
+    var htmlAppend = "";
+    for(var i=0; i < gameGrid.objects.length; i++) {
+        htmlAppend += gameGrid.objects[i].Name + "<br>";
+    }
+    area.innerHTML = htmlAppend;
 }
