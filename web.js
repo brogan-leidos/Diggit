@@ -99,7 +99,7 @@ function highlightValidSpaces(spotId) {
     var aspojdf = highlightedSpots.length;
     
     
-    if (typeof highlightedSpots !== "undefined") {
+    if (highlightedSpots.length != 0) {
         highlightMemory = highlightedSpots;
     }
 
