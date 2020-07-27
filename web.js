@@ -4,6 +4,8 @@ import GameGridSettings from './engine/GameGridSettings.js'
 import Generic from './biome/Generic.js'
 import Tool from './presents/Tools/Tool.js'
 import Pick from './presents/Tools/Pick.js'
+import Hammer from './presents/Tools/Hammer.js'
+
 
 
 var gameGrid = new GameGrid();
@@ -22,7 +24,7 @@ export default () => {
 };
 
 function firstLaunch() {
-    availableTools.push(new Pick());
+    availableTools.push(new Pick(), new Hammer());
     selectedTool = availableTools[0];
     refreshToolArea();
     refreshHealthBar(); 
