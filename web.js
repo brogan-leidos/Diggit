@@ -142,7 +142,7 @@ function refreshToolArea() {
     var area = document.getElementById("toolArea");
     var newHTML = ""
     for (var i=0; i < availableTools.length; i++) {
-        newHTML += `<button id="selectTool-${i}>${availableTools[i].Name}</button>`;   
+        newHTML += `<button id="selectTool-${i}">${availableTools[i].Name}</button>`;   
     }
     
     area.innerHTML = newHTML;
