@@ -174,7 +174,6 @@ function mineClickedSpot(spotId) {
 
 function breakCurrentTool() {
     var area = document.getElementById("toolDurability");
-    area.innerHTML = "";
     area.innerHTML = "Oh no, your " + selectedTool.Name + " broke!"
     
     inventory.availableTools = inventory.availableTools.filter(a => a.Name != selectedTool.Name);
