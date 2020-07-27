@@ -9,7 +9,7 @@ export default class Generic extends Biome {
   
   getSmallObjects() {
     var objects = [];
-    objects.push(new Object("Ruby", "A sparkling red gem",                   .1, 1, 1, "#de283a", "./objects/images/ruby.png"));
+    objects.push(new Object("Ruby", "A sparkling red gem",                   .1, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
     objects.push(new Object("Sapphire", "A sparkling blue gem",              .1, 1, 1, "#3063f0"));
     objects.push(new Object("Emerald", "A sparkling green gem",              .1, 1, 1, "#0ef083"));
     objects.push(new Object("Amythest", "A sparkling violet gem",            .1, 1, 1, "#9c56c4"));
