@@ -53,8 +53,9 @@ function createGameGrid() {
 }
 
 function refreshGrid() {    
-    drawGridWithOverlay()       
-    assignEventsToGrid()         
+    drawGridWithOverlay();       
+    assignEventsToGrid(); 
+    highlightRevealvedObjects();
 }
 
 // Replaces gameSection with new HTML representing current gameGrid
@@ -67,8 +68,7 @@ function drawGridWithOverlay() {
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
             if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them
                 var bgColor = gameGrid.lowerGrid[i][j] == "0" ? "#363940" : gameGrid.lowerGrid[i][j].Color;
-                var borderColor = gameGrid.lowerGrid[i][j] == "0" ? "grey" : gameGrid.lowerGrid[i][j].FullyRevealed ? "green" : "grey";
-                htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}; border:1px solid ${borderColor}"></td>`
+                htmlResult += `<td id="${i},${j}" class="exposed" style="background-color:${bgColor}"></td>`
             }
             else {
                 htmlResult += `<td id="${i},${j}" class="dirt">${gameGrid.upperGrid[i][j].toString()}</td>`
@@ -103,6 +103,7 @@ function assignEventsToGrid() {
     }
 }
 
+// Highlights spaces that the current tool can mine
 function highlightValidSpaces(spotId) {
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
@@ -118,17 +119,30 @@ function highlightValidSpaces(spotId) {
     highlightedSpots = potentialSpots.filter(a => a[0] < gameGrid.settings.width && a[0] >= 0 && a[1] < gameGrid.settings.height && a[1] >= 0);
     
     for (var i=0; i < highlightMemory.length; i++) {
-        var spotToLight = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
-        spotToLight.style.borderColor = "#ddd";
+        var spotToDim = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
+        spotToDim.style.borderColor = "#ddd";
     }
     
     for (var i=0; i < highlightedSpots.length; i++) {     
         var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
         spotToLight.style.borderColor = 'red';
-    }
-  
+    }  
 }
 
+// Adds a green border to objects that are fully revealed
+function highlightRevealvedObjects() {
+    for (var i=0; i < gameGrid.objects.length; i++) {
+        var object = gameGrid.objects[i];  
+        if (object.FullyRevealed) {
+            var spots = object.getOccupiedSpots();
+            for (var j=0; j < spots.length; j++) {
+                document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.border = "2px solid #36c95e";
+            }
+        }
+    }
+}
+
+// Updates info bar to give info on what the mouse is over
 function updateInfoSection(spotId) {
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
