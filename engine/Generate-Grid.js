@@ -112,9 +112,13 @@ function assignTypesToDensity(settings, density) {
 }
 
 function spawnObjectFromList(spawnList, settings) {
-    var dropNum = Math.random() - settings.rarity;
-    var genList = spawnList.filter(a => a.rarity <= dropNum);
-    
+    while(true) {
+        var dropNum = Math.random() - settings.rarity;
+        var genList = spawnList.filter(a => a.rarity >= dropNum);
+        if (genList.length > 0) {
+            break;
+        }
+    }
     var pickFromGen = Math.floor(Math.random() * genList.length)
     return genList[pickFromGen];  
 }
