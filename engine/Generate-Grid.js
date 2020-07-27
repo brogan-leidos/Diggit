@@ -127,8 +127,8 @@ function placeObjects(settings, objectList) {
         var continueLoop = 0;
         while (continueLoop < 1000) {
             // Pick a random spot to slap this thing down
-            var x = Math.floor(Math.random() * settings.width + 1);
-            var y = Math.floor(Math.random() * settings.height + 1);        
+            var x = Math.floor(Math.random() * settings.width);
+            var y = Math.floor(Math.random() * settings.height);        
             if(checkSpotValidity(grid, x, y, objectList[i])) {
                 grid = placeObject(grid, x, y, objectList[i]);
                 objectList[i].origin = [x,y];
