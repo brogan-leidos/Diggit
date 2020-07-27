@@ -184,6 +184,9 @@ function breakCurrentTool() {
 function refreshDurabilityArea() {    
     var area = document.getElementById("toolDurability");
     area.innerHTML = "";
+    if (selectedTool.durability < 0) {
+        return;
+    }
     area.innerHTML = selectedTool.durability + " durability";   
 }
 
