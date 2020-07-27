@@ -95,7 +95,9 @@ function highlightValidSpaces(spotId) {
     var y = parseInt(spotId[1]);
     
     var highlightMemory = highlightedSpots;
-    highlightedSpots = selectedTool.getMinableSpots(x,y);
+    var potentialSpots = selectedTool.getMinableSpots(x,y);
+    
+    var highlightedSpots = potentialSpots.filter(a => a[0] >= gameGrid.settings.width && a[0] < 0 && a[1] >= gameGrid.settings.height && a[1] < 0);
     
     for (var i=0; i < highlightMemory.length; i++) {
         var spotToLight = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
@@ -103,7 +105,9 @@ function highlightValidSpaces(spotId) {
     }
     
     for (var i=0; i < highlightedSpots.length; i++) {
-        var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
+        var highlightX = highlightedSpots[i][0];
+        var highlightY = highlightedSpots[i][1];       
+        var spotToLight = document.getElementById(`${highlightX},${highlightY]}`);
         spotToLight.style.borderColor = 'red';
     }
   
