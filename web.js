@@ -15,7 +15,6 @@ var selectedTool = new Tool();
 var inventory = new Inventory();
 
 var highlightedSpots = [];
-var fullyRevealedItems = [];
 
 export default () => {
     firstLaunch();
