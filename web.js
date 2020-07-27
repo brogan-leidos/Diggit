@@ -1,11 +1,12 @@
 import GameGrid from './engine/GameGrid.js'
 import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
+import Inventory from './engine/Inventory.js'
 import Generic from './biome/Generic.js'
 import Tool from './presents/Tools/Tool.js'
 import Pick from './presents/Tools/Pick.js'
 import Hammer from './presents/Tools/Hammer.js'
-import Inventory from './engine/Inventory.js'
+import Drill from './presents/Tools/Drill.js'
 
 
 
