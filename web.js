@@ -54,7 +54,8 @@ function createGameGrid() {
 
 function refreshGrid() {    
     drawGridWithOverlay();       
-    assignEventsToGrid(); 
+    assignEventsToGrid();
+    highlightRevealvedObjects();
 }
 
 // Replaces gameSection with new HTML representing current gameGrid
@@ -137,7 +138,7 @@ function highlightRevealvedObjects() {
         if (object.FullyRevealed) {
             var spots = object.getOccupiedSpots();
             for (var j=0; j < spots.length; j++) {
-                document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.border = "2px solid #36c95e";
+                document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.border = "1px solid #36c95e";
             }
         }
     }
