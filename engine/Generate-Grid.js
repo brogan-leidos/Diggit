@@ -63,8 +63,7 @@ function calculateDensity(settings) {
   var numLarge = 0;
   var numMed = 0;
   var numSmall = 0;
-  
-  
+    
   // Calculate total number of objects
   var minItems = settings.rarity * 10;   
   var maxItems = settings.height * settings.width / 10;
@@ -83,8 +82,7 @@ function calculateDensity(settings) {
       numSmall++;
     }
   }
-  
-  
+    
   return [numLarge, numMed, numSmall];
 }
 
@@ -119,7 +117,7 @@ function spawnObjectFromList(spawnList, settings) {
             break;
         }
     }
-    var pickFromGen = Math.floor(Math.random() * genList.length)
+    var pickFromGen = Math.floor(Math.random() * genList.length)    
     return genList[pickFromGen];  
 }
 
@@ -133,6 +131,7 @@ function placeObjects(settings, objectList) {
             var y = Math.floor(Math.random() * settings.height + 1);        
             if(checkSpotValidity(grid, x, y, objectList[i])) {
                 grid = placeObject(grid, x, y, objectList[i]);
+                objectList[i].origin = [x,y];
                 break;
             }
             continueLoop += 1;
