@@ -205,7 +205,7 @@ function harvestWall() {
         var occupiedSpots = gameGrid.objects[i].getOccupiedSpots();
         var fullyUncovered = true;
         for (var spot=0; spot < occupiedSpots.length; spot++) {
-            if (gameGrid.upperGrid[occupiedSpots[spot][0]][occupiedSpots[spot][1]] > 0) {
+            if (parseInt(gameGrid.upperGrid[occupiedSpots[spot][0]][occupiedSpots[spot][1]]) > 0) {
                 fullyUncovered = false;
             }
         }
