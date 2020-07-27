@@ -11,7 +11,7 @@ import Hammer from './presents/Tools/Hammer.js'
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
 var availableTools = [];
-var highlightedSpots = [];
+var highlightedSpots = new Array();
 
 export default () => {
     firstLaunch();
