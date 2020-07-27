@@ -133,7 +133,7 @@ function highlightValidSpaces(spotId) {
     
     for (var i=0; i < highlightMemory.length; i++) {
         var spotToDim = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
-        spotToDim.style.borderColor = "#ddd";
+        spotToDim.style.borderColor = "";
     }
     
     for (var i=0; i < highlightedSpots.length; i++) {     
