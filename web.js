@@ -5,13 +5,13 @@ import Generic from './biome/Generic.js'
 import Tool from './presents/Tools/Tool.js'
 import Pick from './presents/Tools/Pick.js'
 import Hammer from './presents/Tools/Hammer.js'
+import Inventory from './engine/Inventory.js'
 
 
 
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
-var availableTools = [];
-var inventory = [];
+var inventory = new Inventory();
 
 var highlightedSpots = [];
 
@@ -26,8 +26,8 @@ export default () => {
 };
 
 function firstLaunch() {
-    availableTools.push(new Pick(), new Hammer());
-    selectedTool = availableTools[0];
+    inventory.availableTools.push(new Pick(), new Hammer());
+    selectedTool = inventory.availableTools[0];
     refreshToolArea();
     refreshHealthBar(); 
 }
@@ -170,16 +170,16 @@ function mineClickedSpot(spotId) {
 function refreshToolArea() {
     var area = document.getElementById("toolArea");
     var newHTML = ""
-    for (var i=0; i < availableTools.length; i++) {
-        newHTML += `<button id="selectTool-${i}">${availableTools[i].Name}</button>`;   
+    for (var i=0; i < inventory.availableTools.length; i++) {
+        newHTML += `<button id="selectTool-${i}">${inventory.availableTools[i].Name}</button>`;   
     }
     
     area.innerHTML = newHTML;
-    for (var i=0; i < availableTools.length; i++) {
+    for (var i=0; i < inventory.availableTools.length; i++) {
         var elementName = `selectTool-${i}`;
         document.getElementById(elementName).addEventListener('click', (e) => {
             var eventId = parseInt(e.target.id.split("-")[1]);
-            selectedTool = availableTools[eventId];            
+            selectedTool = inventory.availableTools[eventId];            
         });    
     }    
 }
@@ -212,7 +212,14 @@ function harvestWall() {
             }
         }
         if (fullyUncovered) {
-            htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";   
+            htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
+            var asdf = inventory.inventory[gameGrid.objects[i].Name];
+            if (inventory.inventory[gameGrid.objects[i].Name] !== undefined) {
+                inventory.inventory[gameGrid.objects[i].Name]++;
+            }
+            else {
+                inventory.inventory[gameGrid.objects[i].Name] = 1;
+            }
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
