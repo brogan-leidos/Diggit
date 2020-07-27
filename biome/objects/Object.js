@@ -1,5 +1,5 @@
 export default class Object {
-  constructor(name="default", description="default discription", rarity=0, height=0, width=0, color="#fff") {
+  constructor(name="default", description="default discription", rarity=0, height=0, width=0, color="#fff", imagepath="") {
     this.Id = "";
     this.Name = name;
     this.description = description;
@@ -11,6 +11,7 @@ export default class Object {
     
     this.Color = color;
     this.FullyRevealed = false;
+    this.ImagePath = imagepath;
     
   }
   
