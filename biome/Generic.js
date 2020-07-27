@@ -14,7 +14,7 @@ export default class Generic extends Biome {
     objects.push(new Object("Emerald", "A sparkling green gem",              .1, 1, 1, "#0ef083"));
     objects.push(new Object("Amythest", "A sparkling violet gem",            .1, 1, 1, "#9c56c4"));
     objects.push(new Object("Diamond", "A very precious gem",                .01, 1, 1, "#e3e3e3"));
-    objects.push(new Object("Black Diamond", "A extremely rare, extremely precious gem", .005, 1, 1, "#d3d3d3"));    
+    objects.push(new Object("Black Diamond", "An extremely rare, extremely precious gem", .005, 1, 1, "#d3d3d3"));    
     objects.push(new Object("Copper Node", "A small node of copper",         .4, 1, 1, "#d4ad22"));
     objects.push(new Object("Iron Node", "A small node of iron",             .3, 1, 1, "#949494"));
     objects.push(new Object("Gold Nugget", "A small gold nugget",            .2, 1, 1, "#ffea00"));
