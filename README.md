@@ -3,7 +3,7 @@
 TODO:
  - Change object system to use a text parser. Should allow for more dynamic shapes and the ability to rotate
  - Do something with biomes, heat could affect hardness of soil or something
- - Get highlighting to work, both for the tools and fully excavated pieces
+ - Upgrade revealed highlight to track edges
  - Update the soil building algorithm to use noise instead of random assignment
   - Generate pressure points using noise (hurt the wall more when hit)
  - Add ability to actually collect loot
