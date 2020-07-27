@@ -11,7 +11,7 @@ import Hammer from './presents/Tools/Hammer.js'
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
 var availableTools = [];
-var highlightedSpots = new Array();
+var highlightedSpots = [];
 
 export default () => {
     firstLaunch();
@@ -95,6 +95,10 @@ function highlightValidSpaces(spotId) {
     var y = parseInt(spotId[1]);
     
     var highlightMemory = [];
+    var asdf = typeof highlightedSpots;
+    var aspojdf = highlightedSpots.length;
+    
+    
     if (typeof highlightedSpots !== "undefined") {
         highlightMemory = highlightedSpots;
     }
