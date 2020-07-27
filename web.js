@@ -130,7 +130,7 @@ function updateInfoSection(spotId) {
     
     var object = gameGrid.lowerGrid[x][y];
     if (object != "0") {
-        infoSection.innerHTML = object.Name;
+        infoSection.innerHTML = object.Name + ": " + object.Description;
     }
     else {
         infoSection.innerHTML = "Empty";
