@@ -10,6 +10,7 @@ export default class Object {
     this.width = width;
     
     this.Color = color;
+    this.FullyRevealed = false;
     
   }
   
