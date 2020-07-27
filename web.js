@@ -240,7 +240,7 @@ function harvestWall() {
     // go through object list, check what has been fully uncovered and collect it
     var htmlAppend = ""
     for (var i=0; i < gameGrid.objects.length; i++) {
-        if (checkIfObjectIsFullyRevealed(gameGrid.objects[i])) {
+        if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
             var asdf = inventory.inventory[gameGrid.objects[i].Name];
             if (inventory.inventory[gameGrid.objects[i].Name] !== undefined) {
