@@ -5,6 +5,7 @@ TOOD:
  - Do something with biomes, heat could affect hardness of soil or something
  - Get highlighting to work, both for the tools and fully excavated pieces
  - Update the soil building algorithm to use noise instead of random assignment
+  - Generate pressure points using noise (hurt the wall more when hit)
  - Add ability to actually collect loot
  - Add a shop or something where you can spend your loot
 
