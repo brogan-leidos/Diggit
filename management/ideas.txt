@@ -1,0 +1,9 @@
+Ideas:
+
+ - A large overworld map, start in one area and make your way to different regions
+   -- Different regions (biomes) will have different things to offer in terms of loot and surfaces (leave pressure points for a region)
+   -- Need supplies to travel between regions, eat moss or something from the ground to make the trips
+ 
+ - Upgrade your tools and get new ones as you search different regions (more power, less damage)
+ 
+ - A large final quest that requires going back to all of the regions and finding something special from each one
