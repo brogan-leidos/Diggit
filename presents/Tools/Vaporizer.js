@@ -4,6 +4,7 @@ export default class Vaporizer extends Tool {
   constructor() {
     super();
     this.Name = "Vaporizer";
+    this.Description = "Instantly vaporizes a full layer of rock";
     this.power = 1;
     this.durability = 1;
     this.damage = 40;
