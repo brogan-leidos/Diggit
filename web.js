@@ -327,13 +327,16 @@ function refreshHealthBar() {
     }
 }
 
+// NOTE: Likely temporary as we debug
 function refreshBiomeTab() {
     var biomeSelect = document.getElemetntById("biomeSelect");
     for (var i=0; i < inventory.availableBiomes.length; i++) {
         var biome = inventory.availableBiomes[i];
         htmlAppend = ""
-        htmlAppend += `<option value="${biome.Name}">${biome.Name}</option>`;        
+        htmlAppend += `<option id="Biome-${biome.Name}">${biome.Name}</option>`;        
     }
+    
+    
 }
 
 // collect the LOOT
