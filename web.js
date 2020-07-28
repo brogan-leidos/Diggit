@@ -83,12 +83,11 @@ function drawGridWithOverlay() {
                 if (image != "") {
                     styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
                 }
-                styles += `border: 1px solid ${biomeManager.selectedBiome.GridBorderColor};`;
+                styles += `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
 
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
             else {
-//                 var bgcolor = getColorFromDirtValue(gameGrid.upperGrid[i][j]);
                 var bgcolor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[i][j]);                
                 var border = biomeManager.selectedBiome.GridBorderColor;
                 htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor};border:2px solid ${border}">
@@ -125,19 +124,6 @@ function tintHex(hex, tintAmount) {
         hexString = "0" + hexString[0];   
     }
     return hexString;
-}
-
-function getColorFromDirtValue(value) {
-    switch (value) {
-        case 0: 
-            return "white"
-        case 1:
-            return "#e6ceac";
-        case 2:
-            return "#9c9386";
-        case 3:
-            return "#6e6c69";        
-    }    
 }
 
 function assignEventsToGrid() {
