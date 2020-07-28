@@ -45,7 +45,7 @@ function initializeGrid(width, height, value="0") {
 function generateUpperGrid(settings) {
    var grid = initializeGrid(settings.width, settings.height, 1);
     
-   for (var i=0; i < 2; i++) {
+   for (var i=0; i < settings.biome.MaxHardness; i++) {
        for (var x=0; x < grid.length; x++) {
            for (var y=0; y < grid[x].length; y++) {
                if (Math.random() > .5) {
