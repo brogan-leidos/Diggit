@@ -4,6 +4,7 @@ export default class Hammer extends Tool {
   constructor() {
     super();
     this.Name = "Hammer";
+    this.Description = "Destroys a large portion of the wall. Disrupts wall stability significantly";
     this.power = 2;
     this.durability = -1;
     this.damage = 20;
