@@ -55,9 +55,10 @@ function createGameGrid() {
 }
 
 function refreshGrid() {    
-    drawGridWithOverlay();       
+    drawGridWithOverlay(); 
     assignEventsToGrid();
     highlightRevealvedObjects();
+    refreshHealthBar();
 }
 
 // Replaces gameSection with new HTML representing current gameGrid
@@ -211,8 +212,6 @@ function mineClickedSpot(spotId) {
     }
     
     gameGrid.healthRemaining -= selectedTool.damage;
-    refreshHealthBar();
-
     selectedTool.durability--;
     refreshDurabilityArea();
 
@@ -287,7 +286,9 @@ function refreshItemArea() {
             inventory.availableItems[eventId].NumberRemaining--;
             if (inventory.availableItems[eventId].NumberRemaining == 0) {
                 inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining > 0);
+                refreshItemArea();                
             }
+            refreshGrid();
         });
         
         document.getElementById(elementName).addEventListener('mouseover', (e) => {
