@@ -80,8 +80,8 @@ function drawGridWithOverlay() {
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
             else {
-                //var bgcolor = getColorFromDirtValue(gameGrid.upperGrid[i][j]);
-                var bgcolor = "";
+                var bgcolor = getColorFromDirtValue(gameGrid.upperGrid[i][j]);
+//                 var bgcolor = "";
                 htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor}">${gameGrid.upperGrid[i][j].toString()}</td>`
             }
         }
