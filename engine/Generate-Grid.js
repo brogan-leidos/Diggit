@@ -119,10 +119,10 @@ function spawnObjectFromList(spawnList, settings) {
         }
     }
     var pickFromGen = Math.floor(Math.random() * genList.length)
-    var newObj = new Loot();
-    return Object.assign(newObj, genList[pickFromGen]);  
+//     var newObj = new Loot();
+//     return Object.assign(newObj, genList[pickFromGen]);  
 
-    //return Object.create(genList[pickFromGen]);  
+    return Object.create(genList[pickFromGen]);  
 }
 
 function placeObjects(settings, objectList) {
@@ -161,7 +161,7 @@ function checkSpotValidity(grid, xOrigin, yOrigin, object) {
 }
 
 function placeObject(grid, object) {
-    var spotsToFill = object.getOccuppiedSpots();
+    var spotsToFill = object.getOccupiedSpots();
 
     for (var i=0; i < spotsToFill.length; i++) {
         grid[spotsToFill[i][0]][spotsToFill[i][1]] = object;
