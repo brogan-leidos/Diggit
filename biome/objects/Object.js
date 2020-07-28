@@ -13,6 +13,7 @@ export default class Object {
     this.FullyRevealed = false;
     this.ImagePath = imagepath;
     
+    this.Shape = []; // Used when conventional shapes wont work, w/h should both be -1 when this is used
   }
   
   getDimensions() {
@@ -21,6 +22,9 @@ export default class Object {
   
   
   getOccupiedSpots() {
+    if (this.height < 0 || this.width < 0) {
+      return getSpotsByShape();
+    }
     var ret = [];
     for (var x=0; x < this.width; x++) {      
       for (var y=0; y < this.height; y++) {
@@ -28,5 +32,28 @@ export default class Object {
       }
     }
     return ret;
+  }
+  
+  getSpotsByShape() {
+    // Find the origin first
+    var localOrigin = [];
+    for (var i=0; i < this.Shape.length; i++) {
+      var findOrigin = this.Shape[i].indeOf("x");
+      if (findOrigin != -1){
+        localOrigin = [i, findOrigin];
+      }                           
+    }
+    
+    var localSpots = [];
+    for (var i=0; i < this.Shape.length; i++) {
+      for (var j=0; j < this.Shape[i].length; j++) {
+        if (this.Shape[i][j] != "." && this.Shape[i][j] != "x") {
+          localSpots.push([i - localOrigin[0] + this.origin[0], 
+                           j - localOrigin[1] + this.origin[1]]);
+        }
+      }
+    } 
+    
+    return localSpots;            
   }
 }
