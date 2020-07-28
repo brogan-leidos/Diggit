@@ -316,7 +316,7 @@ function refreshHealthBar() {
         green -= Math.max((percentRemaining % 50) * 4, 0);
     }
     
-    bar.style.backgroundColor = "rgb(red, green, 0)";   
+    bar.style.backgroundColor = `rgb(${red}, ${green}, 0)`;
     
     if (gameGrid.healthRemaining <= 0) {
         harvestWall();        
