@@ -312,13 +312,11 @@ function refreshHealthBar() {
     
     //each 1% is 5.1 to red
     red += Math.min(percentRemaining * 5.1, 255);
-    green -= Math.max((percentRemaining % 50) * 4, 0);
+    if (percentRemaining >= 50) {
+        green -= Math.max((percentRemaining % 50) * 4, 0);
+    }
     
-    bar.style.backgroundColor = "rgb(red, green, 0)";
-    
-//     if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
-//     if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
-//     if (percentRemaining <= 30) { bar.style.backgroundColor = "red"; }
+    bar.style.backgroundColor = "rgb(red, green, 0)";   
     
     if (gameGrid.healthRemaining <= 0) {
         harvestWall();        
