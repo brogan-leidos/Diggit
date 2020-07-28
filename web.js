@@ -279,23 +279,26 @@ function refreshItemArea() {
     
     area.innerHTML = newHTML;
     for (var i=0; i < inventory.availableItems.length; i++) {
-        var elementName = `selectItem-${i}`;
-        document.getElementById(elementName).addEventListener('click', (e) => {
-            var eventId = parseInt(e.target.id.split("-")[1]);
-            inventory.availableItems[eventId].behavior(gameGrid);
-            inventory.availableItems[eventId].NumberRemaining--;
-            if (inventory.availableItems[eventId].NumberRemaining == 0) {
-                inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining > 0);
-                refreshItemArea();                
-            }
-            refreshGrid();
-        });
-        
-        document.getElementById(elementName).addEventListener('mouseover', (e) => {
-            var eventId = parseInt(e.target.id.split("-")[1]);
-            displayInInfoSection(`${inventory.availableItems[eventId].Description}`);
-        });
+        assignEventsToItem(`selectItem-${i}`);        
     }    
+}
+
+function assignEventsToItem(elementName) }
+    document.getElementById(elementName).addEventListener('click', (e) => {
+        var eventId = parseInt(e.target.id.split("-")[1]);
+        inventory.availableItems[eventId].behavior(gameGrid);
+        inventory.availableItems[eventId].NumberRemaining--;
+        if (inventory.availableItems[eventId].NumberRemaining == 0) {
+            inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining > 0);
+            refreshItemArea();                
+        }
+        refreshGrid();
+    });
+
+    document.getElementById(elementName).addEventListener('mouseover', (e) => {
+        var eventId = parseInt(e.target.id.split("-")[1]);
+        displayInInfoSection(`${inventory.availableItems[eventId].Description}`);
+    });
 }
 
 function refreshHealthBar() {
