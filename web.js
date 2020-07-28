@@ -82,6 +82,9 @@ function drawGridWithOverlay() {
                 if (image != "") {
                     styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
                 }
+                var border = biomeManager.selectedBiome.GridBorderColor;
+                styles += `border: 1px solid ${border};`;
+
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
             else {
