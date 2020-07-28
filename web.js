@@ -283,7 +283,7 @@ function refreshItemArea() {
     }    
 }
 
-function assignEventsToItem(elementName) }
+function assignEventsToItem(elementName) {
     document.getElementById(elementName).addEventListener('click', (e) => {
         var eventId = parseInt(e.target.id.split("-")[1]);
         inventory.availableItems[eventId].behavior(gameGrid);
