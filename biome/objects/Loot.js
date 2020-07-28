@@ -44,10 +44,10 @@ export default class Loot {
       }                           
     }
     
-    var localSpots = [];
+    var localSpots = [];    
     for (var i=0; i < this.Shape.length; i++) {
       for (var j=0; j < this.Shape[i].length; j++) {
-        if (this.Shape[i][j] != "." && this.Shape[i][j] != "x") {
+        if (this.Shape[i][j] != ".") {
           localSpots.push([i - localOrigin[0] + this.origin[0], 
                            j - localOrigin[1] + this.origin[1]]);
         }
