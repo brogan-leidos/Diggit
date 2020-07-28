@@ -1,4 +1,4 @@
-export default class Object {
+export default class Loot {
   constructor(name="default", description="default discription", rarity=0, height=0, width=0, color="#fff", imagepath="") {
     this.Id = "";
     this.Name = name;
