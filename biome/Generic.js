@@ -41,7 +41,7 @@ export default class Generic extends Biome {
     objects.push(new Object("Large Iron Node", "A large node of iron", .3, 3, 4, "#949494"));
     objects.push(new Object("Large Fossil", "A very large and very old fossil", .3, 2, 3, "#4f4423"));
     objects.push(new Object("Coal Vein", "A large vein of coal", .6, 3, 3, "#592b1d"));
-    //objects.push(new Fossil_A());
+    objects.push(new Fossil_A());
     
     return objects;
   }
