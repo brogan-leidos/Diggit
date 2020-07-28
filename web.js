@@ -312,7 +312,7 @@ function refreshHealthBar() {
     
     //each 1% is 5.1 to red
     red += Math.min(percentRemaining * 5.1, 255);
-    green -= Math.max(percentRemaining * 4, 0);
+    green -= Math.max((percentRemaining % 50) * 4, 0);
     
     bar.style.backgroundColor = "rgb(red, green, 0)";
     
