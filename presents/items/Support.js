@@ -1,6 +1,6 @@
-import Tool from './Tool.js'
+import Item from './Item.js'
 
-export default class Support extends Tool {
+export default class Support extends Item {
   constructor() {
     super();
     this.Name = "Support";
