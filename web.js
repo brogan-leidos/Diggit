@@ -110,9 +110,9 @@ function tintBgColor(bgColor, gridValue) {
     if (bgColor.length == 4) {
         bgColor = `#${bgColor[1]}${bgColor[1]}${bgColor[2]}${bgColor[2]}${bgColor[3]}${bgColor[3]}`;
     }
-    var red = bgColor.substr(1,2).toString(10);
-    var green = bgColor.substr(3,2).toString(10);
-    var blue =  bgColor.substr(5,2).toString(10);
+    var red = parseInt("0x" + bgColor.substr(1,2));
+    var green = parseInt("0x" + bgColor.substr(3,2));
+    var blue =  parseInt("0x" + bgColor.substr(5,2));
     
     var gridColorTint = gridValue * 25;
     
