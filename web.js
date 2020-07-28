@@ -345,6 +345,7 @@ function refreshBiomeTab() {
             var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
             gameGrid.settings.biome = newBiome;
             document.getElementById("gameSection").style.background = newBiome.ImagePath;
+            document.getElementById("gameSection").style.mixBlendMode = "multiply";
             refreshBiomeTab();
         });
     }
