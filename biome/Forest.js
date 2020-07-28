@@ -7,6 +7,7 @@ export default class Forest extends Biome {
     this.Name = "Forest";
     this.Temperature = 30;
     this.MaxHardness = 3;
+    this.ImagePath = "./biome/biomeimages/forest.jpg";
     
     
     this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
