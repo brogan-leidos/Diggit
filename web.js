@@ -33,6 +33,7 @@ function firstLaunch() {
     inventory.availableItems.push(new Support());
     selectedTool = inventory.availableTools[0];
     
+    inventory.availableBiomes = ["Generic", "Forest"];
     refreshBiomeTab();
     
     refreshToolArea();
@@ -330,7 +331,19 @@ function refreshBiomeTab() {
     for (var i=0; i < inventory.availableBiomes.length; i++) {
         var biome = inventory.availableBiomes[i];
         htmlAppend = ""
-        htmlAppend += `<option id="Biome-${biome.Name}">${biome.Name}</option>`;        
+        if (biome != gameGrid.settings.biome.Name) {
+            htmlAppend += `<option id="Biome-${biome.Name}">${biome.Name}</option>`;        
+        }
+    }
+    biomeSelect.innerHTML = htmlAppend;
+    
+    for (var i=0; i < inventory.availableBiomes.length; i++) { 
+        document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
+            var biomeName = parseInt(e.target.id.split("-")[1]);
+            var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
+            gameGrid.settings.biome = newBiome;
+            refreshBiomeTab();
+        });
     }
     
     
