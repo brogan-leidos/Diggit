@@ -308,13 +308,13 @@ function refreshHealthBar() {
     bar.innerHTML = `${percentRemaining}%`;
     
     var red = 0;
-    var green = 255;
+    var green = 200;
     
     //each 1% is 5.1 to red
     red += Math.min(percentRemaining * 5.1, 255);
-    green -= Math.max(percentRemaining * 5.1, 0);
+    green -= Math.max(percentRemaining * 4, 0);
     
-    bar.style.backgroundColor = rgb(red, green, 0);
+    bar.style.backgroundColor = "rgb(red, green, 0)";
     
 //     if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
 //     if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
