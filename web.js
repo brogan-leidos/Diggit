@@ -289,7 +289,7 @@ function assignEventsToItem(elementName) {
         inventory.availableItems[eventId].behavior(gameGrid);
         inventory.availableItems[eventId].NumberRemaining--;
         if (inventory.availableItems[eventId].NumberRemaining == 0) {
-            inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining > 0);
+            inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining != 0);
             refreshItemArea();                
         }
         refreshGrid();
