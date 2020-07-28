@@ -303,13 +303,22 @@ function assignEventsToItem(elementName) {
 
 function refreshHealthBar() {
     var bar = document.getElementsByClassName("healthBar")[0];
-    var percentRemaining = gameGrid.healthRemaining / gameGrid.maxHealth * 100;
+    var percentRemaining = Math.floor(gameGrid.healthRemaining / gameGrid.maxHealth * 100);
     bar.style.width = `${percentRemaining}%`;
     bar.innerHTML = `${percentRemaining}%`;
     
-    if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
-    if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
-    if (percentRemaining <= 30) { bar.style.backgroundColor = "red"; }
+    var red = 0;
+    var green = 255;
+    
+    //each 1% is 5.1 to red
+    red += Math.min(percentRemaining * 5.1, 255);
+    green -= Math.max(percentRemaining * 5.1, 0);
+    
+    bar.style.backgroundColor = rgb(red, green, 0);
+    
+//     if (percentRemaining >= 60) { bar.style.backgroundColor = "green"; }
+//     if (percentRemaining < 60 && percentRemaining > 30) { bar.style.backgroundColor = "yellow"; }
+//     if (percentRemaining <= 30) { bar.style.backgroundColor = "red"; }
     
     if (gameGrid.healthRemaining <= 0) {
         harvestWall();        
