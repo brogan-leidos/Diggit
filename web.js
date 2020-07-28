@@ -341,11 +341,10 @@ function refreshBiomeTab() {
     
     for (var i=0; i < inventory.availableBiomes.length; i++) { 
         document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
-            // TODO put all this in its own function
-            
+            // TODO put all this in its own function            
             var biomeName = parseInt(e.target.id.split("-")[1]);
             var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
-            gameGrid.settings.biome = newBiome;
+            biomeManager.selectedBiome = newBiome;
             document.getElementById("gameSection").style.background = newBiome.ImagePath;
             document.getElementById("gameSection").style.mixBlendMode = "multiply";
             refreshBiomeTab();
