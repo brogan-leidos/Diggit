@@ -183,6 +183,11 @@ function updateInfoSection(spotId) {
     }
 }
 
+function displayInInfoSection(message) {
+    var infoSection = document.getElementsByClassName("infoSection")[0];
+    var infoSection.innerHTML = message;
+}
+
 // Destroy the appropriate dirt layer, lower tool durability, damage the wall, and reveal objects as necessary
 function mineClickedSpot(spotId) {
     if(!checkIfStillStanding()) {
@@ -283,7 +288,12 @@ function refreshItemArea() {
             if (inventory.availableItems[eventId].NumberRemaining == 0) {
                 inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining > 0);
             }
-        });    
+        });
+        
+        document.getElementById(elementName).addEventListener('mouseover', (e) => {
+            var eventId = parseInt(e.target.id.split("-")[1]);
+            displayInInfoArea(`inventory.availableItems[eventId].Description`);
+        });
     }    
 }
 
