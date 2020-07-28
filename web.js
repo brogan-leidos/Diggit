@@ -8,6 +8,7 @@ import Pick from './presents/Tools/Pick.js'
 import Hammer from './presents/Tools/Hammer.js'
 import Drill from './presents/Tools/Drill.js'
 import Vaporizer from './presents/Tools/Vaporizer.js'
+import Support from './presents/items/Support.js'
 
 
 var gameGrid = new GameGrid();
@@ -32,6 +33,7 @@ export default () => {
 
 function firstLaunch() {
     inventory.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer());
+    inventory.availableItems.push(new Support());
     selectedTool = inventory.availableTools[0];
     refreshToolArea();
     refreshHealthBar(); 
