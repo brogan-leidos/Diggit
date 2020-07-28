@@ -122,7 +122,7 @@ function spawnObjectFromList(spawnList, settings) {
     //var newObj = new Object();
     //return Object.assign(newObj, genList[pickFromGen]);  
 
-    return Object.clone(genList[pickFromGen]);  
+    return Object.create(genList[pickFromGen]);  
 }
 
 function placeObjects(settings, objectList) {
