@@ -292,7 +292,7 @@ function refreshItemArea() {
         
         document.getElementById(elementName).addEventListener('mouseover', (e) => {
             var eventId = parseInt(e.target.id.split("-")[1]);
-            displayInInfoSection(`inventory.availableItems[eventId].Description`);
+            displayInInfoSection(`${inventory.availableItems[eventId].Description}`);
         });
     }    
 }
