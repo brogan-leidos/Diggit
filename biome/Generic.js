@@ -5,6 +5,7 @@ import Fossil_A from './objects/Fossil_A.js'
 export default class Generic extends Biome {
   constructor() {
     super();
+    this.Temperature = 50;
     
   }
   
