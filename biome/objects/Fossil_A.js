@@ -1,6 +1,6 @@
 import Object from './Object.js'
 
-export default class Fossil-A extends Object {
+export default class Fossil_A extends Object {
   constructor() {
     // Name, description, rarity, width, height, color, image
     super("Special Fossil", "A very old fossil", .3, -1, -1, "#3063f0");
