@@ -1,15 +1,16 @@
 # Grid TEst
 
 TODO:
- - Change object system to use a text parser. Should allow for more dynamic shapes and the ability to rotate
+ - Add rotation to parts with unique shapes
    -- After that add sprite sheets for objects and add a function to return a sprite section relative to the origin
- - Do something with biomes, heat could affect hardness of soil or something
+ - Do something with biomes, heat could affect hardness of soil and health of wall or something
  - Upgrade revealed highlight to track edges
  - Update the soil building algorithm to use noise instead of random assignment
   - Generate pressure points using noise (hurt the wall more when hit)
  - Add ability to actually collect loot
  - Add a shop or something where you can spend your loot
  - Think/Add some more tools
+  -- Add supports to increase wall health
  - Replace solid colors with images
 
 BUGS:
