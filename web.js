@@ -319,6 +319,7 @@ function refreshHealthBar() {
     bar.style.backgroundColor = `rgb(${red}, ${green}, 0)`;
     
     if (gameGrid.healthRemaining <= 0) {
+        bar.style.width = "0%";
         harvestWall();        
     }
 }
