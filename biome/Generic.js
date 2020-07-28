@@ -1,6 +1,6 @@
 import Object from './objects/Object.js'
 import Biome from './Biome.js'
-import Fossil-A from './
+import Fossil_A from './objects/Fossil_A.js'
 
 export default class Generic extends Biome {
   constructor() {
