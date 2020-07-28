@@ -117,8 +117,9 @@ function spawnObjectFromList(spawnList, settings) {
             break;
         }
     }
-    var pickFromGen = Math.floor(Math.random() * genList.length)    
-    return Object.create(genList[pickFromGen]);  
+    var pickFromGen = Math.floor(Math.random() * genList.length)
+    var newObj = new Object();
+    return Object.assign(newObj, genList[pickFromGen]);  
 }
 
 function placeObjects(settings, objectList) {
