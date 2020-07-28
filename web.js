@@ -333,7 +333,7 @@ function refreshBiomeTab() {
         var biome = inventory.availableBiomes[i];
         var htmlAppend = "";
         if (biome != gameGrid.settings.biome.Name) {
-            htmlAppend += `<option id="Biome-${biome.Name}">${biome.Name}</option>`;        
+            htmlAppend += `<option id="Biome-${biome}">${biome}</option>`;        
         }
     }
     biomeSelect.innerHTML = htmlAppend;
