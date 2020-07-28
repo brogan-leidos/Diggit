@@ -35,7 +35,7 @@ function firstLaunch() {
     inventory.availableItems.push(new Support());
     selectedTool = inventory.availableTools[0];
     
-    inventory.availableBiomes = ["Generic", "Forest"];
+    inventory.availableBiomes = ["Generic", "Forest", "Ocean"];
     
     refreshToolArea();
     refreshItemArea();
