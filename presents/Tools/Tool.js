@@ -1,6 +1,8 @@
 export default class Tool {
     
     constructor (){
+        this.Name = "Default Tool";
+        this.Description = "Default tool description";
         this.power = 0;
         this.durability = 0;
         this.damage = 0;
