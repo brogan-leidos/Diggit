@@ -110,17 +110,21 @@ function tintBgColor(bgColor, gridValue) {
     if (bgColor.length == 4) {
         bgColor = `#${bgColor[1]}${bgColor[1]}${bgColor[2]}${bgColor[2]}${bgColor[3]}${bgColor[3]}`;
     }
-    var red = parseInt("0x" + bgColor.substr(1,2));
-    var green = parseInt("0x" + bgColor.substr(3,2));
-    var blue =  parseInt("0x" + bgColor.substr(5,2));
-    
     var gridColorTint = gridValue * 25;
+    var red = tintHex(parseInt("0x" + bgColor.substr(1,2)), gridColorTint);
+    var green = tintHex(parseInt("0x" + bgColor.substr(3,2)), gridColorTint);
+    var blue =  tintHex(parseInt("0x" + bgColor.substr(5,2)), gridColorTint);
     
-    red -= Math.max(gridColorTint, 0);
-    green -= Math.max(gridColorTint, 0);
-    blue -= Math.max(gridColorTint, 0);
-    
-    return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
+    return `#${red}${green}${blue}`;
+}
+
+function tintHex(hex, tintAmount) {
+    hex = Math.max(hex - tintAmount, 0);
+    var hexString = hex.toString(16);
+    if (hexString.length == 1){
+        hexString = hexString[0] + hexString[0];   
+    }
+    return hexString;
 }
 
 function getColorFromDirtValue(value) {
