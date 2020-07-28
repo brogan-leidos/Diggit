@@ -3,6 +3,7 @@ export default class Inventory {
     this.inventory = {};
     this.money = 0;
     this.availableTools = [];
-    this.availableItems = [];    
+    this.availableItems = [];
+    this.availableBiomes = [];
   }
 }
