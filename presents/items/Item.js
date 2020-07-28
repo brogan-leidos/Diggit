@@ -5,6 +5,7 @@ export default class Item {
       this.Description = "Default item description";
       this.Power = 0;
       this.Damage = 0;
+      this.NumberRemaining = 0;
     }
     
     behavior(gameGrid) {
