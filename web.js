@@ -342,7 +342,7 @@ function refreshBiomeTab() {
         if (inventory.availableBiomes[i] != biomeManager.selectedBiome.Name) {
             document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
                 // TODO put all this in its own function            
-                var biomeName = parseInt(e.target.id.split("-")[1]);
+                var biomeName = e.target.id.split("-")[1];
                 var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
                 biomeManager.selectedBiome = newBiome;
                 document.getElementById("gameSection").style.background = newBiome.ImagePath;
