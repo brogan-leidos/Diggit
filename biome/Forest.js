@@ -17,16 +17,20 @@ export default class Forest extends Biome {
   
   getSmallObjects() {
     var objects = [];
-    objects.push(new Loot("Ruby", "A sparkling red gem",                   .1, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
-    objects.push(new Sapphire());
-    objects.push(new Loot("Emerald", "A sparkling green gem",              .1, 1, 1, "#0ef083"));
-    objects.push(new Loot("Amythest", "A sparkling violet gem",            .1, 1, 1, "#9c56c4"));
+    objects.push(new Loot("Ruby", "A sparkling red gem",                   .05, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
+    objects.push(new Sapphire(.05));
+    objects.push(new Loot("Emerald", "A sparkling green gem",              .05, 1, 1, "#0ef083"));
+    objects.push(new Loot("Amythest", "A sparkling violet gem",            .05, 1, 1, "#9c56c4"));
     objects.push(new Loot("Diamond", "A very precious gem",                .01, 1, 1, "#e3e3e3"));
-    objects.push(new Loot("Black Diamond", "An extremely rare, extremely precious gem", .005, 1, 1, "#d3d3d3"));    
-    objects.push(new Loot("Copper Node", "A small node of copper",         .4, 1, 1, "#d4ad22"));
-    objects.push(new Loot("Iron Node", "A small node of iron",             .3, 1, 1, "#949494"));
-    objects.push(new Loot("Gold Nugget", "A small gold nugget",            .2, 1, 1, "#ffea00"));
+    objects.push(new Loot("Black Diamond", "An extremely rare, extremely precious gem", .001, 1, 1, "#d3d3d3"));    
+    objects.push(new Loot("Copper Node", "A small node of copper",         .3, 1, 1, "#d4ad22"));
+    objects.push(new Loot("Iron Node", "A small node of iron",             .2, 1, 1, "#949494"));
+    objects.push(new Loot("Gold Nugget", "A small gold nugget",            .07, 1, 1, "#ffea00"));
     objects.push(new Loot("Green Moss", "A patch of common green moss",    .65, 1, 1, "#154518"));
+    objects.push(new Loot("Carrot", "An orange carrot",                    .5, 2, 1, "#e6b010"));
+    objects.push(new Loot("Potato", "A dirty potato",                      .5, 1, 1, "#948866"));
+    objects.push(new Loot("Acorns", "A squirrel's future lunch",           .8, 1, 1, "#5e513e"));
+
     
     return objects;
   }
