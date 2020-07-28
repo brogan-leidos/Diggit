@@ -23,7 +23,7 @@ export default class Loot {
   
   getOccupiedSpots() {
     if (this.height < 0 || this.width < 0) {
-      return getSpotsByShape();
+      return this.getSpotsByShape();
     }
     var ret = [];
     for (var x=0; x < this.width; x++) {      
