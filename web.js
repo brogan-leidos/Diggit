@@ -152,7 +152,7 @@ function highlightValidSpaces(spotId) {
     
     for (var i=0; i < highlightMemory.length; i++) {
         var spotToDim = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
-        spotToDim.style.borderColor = "";
+        spotToDim.style.borderColor = biomeManager.selectedBiome.GridBorderColor;
     }
     
     for (var i=0; i < highlightedSpots.length; i++) {     
