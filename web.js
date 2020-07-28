@@ -11,6 +11,7 @@ import BiomeManager from './biome/BiomeManager.js'
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
 var inventory = new Inventory();
+var biomeManager = new BiomeManager();
 
 var highlightedSpots = [];
 
@@ -47,7 +48,7 @@ function createGameGrid() {
     var height = document.getElementById("height").value;
     var rarity = document.getElementById("rarity").value;
     
-    gameGrid.settings = new GameGridSettings(width, height, rarity, new Generic());
+    gameGrid.settings = new GameGridSettings(width, height, rarity, biomeManager.selectedBiome);
     gameGrid = generateGrid(gameGrid);
 
     refreshHealthBar();
