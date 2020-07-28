@@ -1,19 +1,22 @@
 import Loot from './objects/Loot.js'
 import Biome from './Biome.js'
 import Fossil_A from './objects/Fossil_A.js'
+import Sapphire from './objects/Sapphire.js';
 
 export default class Forest extends Biome {
   constructor() {
     super();
-    this.Temperature = 50;
+    this.Temperature = 30;
     this.MaxHardness = 3;
     
+    
+    this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
   }
   
   getSmallObjects() {
     var objects = [];
     objects.push(new Loot("Ruby", "A sparkling red gem",                   .1, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
-    objects.push(new Loot("Sapphire", "A sparkling blue gem",              .1, 1, 1, "#3063f0", "biome/objects/images/sapphire.png"));
+    objects.push(new Sapphire());
     objects.push(new Loot("Emerald", "A sparkling green gem",              .1, 1, 1, "#0ef083"));
     objects.push(new Loot("Amythest", "A sparkling violet gem",            .1, 1, 1, "#9c56c4"));
     objects.push(new Loot("Diamond", "A very precious gem",                .01, 1, 1, "#e3e3e3"));
