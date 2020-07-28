@@ -130,8 +130,7 @@ function placeObjects(settings, objectList) {
             var x = Math.floor(Math.random() * settings.width);
             var y = Math.floor(Math.random() * settings.height);        
             if(checkSpotValidity(grid, x, y, objectList[i])) {
-                grid = placeObject(grid, x, y, objectList[i]);
-                objectList[i].origin = [x,y];
+                grid = placeObject(grid, objectList[i]);
                 break;
             }
             continueLoop += 1;
@@ -141,29 +140,28 @@ function placeObjects(settings, objectList) {
 }
 
 function checkSpotValidity(grid, xOrigin, yOrigin, object) {
-    // TODO: Allow for rotation, and revamp w/h system to allow for more interesting shapes
-    if (xOrigin + object.width >= grid.length) {
-        return false;
-    }
-    else if (yOrigin + object.height >= grid[0].length) {
-        return false;
+    // TODO: Allow for rotation
+    object.origin = [xOrigin, yOrigin];
+    var potentialSpots = object.getOccuppiedSpots();
+    
+    for (var i=0; i < potentialSpots.length; i++) {
+        var potentialX = potentialSpots[i][0];
+        var potentialY = potentialSpots[i][1];
+        
+        if (grid[potentialX][potentialY] != 0) {
+            return false;
+        }
     }
     
-    for (var xScan=0; xScan < object.width; xScan++) {
-        for (var yScan=0; yScan < object.height; yScan++){
-            if (grid[xOrigin + xScan][yOrigin + yScan] != 0) {
-                return false;
-            }
-        }
-    }    
     return true;
 }
 
-function placeObject(grid, xOrigin, yOrigin, object) {
-    for (var x=0; x < object.width; x++) {
-        for (var y=0; y < object.height; y++) {
-            grid[xOrigin + x][yOrigin + y] = object;   
-        }
+function placeObject(grid, object) {
+    var spotsToFill = object.getOccuppiedSpots();
+
+    for (var i=0; i < spotsToFill.length; i++) {
+        grid[spotsToFill[i][0]][spotsToFill[i][1]] = object;
     }
+    
     return grid;
 }
