@@ -335,9 +335,10 @@ function refreshHealthBar() {
 // NOTE: Likely temporary as we debug
 function refreshBiomeTab() {
     var biomeSelect = document.getElementById("biomeSelect");
+    var htmlAppend = "";
+
     for (var i=0; i < inventory.availableBiomes.length; i++) {
         var biome = inventory.availableBiomes[i];
-        var htmlAppend = "";
         if (biome != biomeManager.selectedBiome.Name) {
             htmlAppend += `<button id="Biome-${biome}">${biome}</button>`;        
         }
