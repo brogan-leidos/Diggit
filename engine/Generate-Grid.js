@@ -2,7 +2,7 @@
     Has: Rarity, temp, width, height, biome
 
 */
-import Object from '../biome/objects/Object.js'
+import Object as MyObject from '../biome/objects/Object.js'
 
 
 // Generates 2 layers of the grid
@@ -119,10 +119,10 @@ function spawnObjectFromList(spawnList, settings) {
         }
     }
     var pickFromGen = Math.floor(Math.random() * genList.length)
-    //var newObj = new Object();
-    //return Object.assign(newObj, genList[pickFromGen]);  
+    var newObj = new MyObject();
+    return Object.assign(newObj, genList[pickFromGen]);  
 
-    return Object.create(genList[pickFromGen]);  
+    //return Object.create(genList[pickFromGen]);  
 }
 
 function placeObjects(settings, objectList) {
