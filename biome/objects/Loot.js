@@ -38,7 +38,7 @@ export default class Loot {
     // Find the origin first
     var localOrigin = [];
     for (var i=0; i < this.Shape.length; i++) {
-      var findOrigin = this.Shape[i].indeOf("x");
+      var findOrigin = this.Shape[i].indexOf("x");
       if (findOrigin != -1){
         localOrigin = [i, findOrigin];
       }                           
