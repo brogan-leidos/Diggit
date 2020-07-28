@@ -7,6 +7,7 @@ import { Loot, Sapphire, Fossil_A } from './objects";
 export default class Forest extends Biome {
   constructor() {
     super();
+    this.Name = "Forest";
     this.Temperature = 30;
     this.MaxHardness = 3;
     
