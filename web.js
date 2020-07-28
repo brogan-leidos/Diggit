@@ -330,7 +330,7 @@ function refreshBiomeTab() {
     var biomeSelect = document.getElementById("biomeSelect");
     for (var i=0; i < inventory.availableBiomes.length; i++) {
         var biome = inventory.availableBiomes[i];
-        htmlAppend = ""
+        var htmlAppend = "";
         if (biome != gameGrid.settings.biome.Name) {
             htmlAppend += `<option id="Biome-${biome.Name}">${biome.Name}</option>`;        
         }
@@ -339,9 +339,12 @@ function refreshBiomeTab() {
     
     for (var i=0; i < inventory.availableBiomes.length; i++) { 
         document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
+            // TODO put all this in its own function
+            
             var biomeName = parseInt(e.target.id.split("-")[1]);
             var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
             gameGrid.settings.biome = newBiome;
+            document.getElementById("gameSection").style.background = newBiome.ImagePath;
             refreshBiomeTab();
         });
     }
