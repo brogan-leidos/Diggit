@@ -2,6 +2,7 @@
     Has: Rarity, temp, width, height, biome
 
 */
+import Object from '../biome/objects/Object.js'
 
 
 // Generates 2 layers of the grid
