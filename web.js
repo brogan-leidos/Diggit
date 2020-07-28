@@ -9,6 +9,7 @@ import Hammer from './presents/Tools/Hammer.js'
 import Drill from './presents/Tools/Drill.js'
 import Vaporizer from './presents/Tools/Vaporizer.js'
 import Support from './presents/items/Support.js'
+import BiomeManager from './biome/BiomeManager.js'
 
 
 var gameGrid = new GameGrid();
