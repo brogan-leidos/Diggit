@@ -146,7 +146,7 @@ function placeObjects(settings, objectList) {
 function checkSpotValidity(grid, xOrigin, yOrigin, object) {
     // TODO: Allow for rotation
     object.origin = [xOrigin, yOrigin];
-    var potentialSpots = object.getOccuppiedSpots();
+    var potentialSpots = object.getOccupiedSpots();
     
     for (var i=0; i < potentialSpots.length; i++) {
         var potentialX = potentialSpots[i][0];
