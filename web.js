@@ -35,6 +35,9 @@ function firstLaunch() {
     inventory.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer());
     inventory.availableItems.push(new Support());
     selectedTool = inventory.availableTools[0];
+    
+    refreshBiomeTab();
+    
     refreshToolArea();
     refreshItemArea();
     refreshHealthBar(); 
@@ -321,6 +324,15 @@ function refreshHealthBar() {
     if (gameGrid.healthRemaining <= 0) {
         bar.style.width = "0%";
         harvestWall();        
+    }
+}
+
+function refreshBiomeTab() {
+    var biomeSelect = document.getElemetntById("biomeSelect");
+    for (var i=0; i < inventory.availableBiomes.length; i++) {
+        var biome = inventory.availableBiomes[i];
+        htmlAppend = ""
+        htmlAppend += `<option value="${biome.Name}">${biome.Name}</option>`;        
     }
 }
 
