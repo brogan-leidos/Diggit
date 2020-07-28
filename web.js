@@ -311,7 +311,7 @@ function refreshHealthBar() {
     var green = 200;
     
     //each 1% is 5.1 to red
-    red += Math.min(percentRemaining * 5.1, 255);
+    red += Math.min((100 - percentRemaining) * 5.1, 255);
     if (percentRemaining >= 50) {
         green -= Math.max((percentRemaining % 50) * 4, 0);
     }
