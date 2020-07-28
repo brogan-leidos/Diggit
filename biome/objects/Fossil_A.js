@@ -1,6 +1,6 @@
-import Object from './Object.js'
+import Loot from './Loot.js'
 
-export default class Fossil_A extends Object {
+export default class Fossil_A extends Loot {
   constructor() {
     // Name, description, rarity, width, height, color, image
     super("Special Fossil A", "A very old fossil", .3, -1, -1, "#03ecfc");
