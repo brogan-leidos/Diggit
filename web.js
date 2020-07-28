@@ -36,6 +36,7 @@ function firstLaunch() {
     inventory.availableItems.push(new Support());
     selectedTool = inventory.availableTools[0];
     refreshToolArea();
+    refreshItemArea();
     refreshHealthBar(); 
 }
 
@@ -260,6 +261,28 @@ function refreshToolArea() {
             var eventId = parseInt(e.target.id.split("-")[1]);
             selectedTool = inventory.availableTools[eventId];
             refreshDurabilityArea();
+        });    
+    }    
+}
+
+// This is called after the addition or use of an item
+function refreshItemArea() {
+    var area = document.getElementById("itemArea");
+    var newHTML = ""
+    for (var i=0; i < inventory.availableItems.length; i++) {
+        newHTML += `<button id="selectItem-${i}">${inventory.availableItems[i].Name}</button>`;   
+    }
+    
+    area.innerHTML = newHTML;
+    for (var i=0; i < inventory.availableItems.length; i++) {
+        var elementName = `selectItem-${i}`;
+        document.getElementById(elementName).addEventListener('click', (e) => {
+            var eventId = parseInt(e.target.id.split("-")[1]);
+            inventory.availableItems[eventId].behavior(gameGrid);
+            inventory.availableItems[eventId].NumberRemaining--;
+            if (inventory.availableItems[eventId].NumberRemaining == 0) {
+                inventory.availableItem = inventory.availableItems.filter(a => a.NumberRemaining > 0);
+            }
         });    
     }    
 }
