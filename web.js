@@ -122,7 +122,7 @@ function tintHex(hex, tintAmount) {
     hex = Math.max(hex - tintAmount, 0);
     var hexString = hex.toString(16);
     if (hexString.length == 1){
-        hexString = hexString[0] + hexString[0];   
+        hexString = "0" + hexString[0];   
     }
     return hexString;
 }
