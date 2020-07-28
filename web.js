@@ -20,6 +20,8 @@ export default () => {
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
+        refreshBiomeTab();
+
     });
     
     document.getElementById('showInventoryButton').addEventListener('click', () => {
@@ -34,7 +36,6 @@ function firstLaunch() {
     selectedTool = inventory.availableTools[0];
     
     inventory.availableBiomes = ["Generic", "Forest"];
-    refreshBiomeTab();
     
     refreshToolArea();
     refreshItemArea();
