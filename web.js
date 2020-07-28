@@ -74,22 +74,22 @@ function drawGridWithOverlay() {
             if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color
                 var styles = ""
                 var bgColor = "";
+                var image = "";
                 if (gameGrid.lowerGrid[i][j] != "0") {
                     bgColor = gameGrid.lowerGrid[i][j].Color;
+                    image = gameGrid.lowerGrid[i][j].ImagePath;                    
                 }
-                var image = gameGrid.lowerGrid[i][j] != "0" ? gameGrid.lowerGrid[i][j].ImagePath != "" ? gameGrid.lowerGrid[i][j].ImagePath : "" : ""
                 styles += `background-color:${bgColor};`;
                 if (image != "") {
                     styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
                 }
-                var border = biomeManager.selectedBiome.GridBorderColor;
-                styles += `border: 1px solid ${border};`;
+                styles += `border: 1px solid ${biomeManager.selectedBiome.GridBorderColor};`;
 
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
             else {
 //                 var bgcolor = getColorFromDirtValue(gameGrid.upperGrid[i][j]);
-                var bgcolor = biomeManager.selectedBiome.GridBackgroundColor;
+                var bgcolor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[i][j]);                
                 var border = biomeManager.selectedBiome.GridBorderColor;
                 htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor};border:2px solid ${border}">
                                    ${gameGrid.upperGrid[i][j].toString()}
@@ -104,6 +104,23 @@ function drawGridWithOverlay() {
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
+}
+
+function tintBgColor(bgColor, gridValue) {
+    if (bgColor.length == 4) {
+        bgColor = `#${bgColor[1]}${bgColor[1]}${bgColor[2]}${bgColor[2]}${bgColor[3]}${bgColor[3]}`;
+    }
+    var red = bgColor.substr(1,2).toString(10);
+    var green = bgColor.substr(3,2).toString(10);
+    var blue =  bgColor.substr(5,2).toString(10);
+    
+    var gridColorTint = gridValue * 25;
+    
+    red -= gridColorTint;
+    green -= gridColorTint;
+    blue -= gridColorTint;
+    
+    return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
 }
 
 function getColorFromDirtValue(value) {
