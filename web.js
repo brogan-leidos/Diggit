@@ -116,9 +116,9 @@ function tintBgColor(bgColor, gridValue) {
     
     var gridColorTint = gridValue * 25;
     
-    red -= gridColorTint;
-    green -= gridColorTint;
-    blue -= gridColorTint;
+    red -= Math.max(gridColorTint, 0);
+    green -= Math.max(gridColorTint, 0);
+    blue -= Math.max(gridColorTint, 0);
     
     return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`;
 }
