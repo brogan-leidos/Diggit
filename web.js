@@ -185,7 +185,7 @@ function updateInfoSection(spotId) {
 
 function displayInInfoSection(message) {
     var infoSection = document.getElementsByClassName("infoSection")[0];
-    var infoSection.innerHTML = message;
+    infoSection.innerHTML = message;
 }
 
 // Destroy the appropriate dirt layer, lower tool durability, damage the wall, and reveal objects as necessary
