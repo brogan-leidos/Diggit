@@ -9,7 +9,7 @@ export default class Forest extends Biome {
     this.MaxHardness = 2;
     this.ImagePath = "./biome/biomeimages/ocean.jpg";
     
-    this.GridBackgroundColor = "#283e85";
+    this.GridBackgroundColor = "#4a70ed";
     this.GridBorderColor = "#535b75"
     
     this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
