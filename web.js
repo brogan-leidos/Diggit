@@ -333,13 +333,13 @@ function refreshBiomeTab() {
         var biome = inventory.availableBiomes[i];
         var htmlAppend = "";
         if (biome != gameGrid.settings.biome.Name) {
-            htmlAppend += `<option id="Biome-${biome}">${biome}</option>`;        
+            htmlAppend += `<button id="Biome-${biome}">${biome}</button>`;        
         }
     }
     biomeSelect.innerHTML = htmlAppend;
     
     for (var i=0; i < inventory.availableBiomes.length; i++) { 
-        document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('onselect', (e) => {
+        document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
             // TODO put all this in its own function
             
             var biomeName = parseInt(e.target.id.split("-")[1]);
