@@ -339,7 +339,7 @@ function refreshBiomeTab() {
     biomeSelect.innerHTML = htmlAppend;
     
     for (var i=0; i < inventory.availableBiomes.length; i++) { 
-        document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
+        document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('onselect', (e) => {
             // TODO put all this in its own function
             
             var biomeName = parseInt(e.target.id.split("-")[1]);
