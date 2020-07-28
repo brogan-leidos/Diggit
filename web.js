@@ -73,7 +73,10 @@ function drawGridWithOverlay() {
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
             if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color
                 var styles = ""
-                var bgColor = gameGrid.lowerGrid[i][j] == "0" ? "#363940" : gameGrid.lowerGrid[i][j].Color;
+                var bgColor = "";
+                if (gameGrid.lowerGrid[i][j] != "0") {
+                    bgColor = gameGrid.lowerGrid[i][j].Color;
+                }
                 var image = gameGrid.lowerGrid[i][j] != "0" ? gameGrid.lowerGrid[i][j].ImagePath != "" ? gameGrid.lowerGrid[i][j].ImagePath : "" : ""
                 styles += `background-color:${bgColor};`;
                 if (image != "") {
@@ -83,8 +86,11 @@ function drawGridWithOverlay() {
             }
             else {
 //                 var bgcolor = getColorFromDirtValue(gameGrid.upperGrid[i][j]);
-                var bgcolor = "";
-                htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor}">${gameGrid.upperGrid[i][j].toString()}</td>`
+                var bgcolor = biomeManager.selectedBiome.GridBackgroundColor;
+                var border = biomeManager.selectedBiome.GridBorderColor;
+                htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor};border:2px solid ${border}">
+                                   ${gameGrid.upperGrid[i][j].toString()}
+                               </td>`;
             }
         }
         htmlResult += "</tr>";
