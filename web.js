@@ -332,22 +332,24 @@ function refreshBiomeTab() {
     for (var i=0; i < inventory.availableBiomes.length; i++) {
         var biome = inventory.availableBiomes[i];
         var htmlAppend = "";
-        if (biome != gameGrid.settings.biome.Name) {
+        if (biome != biomeManager.selectedBiome.Name) {
             htmlAppend += `<button id="Biome-${biome}">${biome}</button>`;        
         }
     }
     biomeSelect.innerHTML = htmlAppend;
     
-    for (var i=0; i < inventory.availableBiomes.length; i++) { 
-        document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
-            // TODO put all this in its own function            
-            var biomeName = parseInt(e.target.id.split("-")[1]);
-            var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
-            biomeManager.selectedBiome = newBiome;
-            document.getElementById("gameSection").style.background = newBiome.ImagePath;
-            document.getElementById("gameSection").style.mixBlendMode = "multiply";
-            refreshBiomeTab();
-        });
+    for (var i=0; i < inventory.availableBiomes.length; i++) {
+        if (inventory.availableBiomes[i] != biomeManager.selectedBiome.Name) {
+            document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
+                // TODO put all this in its own function            
+                var biomeName = parseInt(e.target.id.split("-")[1]);
+                var newBiome = BiomeManager.Biomes.filter(a => a.Name == biomeName)[0];
+                biomeManager.selectedBiome = newBiome;
+                document.getElementById("gameSection").style.background = newBiome.ImagePath;
+                document.getElementById("gameSection").style.mixBlendMode = "multiply";
+                refreshBiomeTab();
+            });
+        }
     }
     
     
