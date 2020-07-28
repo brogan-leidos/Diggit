@@ -4,6 +4,7 @@ export default class Pick extends Tool {
   constructor() {
     super();
     this.Name = "Pick";
+    this.Description = "Digs a small portion of the wall, stronger in the center";
     this.power = 1;
     this.durability = -1;
     this.damage = 8;
