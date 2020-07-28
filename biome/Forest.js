@@ -1,7 +1,4 @@
-// import Loot from './objects/Loot.js'
 import Biome from './Biome.js'
-// import Fossil_A from './objects/Fossil_A.js'
-// import Sapphire from './objects/Sapphire.js';
 import { Loot, Sapphire, Fossil_A } from './objects/index.js';
 
 export default class Forest extends Biome {
