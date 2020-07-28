@@ -7,11 +7,10 @@ TODO:
  - Upgrade revealed highlight to track edges
  - Update the soil building algorithm to use noise instead of random assignment
   - Generate pressure points using noise (hurt the wall more when hit)
- - Add ability to actually collect loot
  - Add a shop or something where you can spend your loot
  - Think/Add some more tools
-  -- Add supports to increase wall health
  - Replace solid colors with images
+ - Revamp inventory to use like... a material system or something? Idk, crafting and building whatever
 
 BUGS:
  - Not a bug, but need to change hitting system to account for future pressure points
