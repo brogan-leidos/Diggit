@@ -1,10 +1,14 @@
-export default class Inventory {
+export default class Player {
   constructor() {
     this.inventory = new Map(); // Style: ObjectName: Array<Object>
     this.money = 0;
     this.availableTools = [];
     this.availableItems = [];
     this.availableBiomes = [];
+    
+    this.Power = 0;
+    this.Precision = 0;
+    this.Luck = 0;
   }
   
   addToInventory(object) {
