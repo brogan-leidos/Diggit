@@ -243,18 +243,7 @@ function mineClickedSpot(spotId) {
     
     var minableSpots = selectedTool.getMinableSpots(x,y);
     for (var i=0; i < minableSpots.length; i++) {
-        var mineX = minableSpots[i][0];
-        var mineY = minableSpots[i][1];
-        var power = minableSpots[i][2];
-        
-        if (mineX >= gameGrid.settings.width || mineX < 0 || mineY >= gameGrid.settings.height || mineY < 0) {
-            continue;
-        }
-        
-        if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
-            gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);            
-        }
-        gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
+        processMinableSpot(minableSpots[i])        
     }
     
     gameGrid.healthRemaining -= selectedTool.damage - player.Precision * 2;
@@ -272,6 +261,22 @@ function mineClickedSpot(spotId) {
     }
     
     refreshGrid();
+}
+
+// Checks spot validity, and lowers the toughness of the spot and does any extra things needed for hazards
+function processMinableSpot(spot) {
+    var mineX = spot[0];
+    var mineY = spot[1];
+    var power = spot[2];
+
+    if (mineX >= gameGrid.settings.width || mineX < 0 || mineY >= gameGrid.settings.height || mineY < 0) {
+        continue;
+    }
+
+    if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
+        gameGrid.healthRemaining -= Math.floor((selectedTool.damage - player.Precision) / 2);            
+    }
+    gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
 }
 
 function checkIfStillStanding() {
