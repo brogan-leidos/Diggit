@@ -12,6 +12,10 @@ export default class Biome {
     
   }
 
+  rollTemperature() {
+    this.Temperature = this.Temperature + Math.floor(Math.random() * 20);
+  }
+  
   getLargeObjects() { return; }
   getMedObjects() { return; }
   getSmallObjects() { return; }
