@@ -115,7 +115,7 @@ function drawGridWithOverlay() {
 }
 
 function tintTextColor(bgColor) {
-    var colorAvg = (parseInt("0x" + bgColor.substr(1,2)) + parseInt("0x" + bgColor.substr(3,2)) + parseInt("0x" + bgColor.substr(5,2))) / 3;
+    var colorAvg = Math.floor(parseInt("0x" + bgColor.substr(1,2)) + parseInt("0x" + bgColor.substr(3,2)) + parseInt("0x" + bgColor.substr(5,2))) / 3;
     var newColor = (255 - colorAvg).toString(16);
     if (newColor.length == 1) {
         newColor = "0" + newColor;
