@@ -35,3 +35,5 @@ BUGS:
 
 Link to the application:
 https://brogan-leidos.github.io/Grid-Test/
+
+https://www.mtggoldfish.com/deck/3244407
