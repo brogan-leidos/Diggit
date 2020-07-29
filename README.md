@@ -11,6 +11,7 @@ IN PROGRESS:
    -> Frozen area (Ice sheets that crack as one unit)
    
 TODO: (prioritized from highest to lowest)
+ - Add stats (STR: more tool power, DEX: less wall damage, LUCK: higher rarity)
  - Add a shop or something where you can spend your loot
  - Revamp inventory to use like... a material system or something? Idk, crafting and building whatever
  - World map to travel between biomes
