@@ -1,7 +1,7 @@
 import GameGrid from './engine/GameGrid.js'
 import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
-import Inventory from './engine/Inventory.js'
+import Player from './engine/Player.js'
 import { Tool, Pick, Hammer, Drill, Vaporizer } from './presents/Tools/index.js' 
 import Support from './presents/items/Support.js'
 import BiomeManager from './biome/BiomeManager.js'
@@ -9,7 +9,7 @@ import BiomeManager from './biome/BiomeManager.js'
 
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
-var inventory = new Inventory();
+var player = new Player();
 var biomeManager = new BiomeManager();
 
 var highlightedSpots = [];
@@ -31,11 +31,11 @@ export default () => {
 };
 
 function firstLaunch() {
-    inventory.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer());
-    inventory.availableItems.push(new Support());
-    selectedTool = inventory.availableTools[0];
+    player.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer());
+    player.availableItems.push(new Support());
+    selectedTool = player.availableTools[0];
     
-    inventory.availableBiomes = ["Generic", "Forest", "Ocean", "Desert", "Volcano"];
+    player.availableBiomes = ["Generic", "Forest", "Ocean", "Desert", "Volcano"];
     
     refreshToolArea();
     refreshItemArea();
@@ -282,8 +282,8 @@ function breakCurrentTool() {
     var area = document.getElementById("toolDurability");
     area.innerHTML = "Oh no, your " + selectedTool.Name + " broke!"
     
-    inventory.availableTools = inventory.availableTools.filter(a => a.Name != selectedTool.Name);
-    selectedTool = inventory.availableTools[0];
+    player.availableTools = player.availableTools.filter(a => a.Name != selectedTool.Name);
+    selectedTool = player.availableTools[0];
     refreshToolArea();
 }
 
@@ -300,16 +300,16 @@ function refreshDurabilityArea() {
 function refreshToolArea() {
     var area = document.getElementById("toolArea");
     var newHTML = ""
-    for (var i=0; i < inventory.availableTools.length; i++) {
-        newHTML += `<button id="selectTool-${i}">${inventory.availableTools[i].Name}</button>`;   
+    for (var i=0; i < player.availableTools.length; i++) {
+        newHTML += `<button id="selectTool-${i}">${player.availableTools[i].Name}</button>`;   
     }
     
     area.innerHTML = newHTML;
-    for (var i=0; i < inventory.availableTools.length; i++) {
+    for (var i=0; i < player.availableTools.length; i++) {
         var elementName = `selectTool-${i}`;
         document.getElementById(elementName).addEventListener('click', (e) => {
             var eventId = parseInt(e.target.id.split("-")[1]);
-            selectedTool = inventory.availableTools[eventId];
+            selectedTool = player.availableTools[eventId];
             refreshDurabilityArea();
         });    
     }    
@@ -319,12 +319,12 @@ function refreshToolArea() {
 function refreshItemArea() {
     var area = document.getElementById("itemArea");
     var newHTML = ""
-    for (var i=0; i < inventory.availableItems.length; i++) {
-        newHTML += `<button id="selectItem-${i}">${inventory.availableItems[i].Name}</button>`;   
+    for (var i=0; i < player.availableItems.length; i++) {
+        newHTML += `<button id="selectItem-${i}">${player.availableItems[i].Name}</button>`;   
     }
     
     area.innerHTML = newHTML;
-    for (var i=0; i < inventory.availableItems.length; i++) {
+    for (var i=0; i < player.availableItems.length; i++) {
         assignEventsToItem(`selectItem-${i}`);        
     }    
 }
@@ -332,10 +332,10 @@ function refreshItemArea() {
 function assignEventsToItem(elementName) {
     document.getElementById(elementName).addEventListener('click', (e) => {
         var eventId = parseInt(e.target.id.split("-")[1]);
-        inventory.availableItems[eventId].behavior(gameGrid);
-        inventory.availableItems[eventId].NumberRemaining--;
-        if (inventory.availableItems[eventId].NumberRemaining == 0) {
-            inventory.availableItems = inventory.availableItems.filter(a => a.NumberRemaining > 0);
+        player.availableItems[eventId].behavior(gameGrid);
+        player.availableItems[eventId].NumberRemaining--;
+        if (player.availableItems[eventId].NumberRemaining == 0) {
+            player.availableItems = player.availableItems.filter(a => a.NumberRemaining > 0);
             refreshItemArea();                
         }
         refreshGrid();
@@ -343,7 +343,7 @@ function assignEventsToItem(elementName) {
 
     document.getElementById(elementName).addEventListener('mouseover', (e) => {
         var eventId = parseInt(e.target.id.split("-")[1]);
-        displayInInfoSection(`${inventory.availableItems[eventId].Description}`);
+        displayInInfoSection(`${player.availableItems[eventId].Description}`);
     });
 }
 
@@ -375,17 +375,17 @@ function refreshBiomeTab() {
     var biomeSelect = document.getElementById("biomeSelect");
     var htmlAppend = "";
 
-    for (var i=0; i < inventory.availableBiomes.length; i++) {
-        var biome = inventory.availableBiomes[i];
+    for (var i=0; i < player.availableBiomes.length; i++) {
+        var biome = player.availableBiomes[i];
         if (biome != biomeManager.selectedBiome.Name) {
             htmlAppend += `<button id="Biome-${biome}">${biome}</button>`;        
         }
     }
     biomeSelect.innerHTML = htmlAppend;
     
-    for (var i=0; i < inventory.availableBiomes.length; i++) {
-        if (inventory.availableBiomes[i] != biomeManager.selectedBiome.Name) {
-            document.getElementById(`Biome-${inventory.availableBiomes[i]}`).addEventListener('click', (e) => {
+    for (var i=0; i < player.availableBiomes.length; i++) {
+        if (player.availableBiomes[i] != biomeManager.selectedBiome.Name) {
+            document.getElementById(`Biome-${player.availableBiomes[i]}`).addEventListener('click', (e) => {
                 // TODO put all this in its own function            
                 var biomeName = e.target.id.split("-")[1];
                 var newBiome = biomeManager.Biomes.filter(a => a.Name == biomeName)[0];
@@ -407,7 +407,7 @@ function harvestWall() {
     for (var i=0; i < gameGrid.objects.length; i++) {
         if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
-            inventory.addToInventory(gameGrid.objects[i]);
+            player.addToInventory(gameGrid.objects[i]);
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
@@ -427,8 +427,8 @@ function checkIfObjectIsRevealed(object) {
 function showInventory() {
     var area = document.getElementById("gameSection");
     var htmlAppend = "";
-    for(let key of inventory.inventory.keys()) {
-        htmlAppend += `<button id="Sell-${key}">Sell</button> ${inventory.inventory.get(key).length}x ${key} <br>`;
+    for(let key of player.inventory.keys()) {
+        htmlAppend += `<button id="Sell-${key}">Sell</button> ${player.inventory.get(key).length}x ${key} <br>`;
     }
     
     area.innerHTML = htmlAppend;
@@ -436,11 +436,11 @@ function showInventory() {
 }
 
 function assignEventsToInventory() {
-    for(let key of inventory.inventory.keys()) {
+    for(let key of player.inventory.keys()) {
         document.getElementById(`Sell-${key}`).addEventListener('click', (e) => {
             var itemName = key;
-            var soldItem = inventory.removeFromInventory(itemName);
-            inventory.money += soldItem.Value;
+            var soldItem = player.removeFromInventory(itemName);
+            player.money += soldItem.Value;
             showInventory()
         });    
     }
