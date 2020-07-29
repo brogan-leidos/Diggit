@@ -185,7 +185,7 @@ function generatePressurePoints(grid, settings) {
         var x = Math.floor(Math.random() * settings.width);
         var y = Math.floor(Math.random() * settings.height);
         if (grid[x][y] == "0") {
-            grid[x][y] = 1;
+            grid[x][y] = "1";
         }
     }       
 }
