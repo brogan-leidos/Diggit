@@ -12,6 +12,8 @@ export default class Desert extends Biome {
     this.GridBackgroundColor = "#ebc91a";
     this.GridBorderColor = "#e3d58d"
     
+    this.PressurePointsEnabled = true;
+    
     this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
   }
   
