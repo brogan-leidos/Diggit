@@ -71,12 +71,11 @@ function drawGridWithOverlay() {
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
         for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
-            if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color
-                var styles = ""
-                var bgColor = "";
-                var image = "";                
-                var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`
-                   
+            var styles = ""
+            var bgColor = "";
+            var image = "";                
+            var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`
+            if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color                                   
                 if (gameGrid.hazardGrid[i][j] == "1") { // 1 is a pressure point
                     border = `border: 2px dotted black`;
                     bgColor = "#404752";                
@@ -94,9 +93,13 @@ function drawGridWithOverlay() {
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
             else {
-                var bgcolor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[i][j]);                
-                var border = biomeManager.selectedBiome.GridBorderColor;
-                htmlResult += `<td id="${i},${j}" class="dirt" style="background-color:${bgcolor};border:2px solid ${border}">
+                var bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[i][j]);
+                styles += `background-color:${bgColor};`;
+                styles += border;
+                if (checkColorFlip(bgColor)) {
+                    styles += `color: white`;
+                }
+                htmlResult += `<td id="${i},${j}" class="dirt" style="${styles}">
                                    ${gameGrid.upperGrid[i][j].toString()}
                                </td>`;
             }
@@ -109,6 +112,11 @@ function drawGridWithOverlay() {
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
+}
+
+function checkColorFlip(bgColor) {
+    var colorAvg = (parseInt("0x" + bgColor.substr(1,2)) + parseInt("0x" + bgColor.substr(3,2)) + parseInt("0x" + bgColor.substr(5,2))) / 3;
+    return colorAvg <= 100;
 }
 
 function tintBgColor(bgColor, gridValue) {
