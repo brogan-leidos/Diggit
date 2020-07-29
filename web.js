@@ -45,7 +45,7 @@ function firstLaunch() {
 function createGameGrid() {
     var width = document.getElementById("width").value;
     var height = document.getElementById("height").value;
-    var rarity = document.getElementById("rarity").value;
+    var rarity = document.getElementById("rarity").value + player.Luck;
     
     gameGrid.settings = new GameGridSettings(width, height, rarity, biomeManager.selectedBiome);
     gameGrid = generateGrid(gameGrid);
