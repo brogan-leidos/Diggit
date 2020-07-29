@@ -236,8 +236,10 @@ function mineClickedSpot(spotId) {
             continue;
         }
         
-        if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.lowerGrid[mineX][mineY] == "1") {
-            gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);
+        if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.lowerGrid[mineX][mineY] != "0") {
+            if (gameGrid.lowerGrid[mineX][mineY].Name == "Pressure Point") {
+                gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);
+            }
         }
         gameGrid.upperGrid[mineX][mineY] -= power;
     }
