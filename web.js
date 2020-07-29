@@ -115,7 +115,7 @@ function tintBgColor(bgColor, gridValue) {
     if (bgColor.length == 4) {
         bgColor = `#${bgColor[1]}${bgColor[1]}${bgColor[2]}${bgColor[2]}${bgColor[3]}${bgColor[3]}`;
     }
-    var gridColorTint = gridValue * 25;
+    var gridColorTint = gridValue * 20;
     var red = tintHex(parseInt("0x" + bgColor.substr(1,2)), gridColorTint);
     var green = tintHex(parseInt("0x" + bgColor.substr(3,2)), gridColorTint);
     var blue =  tintHex(parseInt("0x" + bgColor.substr(5,2)), gridColorTint);
