@@ -1,5 +1,5 @@
 /* SETTINGS OBJECT:
-    Has: Rarity, temp, width, height, biome
+    Has: Rarity, width, height, biome
 
 */
 import Loot from '../biome/objects/Loot.js'
