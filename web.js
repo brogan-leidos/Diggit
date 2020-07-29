@@ -403,17 +403,16 @@ function refreshBiomeTab() {
 
 // collect the LOOT
 function harvestWall() {
-    // go through object list, check what has been fully uncovered and collect it
     var htmlAppend = ""
     for (var i=0; i < gameGrid.objects.length; i++) {
         if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
-            var asdf = inventory.inventory[gameGrid.objects[i].Name];
             if (inventory.inventory[gameGrid.objects[i].Name] !== undefined) {
                 inventory.inventory[gameGrid.objects[i].Name]++;
             }
             else {
-                inventory.inventory[gameGrid.objects[i].Name] = 1;
+                inventory.inventory[gameGrid.objects[i].Name] = new Array();
+                inventory.inventory[gameGrid.objects[i].Name].push(gameGrid.objects[i]);
             }
         }        
     }
@@ -432,13 +431,26 @@ function checkIfObjectIsRevealed(object) {
 }
 
 function showInventory() {
-    var area = document.getElementById("debugArea");
+    var area = document.getElementById("gameArea");
     var htmlAppend = "";
     var keys = Object.keys(inventory.inventory);
     for(var i=0; i < keys.length; i++) {
-        htmlAppend += inventory.inventory[keys[i]] + "x " + keys[i] + "<br>";
+        htmlAppend += `<button id="Sell-${keys[i]}" /> ${inventory.inventory[keys[i]].length}x ${keys[i]} <br>`;
     }
+    
     area.innerHTML = htmlAppend;
+    assignEventsToInventory(keys);            
+}
+
+function assignEventsToInventory(keys) {
+    for(var i=0; i < keys.length; i++) {
+        document.getElementById(`Sell-${keys[i]}`).addEventListener('click', (e) => {
+            var itemName = e.target.id.split("-")[1];
+            var soldItem = inventory.inventory[itemName].pop();
+            inventory.money += soldItem.Value;
+            showInventory()
+        });    
+    }
 }
 
 function refreshDebugArea() {
