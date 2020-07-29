@@ -98,7 +98,7 @@ function drawGridWithOverlay() {
                 styles += border;
                 var textColor = tintTextColor(bgColor);
                 styles += `color: ${textColor};`;
-                var shadowColor = textColor == "black" ? "white" : "black;
+                var shadowColor = textColor == "black" ? "white" : "black";
                 styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
                 htmlResult += `<td id="${i},${j}" class="dirt" style="${styles}">
                                    ${gameGrid.upperGrid[i][j].toString()}
