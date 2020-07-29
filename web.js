@@ -178,7 +178,7 @@ function highlightValidSpaces(spotId) {
     }
     
     for (var i=0; i < highlightedSpots.length; i++) {     
-        var spotToLight = document.getElementById(`${highlightedSpots[i][0][0]},${highlightedSpots[i][0][1]}`);
+        var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
         spotToLight.style.borderColor = 'red';
     }
 
