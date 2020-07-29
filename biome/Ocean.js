@@ -25,7 +25,6 @@ export default class Forest extends Biome {
     objects.push(new Loot("Black Diamond", "An extremely rare, extremely precious gem", .001, 1, 1, "#d3d3d3"));    
     objects.push(new Loot("Copper Node", "A small node of copper",         .3, 1, 1, "#d4ad22"));
     objects.push(new Loot("Iron Node", "A small node of iron",             .2, 1, 1, "#949494"));
-    objects.push(new Loot("Gold Nugget", "A small gold nugget",            .07, 1, 1, "#ffea00"));
     objects.push(new Loot("Pearl", "A patch of common green moss",    .65, 1, 1, "#154518"));
     
     return objects;
@@ -37,7 +36,9 @@ export default class Forest extends Biome {
     objects.push(new Loot("Med Iron Node", "A sizable node of iron", .3, 2, 3, "#949494"));
     objects.push(new Loot("Large Gold Nugget", "A large gold nugget", .1, 2, 2, "#ffea00"));
     objects.push(new Loot("Fossil", "A very old fossil", .3, 1, 2, "#61511e"));
-    objects.push(new Loot("Coal Chunk", "A chunk of coal", .6, 2, 2, "#57372e"));    
+    objects.push(new Loot("Coal Chunk", "A chunk of coal", .6, 2, 2, "#57372e"));
+    objects.push(new Loot("Big Pearl", "A large pearl from a large clam",    .45, 2, 2, "#154518"));
+    
     
     return objects;
   }
