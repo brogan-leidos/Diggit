@@ -425,7 +425,7 @@ function checkIfObjectIsRevealed(object) {
 }
 
 function showInventory() {
-    var area = document.getElementById("gameArea");
+    var area = document.getElementById("gameSection");
     var htmlAppend = "";
     var keys = Object.keys(inventory.inventory);
     for(var i=0; i < keys.length; i++) {
@@ -440,7 +440,7 @@ function assignEventsToInventory(keys) {
     for(var i=0; i < keys.length; i++) {
         document.getElementById(`Sell-${keys[i]}`).addEventListener('click', (e) => {
             var itemName = e.target.id.split("-")[1];
-            var soldItem = inventory.inventory[itemName].pop();
+            var soldItem = inventory.removeFromInventory(itemName);
             inventory.money += soldItem.Value;
             showInventory()
         });    
