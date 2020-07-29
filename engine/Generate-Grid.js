@@ -24,8 +24,8 @@ export function generateGrid(gameGrid) {
   gameGrid.upperGrid = generateUpperGrid(settings);   
   
   // Health will vary with biomes
-  gameGrid.maxHealth = 100;
-  gameGrid.healthRemaining = 100;
+  gameGrid.maxHealth = settings.biome.Temperature * 2;
+  gameGrid.healthRemaining = gameGrid.maxHealth;
     
   return gameGrid;
 }
@@ -172,4 +172,16 @@ function placeObject(grid, object) {
     }
     
     return grid;
+}
+
+// At most, 30% of the board will be points (value 1)
+function generatePressurePoints(grid, settings) {
+    var numPointsToPlace = Math.floor(grid.length * grid[0].length / 3);
+    for (var i=0; i < numPointsToPlace; i++) {
+        var x = Math.floor(Math.random() * settings.width);
+        var y = Math.floor(Math.random() * settings.height);
+        if (grid[x][y] == "0") {
+            grid[x][y] = 1;
+        }
+    }       
 }
