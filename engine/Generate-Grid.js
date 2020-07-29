@@ -28,7 +28,7 @@ export function generateGrid(gameGrid) {
   gameGrid.healthRemaining = gameGrid.maxHealth;
   
   if (settings.biome.PressurePointsEnabled) {
-    gameGrid.lowerGrid = generatePressurePoints(gameGrid.lowerGrid, settings);
+    gameGrid.hazardGrid = generatePressurePoints(gameGrid.hazardGrid, gameGrid.lowerGrid, settings);
   }
   
   return gameGrid;
@@ -179,15 +179,15 @@ function placeObject(grid, object) {
 }
 
 // At most, 30% of the board will be points (value 1)
-function generatePressurePoints(grid, settings) {
-    var numPointsToPlace = Math.floor(grid.length * grid[0].length / 3);
+function generatePressurePoints(hazardGrid, lowerGrid, settings) {
+    var numPointsToPlace = Math.floor(lowerGrid.length * lowerGrid[0].length / 3);
     for (var i=0; i < numPointsToPlace; i++) {
         var x = Math.floor(Math.random() * settings.width);
         var y = Math.floor(Math.random() * settings.height);
-        if (grid[x][y] == "0") {
-            grid[x][y] = { Name: "Pressure Point", description: "Hitting this will make the wall fall faster" };
+        if (lowerGrid[x][y] == "0") {
+            hazardGrid[x][y] = { Name: "Pressure Point", description: "Hitting this will make the wall fall faster" };
         }
     }
-    return grid;
+    return hazardGrid;
    
 }
