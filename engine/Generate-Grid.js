@@ -185,7 +185,7 @@ function generatePressurePoints(grid, settings) {
         var x = Math.floor(Math.random() * settings.width);
         var y = Math.floor(Math.random() * settings.height);
         if (grid[x][y] == "0") {
-            grid[x][y] = { Name: "Pressure Point", Description: "Hitting this will make the wall fall faster" };
+            grid[x][y] = { Name: "Pressure Point", description: "Hitting this will make the wall fall faster" };
         }
     }
     return grid;
