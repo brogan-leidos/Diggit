@@ -24,6 +24,7 @@ export function generateGrid(gameGrid) {
   gameGrid.upperGrid = generateUpperGrid(settings);   
   
   // Health will vary with biomes
+  settings.biome.rollTemperature();
   gameGrid.maxHealth = settings.biome.Temperature * 2;
   gameGrid.healthRemaining = gameGrid.maxHealth;
   
