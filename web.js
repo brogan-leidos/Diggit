@@ -407,13 +407,7 @@ function harvestWall() {
     for (var i=0; i < gameGrid.objects.length; i++) {
         if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
-            if (inventory.inventory[gameGrid.objects[i].Name] !== undefined) {
-                inventory.inventory[gameGrid.objects[i].Name]++;
-            }
-            else {
-                inventory.inventory[gameGrid.objects[i].Name] = new Array();
-                inventory.inventory[gameGrid.objects[i].Name].push(gameGrid.objects[i]);
-            }
+            inventory.addToInventory(gameGrid.objects[i]);
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
