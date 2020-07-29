@@ -12,9 +12,9 @@ export default class Forest extends Biome {
     this.GridBackgroundColor = "#236e45";
     this.GridBorderColor = "#567564"
     
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
-  }
-  
+    this.Temperature = this.Temperature + Math.floor(Math.random() * 20);
+  }    
+
   getSmallObjects() {
     var objects = [];
     objects.push(new Loot("Ruby", "A sparkling red gem",                   .05, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
