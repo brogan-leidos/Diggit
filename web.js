@@ -84,6 +84,7 @@ function drawGridWithOverlay() {
                     if (gameGrid.lowerGrid[i][j].Name == "Pressure Point") { // TODO: shore this up a bit, make it so we dont have to fix if name changes
                         border = `border: 2px dotted black`;
                         bgColor = "#404752";
+                        image = "";
                     } 
                 }
                 styles += `background-color:${bgColor};`;
@@ -161,19 +162,23 @@ function highlightValidSpaces(spotId) {
     var highlightMemory = [];    
     
     if (highlightedSpots.length != 0) {
-        highlightMemory = highlightedSpots;
+        for (var i=0; i < highlightedSpots.length; i++) {
+            var spotToMemorize = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
+            highlightMemory.push([highlightedSpots[i], spotToMemorize.style.borderColor]);
+//             highlightMemory = highlightedSpots;
+        }
     }
 
     var potentialSpots = selectedTool.getMinableSpots(x,y);    
     highlightedSpots = potentialSpots.filter(a => a[0] < gameGrid.settings.width && a[0] >= 0 && a[1] < gameGrid.settings.height && a[1] >= 0);
     
     for (var i=0; i < highlightMemory.length; i++) {
-        var spotToDim = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
-        spotToDim.style.borderColor = biomeManager.selectedBiome.GridBorderColor;
+        var spotToDim = document.getElementById(`${highlightMemory[i][0][0]},${highlightMemory[i][0][1]}`);
+        spotToDim.style.borderColor = highlightMemory[i][1];
     }
     
     for (var i=0; i < highlightedSpots.length; i++) {     
-        var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
+        var spotToLight = document.getElementById(`${highlightedSpots[i][0][0]},${highlightedSpots[i][0][1]}`);
         spotToLight.style.borderColor = 'red';
     }
 
