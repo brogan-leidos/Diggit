@@ -74,8 +74,14 @@ function drawGridWithOverlay() {
             if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color
                 var styles = ""
                 var bgColor = "";
-                var image = "";
-                if (gameGrid.lowerGrid[i][j] != "0") {
+                var image = "";                
+                var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`
+                
+                if (gameGrid.lowerGrid[i][j] == "1") { // 1 is the index of a pressure points
+                    border = `border: 2px dotted black`;
+                    bgColor = "#404752";
+                }
+                else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
                     bgColor = gameGrid.lowerGrid[i][j].Color;
                     image = gameGrid.lowerGrid[i][j].ImagePath;                    
                 }
@@ -83,7 +89,7 @@ function drawGridWithOverlay() {
                 if (image != "") {
                     styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
                 }
-                styles += `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
+                styles += border;
 
                 htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
             }
