@@ -270,7 +270,7 @@ function processMinableSpot(spot) {
     var power = spot[2];
 
     if (mineX >= gameGrid.settings.width || mineX < 0 || mineY >= gameGrid.settings.height || mineY < 0) {
-        continue;
+        return;
     }
 
     if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
