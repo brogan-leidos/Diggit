@@ -187,5 +187,7 @@ function generatePressurePoints(grid, settings) {
         if (grid[x][y] == "0") {
             grid[x][y] = "1";
         }
-    }       
+    }
+    return grid;
+   
 }
