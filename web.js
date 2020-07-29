@@ -80,10 +80,11 @@ function drawGridWithOverlay() {
                 if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
                     bgColor = gameGrid.lowerGrid[i][j].Color;
                     image = gameGrid.lowerGrid[i][j].ImagePath;                    
-                }
-                else if (gameGrid.lowerGrid[i][j].Name == "Pressure Point") { // TODO: shore this up a bit, make it so we dont have to fix if name changes
-                    border = `border: 2px dotted black`;
-                    bgColor = "#404752";
+                
+                    if (gameGrid.lowerGrid[i][j].Name == "Pressure Point") { // TODO: shore this up a bit, make it so we dont have to fix if name changes
+                        border = `border: 2px dotted black`;
+                        bgColor = "#404752";
+                    } 
                 }
                 styles += `background-color:${bgColor};`;
                 if (image != "") {
