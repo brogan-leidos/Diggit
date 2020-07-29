@@ -186,8 +186,7 @@ function generatePressurePoints(hazardGrid, lowerGrid, settings) {
         var x = Math.floor(Math.random() * settings.width);
         var y = Math.floor(Math.random() * settings.height);
         if (lowerGrid[x][y] == "0") {
-            hazardGrid[x][y] = { Name: "Pressure Point", description: "Hitting this will make the wall fall faster" };
-        }
+            hazardGrid[x][y] = "1";
     }
     return hazardGrid;
    
