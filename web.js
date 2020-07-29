@@ -243,7 +243,7 @@ function mineClickedSpot(spotId) {
     selectedTool.durability--;
     refreshDurabilityArea();
 
-    if (selectedTool.durability <= 0){
+    if (selectedTool.durability == 0){
         breakCurrentTool();
     }
 
