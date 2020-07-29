@@ -231,7 +231,11 @@ function mineClickedSpot(spotId) {
         
         if (mineX >= gameGrid.settings.width || mineX < 0 || mineY >= gameGrid.settings.height || mineY < 0) {
             continue;
-        }        
+        }
+        
+        if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.lowerGrid[mineX][mineY] == "1") {
+            gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);
+        }
         gameGrid.upperGrid[mineX][mineY] -= power;
     }
     
@@ -239,7 +243,7 @@ function mineClickedSpot(spotId) {
     selectedTool.durability--;
     refreshDurabilityArea();
 
-    if (selectedTool.durability == 0){
+    if (selectedTool.durability <= 0){
         breakCurrentTool();
     }
 
