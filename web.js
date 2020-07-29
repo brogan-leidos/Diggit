@@ -254,10 +254,10 @@ function mineClickedSpot(spotId) {
         if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
             gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);            
         }
-        gameGrid.upperGrid[mineX][mineY] -= power;
+        gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
     }
     
-    gameGrid.healthRemaining -= selectedTool.damage;
+    gameGrid.healthRemaining -= selectedTool.damage - player.Precision * 2;
     selectedTool.durability--;
     refreshDurabilityArea();
 
