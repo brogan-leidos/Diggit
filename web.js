@@ -432,6 +432,8 @@ function showInventory() {
     }
     
     area.innerHTML = htmlAppend;
+    area.style.backgroundColor = "#bfbc8f";
+    area.style.background = "";
     assignEventsToInventory();            
 }
 
