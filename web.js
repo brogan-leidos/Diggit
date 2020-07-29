@@ -204,6 +204,9 @@ function updateInfoSection(spotId) {
     if (object != "0") {
         infoSection.innerHTML = object.Name + ": " + object.description;
     }
+    else if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.hazardGrid[x][y] == "1") {
+        infoSection.innerHTML = `Pressure Point: Hitting this will damage the wall further.`;
+    }
     else {
         infoSection.innerHTML = "Empty";
     }
