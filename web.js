@@ -429,7 +429,7 @@ function showInventory() {
     var htmlAppend = "";
     var keys = Object.keys(inventory.inventory);
     for(var i=0; i < keys.length; i++) {
-        htmlAppend += `<button id="Sell-${keys[i]}" /> ${inventory.inventory[keys[i]].length}x ${keys[i]} <br>`;
+        htmlAppend += `<button id="Sell-${keys[i]}">Sell</button> ${inventory.inventory[keys[i]].length}x ${keys[i]} <br>`;
     }
     
     area.innerHTML = htmlAppend;
