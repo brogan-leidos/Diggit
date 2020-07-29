@@ -7,7 +7,7 @@ IN PROGRESS:
    -> Desert (Pressure points)
    -> Volcano (lava plumes that fill the site)
    -> Forest (high vegatation, vegtables baby)
-   -> Lakeside/Ocean (oil or something?
+   -> Lakeside/Ocean (oil can spill, clouding visibility
    -> Frozen area (Ice sheets that crack as one unit)
    
 TODO: (prioritized from highest to lowest)
@@ -18,6 +18,7 @@ TODO: (prioritized from highest to lowest)
  
  - Generate pressure points using noise (hurt the wall more when hit)
  - Update the soil building algorithm to use noise instead of random assignment
+ - Change how soil layer works, something like an armor value when the durability is higher, or armored patches that are easier to mine with certain tools
 
  - Replace solid colors with images
  - Add rotation to parts with unique shapes
@@ -27,6 +28,12 @@ TODO: (prioritized from highest to lowest)
  - Think/Add some more tools
    -> A tool that lets you mine in an X (foil to the pick)
    -> "line" bombs
+   -> A shovel
+ 
+ - Add debug things as "Features" :)
+   -> Show number of treasures/kinds of treasures
+   -> Current durability of a space
+   -> Mouse wheel to change tools?
 
 BUGS:
  - Pressure point border colors get overwritten sometimes
