@@ -26,7 +26,11 @@ export function generateGrid(gameGrid) {
   // Health will vary with biomes
   gameGrid.maxHealth = settings.biome.Temperature * 2;
   gameGrid.healthRemaining = gameGrid.maxHealth;
-    
+  
+  if (settings.biome.PressurePointsEnabled) {
+    gameGrid.lowerGrid = generatePressurePoints(gameGrid.lowerGrid, settings);
+  }
+  
   return gameGrid;
 }
 
