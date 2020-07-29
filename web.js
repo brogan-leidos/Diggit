@@ -427,19 +427,18 @@ function checkIfObjectIsRevealed(object) {
 function showInventory() {
     var area = document.getElementById("gameSection");
     var htmlAppend = "";
-    var keys = inventory.inventory.keys();
-    for(var i=0; i < keys.length; i++) {
-        htmlAppend += `<button id="Sell-${keys[i]}">Sell</button> ${inventory.inventory[keys[i]].length}x ${keys[i]} <br>`;
+    for(let key of inventory.inventory.keys()) {
+        htmlAppend += `<button id="Sell-${key}">Sell</button> ${inventory.inventory.get(key).length}x ${key} <br>`;
     }
     
     area.innerHTML = htmlAppend;
-    assignEventsToInventory(keys);            
+    assignEventsToInventory();            
 }
 
-function assignEventsToInventory(keys) {
-    for(var i=0; i < keys.length; i++) {
-        document.getElementById(`Sell-${keys[i]}`).addEventListener('click', (e) => {
-            var itemName = e.target.id.split("-")[1];
+function assignEventsToInventory() {
+    for(let key of inventory.inventory.keys()) {
+        document.getElementById(`Sell-${key}`).addEventListener('click', (e) => {
+            var itemName = key;
             var soldItem = inventory.removeFromInventory(itemName);
             inventory.money += soldItem.Value;
             showInventory()
