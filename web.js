@@ -96,9 +96,9 @@ function drawGridWithOverlay() {
                 var bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[i][j]);
                 styles += `background-color:${bgColor};`;
                 styles += border;
-                if (checkColorFlip(bgColor)) {
-                    styles += `color: white`;
-                }
+                var textColor = tintTextColor(bgColor);
+                styles += `color: ${textColor}`;
+                
                 htmlResult += `<td id="${i},${j}" class="dirt" style="${styles}">
                                    ${gameGrid.upperGrid[i][j].toString()}
                                </td>`;
@@ -114,9 +114,14 @@ function drawGridWithOverlay() {
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
 }
 
-function checkColorFlip(bgColor) {
+function tintTextColor(bgColor) {
     var colorAvg = (parseInt("0x" + bgColor.substr(1,2)) + parseInt("0x" + bgColor.substr(3,2)) + parseInt("0x" + bgColor.substr(5,2))) / 3;
-    return colorAvg <= 100;
+    var newColor = (255 - colorAvg).toString(16);
+    if (newColor.length == 1) {
+        newColor = "0" + newColor;
+    }
+    return `#${newColor}${newColor}${newColor}`;
+//     return colorAvg <= 100;
 }
 
 function tintBgColor(bgColor, gridValue) {
