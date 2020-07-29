@@ -76,16 +76,14 @@ function drawGridWithOverlay() {
                 var bgColor = "";
                 var image = "";                
                 var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`
-                                
-                if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
+                   
+                if (gameGrid.hazardGrid[i][j] == "1") { // 1 is a pressure point
+                    border = `border: 2px dotted black`;
+                    bgColor = "#404752";                
+                }
+                else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
                     bgColor = gameGrid.lowerGrid[i][j].Color;
-                    image = gameGrid.lowerGrid[i][j].ImagePath;                    
-                
-                    if (gameGrid.lowerGrid[i][j].Name == "Pressure Point") { // TODO: shore this up a bit, make it so we dont have to fix if name changes
-                        border = `border: 2px dotted black`;
-                        bgColor = "#404752";
-                        image = "";
-                    } 
+                    image = gameGrid.lowerGrid[i][j].ImagePath;                                                        
                 }
                 styles += `background-color:${bgColor};`;
                 if (image != "") {
@@ -236,10 +234,8 @@ function mineClickedSpot(spotId) {
             continue;
         }
         
-        if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.lowerGrid[mineX][mineY] != "0") {
-            if (gameGrid.lowerGrid[mineX][mineY].Name == "Pressure Point") {
-                gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);
-            }
+        if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
+            gameGrid.healthRemaining -= Math.floor(selectedTool.damage / 2);            
         }
         gameGrid.upperGrid[mineX][mineY] -= power;
     }
