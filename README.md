@@ -9,6 +9,8 @@ IN PROGRESS:
    -> Forest (high vegatation, vegtables baby)
    -> Lakeside/Ocean (oil or something?
    -> Frozen area (Ice sheets that crack as one unit)
+   
+ -- Add hazards to their own layer to prevent future headaches
 
 TODO: (prioritized from highest to lowest)
  - Add a shop or something where you can spend your loot
