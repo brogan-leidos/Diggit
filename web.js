@@ -76,14 +76,14 @@ function drawGridWithOverlay() {
                 var bgColor = "";
                 var image = "";                
                 var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`
-                
-                if (gameGrid.lowerGrid[i][j] == "1") { // 1 is the index of a pressure points
-                    border = `border: 2px dotted black`;
-                    bgColor = "#404752";
-                }
-                else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
+                                
+                if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
                     bgColor = gameGrid.lowerGrid[i][j].Color;
                     image = gameGrid.lowerGrid[i][j].ImagePath;                    
+                }
+                else if (gameGrid.lowerGrid[i][j].Name == "Pressure Point") { // TODO: shore this up a bit, make it so we dont have to fix if name changes
+                    border = `border: 2px dotted black`;
+                    bgColor = "#404752";
                 }
                 styles += `background-color:${bgColor};`;
                 if (image != "") {
