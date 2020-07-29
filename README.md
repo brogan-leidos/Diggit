@@ -10,14 +10,11 @@ IN PROGRESS:
    -> Lakeside/Ocean (oil or something?
    -> Frozen area (Ice sheets that crack as one unit)
    
- -- Add hazards to their own layer to prevent future headaches
-
 TODO: (prioritized from highest to lowest)
  - Add a shop or something where you can spend your loot
  - Revamp inventory to use like... a material system or something? Idk, crafting and building whatever
-
- - Ability to travel between biomes
-   -- Biomes (heat could affect hardness of soil and health of wall or something) 
+ - World map to travel between biomes
+ 
  - Generate pressure points using noise (hurt the wall more when hit)
  - Update the soil building algorithm to use noise instead of random assignment
 
