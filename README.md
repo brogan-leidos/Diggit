@@ -31,6 +31,7 @@ TODO: (prioritized from highest to lowest)
    -> "line" bombs
 
 BUGS:
+ - Pressure point border colors get overwritten sometimes
  - Not a bug, but need to change hitting system to account for future pressure points
 
 
