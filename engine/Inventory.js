@@ -8,14 +8,14 @@ export default class Inventory {
   }
   
   addToInventory(object) {
-    if (this.inventory[object.Name] === undefined) {
-      this.inventory[object.Name] = new Array();      
+    if (this.inventory.has(object.Name) == false) {
+      this.inventory.set(object.Name, new Array());      
     }
     this.inventory[object.Name].push(object);
   }
   
   removeFromInventory(objectName) {
-    if (this.inventory[objectName] === undefined){
+    if (this.inventory.has(objectName) == false){
       // Something very wrong has happened
     }
     var retItem = this.inventory[objectName].pop();
