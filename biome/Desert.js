@@ -7,7 +7,7 @@ export default class Desert extends Biome {
     this.Name = "Desert";
     this.Temperature = 70;
     this.MaxHardness = 2;
-    this.ImagePath = "./biome/biomeimages/desert.jpg";
+    this.ImagePath = "./biome/biomeimages/desert.jfif";
     
     this.GridBackgroundColor = "#ebc91a";
     this.GridBorderColor = "#e3d58d"
