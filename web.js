@@ -97,8 +97,9 @@ function drawGridWithOverlay() {
                 styles += `background-color:${bgColor};`;
                 styles += border;
                 var textColor = tintTextColor(bgColor);
-                styles += `color: ${textColor}`;
-                
+                styles += `color: ${textColor};`;
+                var shadowColor = textColor == "black" ? "white" : "black;
+                styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
                 htmlResult += `<td id="${i},${j}" class="dirt" style="${styles}">
                                    ${gameGrid.upperGrid[i][j].toString()}
                                </td>`;
@@ -116,12 +117,12 @@ function drawGridWithOverlay() {
 
 function tintTextColor(bgColor) {
     var colorAvg = Math.floor((parseInt("0x" + bgColor.substr(1,2)) + parseInt("0x" + bgColor.substr(3,2)) + parseInt("0x" + bgColor.substr(5,2))) / 3);
-    var newColor = (255 - colorAvg).toString(16);
-    if (newColor.length == 1) {
-        newColor = "0" + newColor;
+    if (colorAvg <= 125) {
+        return "white";
     }
-    return `#${newColor}${newColor}${newColor}`;
-//     return colorAvg <= 100;
+    else {
+        return "black";
+    }
 }
 
 function tintBgColor(bgColor, gridValue) {
