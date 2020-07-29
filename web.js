@@ -427,7 +427,7 @@ function checkIfObjectIsRevealed(object) {
 function showInventory() {
     var area = document.getElementById("gameSection");
     var htmlAppend = "";
-    var keys = Object.keys(inventory.inventory);
+    var keys = inventory.inventory.keys();
     for(var i=0; i < keys.length; i++) {
         htmlAppend += `<button id="Sell-${keys[i]}">Sell</button> ${inventory.inventory[keys[i]].length}x ${keys[i]} <br>`;
     }
