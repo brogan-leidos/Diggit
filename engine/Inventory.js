@@ -1,6 +1,6 @@
 export default class Inventory {
   constructor() {
-    this.inventory = {};
+    this.inventory = {}; // Style: ObjectName: Array<Object>
     this.money = 0;
     this.availableTools = [];
     this.availableItems = [];
