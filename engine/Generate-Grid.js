@@ -187,6 +187,7 @@ function generatePressurePoints(hazardGrid, lowerGrid, settings) {
         var y = Math.floor(Math.random() * settings.height);
         if (lowerGrid[x][y] == "0") {
             hazardGrid[x][y] = "1";
+        }
     }
     return hazardGrid;
    
