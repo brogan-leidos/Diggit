@@ -24,7 +24,7 @@ export default () => {
 //         refreshBiomeTab();
         document.getElementById("gameSection").addEventListener('wheel', (e) => {           
             player.selectedTool.rotateTool(Math.sign(e.deltaY));
-        }
+        });
 
     });
     
