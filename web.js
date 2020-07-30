@@ -22,7 +22,6 @@ export default () => {
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
-//         refreshBiomeTab(); // Biomes don't show up till this happens -- they get initialized with the board creation
         document.getElementById("gameSection").addEventListener('wheel', (e) => {           
             selectedTool.rotateTool(Math.sign(e.deltaY));
             highlightValidSpaces(spotMemory);
@@ -290,9 +289,17 @@ function mineClickedSpot(spotId) {
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
     
+    if (gameGrid.settings.biome.IceSheetsEnabled) {
+        hazardMemory = []; // TODO: This might make ice incompatable with oil -- but we will see
+    }
+    
     var minableSpots = selectedTool.getMinableSpots(x,y);
     for (var i=0; i < minableSpots.length; i++) {
         processMinableSpot(minableSpots[i])        
+    }
+    
+    if (gameGrid.settings.biome.IceSheetsEnabled) {
+        damageIceSheets();
     }
     
     gameGrid.healthRemaining -= selectedTool.damage - player.Precision * 2;
@@ -325,11 +332,69 @@ function processMinableSpot(spot) {
     if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
         gameGrid.healthRemaining -= Math.floor((selectedTool.damage - player.Precision) / 2);            
     }
+    
+    if (gameGrid.settings.biome.IceSheetsEnabled) {
+        mineIceSheet(mineX, mineY, gameGrid.upperGrid[mineX][mineY]);
+    }
         
     gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
     
     if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "2") {            
         gameGrid.hazardGrid[mineX][mineY] = "3"; // 2 is inert oil, 3 is spilled oil that will expand           
+    }
+}
+
+function mineIceSheet(mineX, mineY, sheetValue) {
+    spotId = spotMemory.split(",");
+    var x = parseInt(spotId[0]);
+    var y = parseInt(spotId[1]);
+    
+    var exploredSpots = [];
+    
+    var originalSpots = selectedTool.getMinableSpots(x,y);
+    originalSpots = originalSpots.map(a => [a[0], a[1]]);
+    
+    hazardMemory.concat(exploreSheet(mineX, mineY, sheetValue, originalSpots));
+  
+}
+
+// Loop de loop de loop de loop
+function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
+    if (gameGrid.upperGrid[mineX][mineY] != sheetValue) {
+        return alreadyExplored;
+    }
+
+    var beingExplored = [mineX, mineY];
+    alreadyExplored.push([mineX, mineY]);
+
+    var expectedAdjacent = [
+        [Math.min(mineX + 1, gameGrid.upperGrid.length - 1), mineY]   
+        ,[Math.max(mineX - 1, 0), mineY]
+        ,[mineX, Math.min(mineY + 1, gameGrid.upperGrid[0].length - 1)]
+        ,[mineX, Math.max(mineY - 1, 0)]
+    ];
+
+    for (var i=0; i < 4; i++) {
+        if (!checkIfSpotExistsInArray(expectedAdjacent[i], alreadyExplored)) {
+            beingExplored.concat(exploreSheet(expectedAdjacent[i][0], expectedAdjacent[i][1], alreadyExplored)); 
+        }
+    }
+    
+    return beingExplored;    
+}
+         
+function checkIfSpotExistsInArray(spot, array) {
+    for (var i=0; i < array.length; i++) {
+        if (spot.toString() == array.toString()) {
+            return true;
+        }        
+    }
+    return false;
+}
+
+function damageIceSheets() {
+    for (var i=0; i < hazardMemory.length; i++) {
+        gameGrid.upperGrid[hazardMemory[i][0]][hazardMemory[i][1]]--;
     }
 }
 
