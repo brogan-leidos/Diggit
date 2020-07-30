@@ -6,6 +6,7 @@ export default class Biome {
     this.GridBorderColor = "#ddd";
     this.GridBackgroundColor = "#eee";
     
+    this.OilSpillsEnabled = false;
     this.PressurePointsEnabled = false;
     this.IceSheetsEnabled = false;
     this.LavaPlumesEnabled = false;
