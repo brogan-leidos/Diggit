@@ -258,7 +258,10 @@ function updateInfoSection(spotId) {
     var infoSection = document.getElementsByClassName("infoSection")[0];
     
     var object = gameGrid.lowerGrid[x][y];
-    if (object != "0") {
+    if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.hazardGrid[x][y] == "2") {
+        infoSection.innerHTML = `Oil: Obscures the ground beneath it.`;
+    }
+    else (object != "0") {
         infoSection.innerHTML = object.Name + ": " + object.description;
     }
     else if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.hazardGrid[x][y] == "1") {
