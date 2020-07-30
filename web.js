@@ -290,7 +290,7 @@ function updateInfoSection(spotId) {
     var infoSection = document.getElementsByClassName("infoSection")[0];
     
     var object = gameGrid.lowerGrid[x][y];
-    if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.hazardGrid[x][y] == "2") {
+    if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.hazardGrid[x][y] == "3") { // Spilled oil coveres everything
         infoSection.innerHTML = `Oil: Obscures the ground beneath it.`;
     }
     else if (object != "0") {
