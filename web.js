@@ -41,7 +41,7 @@ function firstLaunch() {
     player.availableItems.push(new Support());
     selectedTool = player.availableTools[0];
     
-    player.availableBiomes = ["Generic", "Forest", "Ocean", "Desert", "Volcano"];
+    player.availableBiomes = ["Generic", "Forest", "Ocean", "Desert", "Volcano", "Glacier"];
     
     refreshToolArea();
     refreshItemArea();
