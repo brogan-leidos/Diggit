@@ -90,13 +90,16 @@ function processOil() {
     }        
 }
 
-function updateHazardMemory(searchValue) {
+function updateHazardMemory(searchValue= -1) {
     hazardMemory = [];
     for (var x=0; x < gameGrid.hazardGrid.length; x++) {
         for (var y=0; y < gameGrid.hazardGrid[x].length; y++) {
-            if (gameGrid.hazardGrid[x][y] == "2") {
+            if (gameGrid.hazardGrid[x][y] != 0 && searchValue == -1) {
                 hazardMemory.push([x,y]);
             }
+            else if (gameGrid.hazardGrid[x][y] == searchValue) {
+                hazardMemory.push([x,y]);
+            }            
         }
     }
 }
@@ -504,6 +507,10 @@ function refreshDebugArea() {
     var htmlAppend = "";
     for(var i=0; i < gameGrid.objects.length; i++) {
         htmlAppend += gameGrid.objects[i].Name + " | " + gameGrid.objects[i].origin + "<br>";
+    }
+    updateHazardMemory();
+    for(var i=0; i < hazardMemory.length; i++) {
+        hmtlAppend += `Hazard | hazardMemory[i]`;
     }
     area.innerHTML = htmlAppend;
 }
