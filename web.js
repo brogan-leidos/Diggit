@@ -23,7 +23,7 @@ export default () => {
         refreshGrid();
 //         refreshBiomeTab();
         document.getElementById("gameSection").addEventListener('wheel', (e) => {           
-            player.selectedTool.rotateTool(Math.sign(e.deltaY));
+            selectedTool.rotateTool(Math.sign(e.deltaY));
         });
 
     });
