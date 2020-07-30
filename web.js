@@ -366,7 +366,11 @@ function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
         return -1;
     }
 
-    var beingExplored = [[mineX, mineY]];
+    var beingExplored = [];
+    if (!checkIfSpotExistsInArray([mineX, mineY], alreadyExplored)) {
+        beingExplored = [[mineX, mineY]];
+    }
+    
     alreadyExplored.push([mineX, mineY]);
 
     var expectedAdjacent = [
