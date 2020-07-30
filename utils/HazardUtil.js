@@ -1,7 +1,7 @@
 var gameGrid = null;
 var hazardMemory = []
 
-export function processIceSheet(mineX, mineY, sheetValue, spotMemory, incomingGrid) {
+export function processIceSheet(mineX, mineY, sheetValue, spotMemory, incomingGrid, selectedTool) {
     gameGrid = incomingGrid;
     var spotId = spotMemory.split(",");
     var x = parseInt(spotId[0]);
