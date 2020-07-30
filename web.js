@@ -270,7 +270,7 @@ function mineClickedSpot(spotId) {
     }
     
     if (gameGrid.settings.biome.IceSheetsEnabled) {
-        damageIceSheets();
+        damageIceSheets(hazardMemory, gameGrid);
     }
     
     gameGrid.healthRemaining -= selectedTool.damage - player.Precision * 2;
