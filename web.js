@@ -171,15 +171,16 @@ function drawUpperSpot(x,y) {
         bgColor = "#000";
     }
     else {   
-        var bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[x][y]);
-        styles += `background-color:${bgColor};`;
-        styles += border;
+        bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[x][y]);        
         var textColor = tintTextColor(bgColor);
         styles += `color: ${textColor};`;
         var shadowColor = textColor == "black" ? "white" : "black";
         styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
         var text = gameGrid.upperGrid[x][y].toString();
     }
+    
+    styles += `background-color:${bgColor};`;
+    styles += border;
         
     return `<td id="${x},${y}" class="dirt" style="${styles}"> ${text} </td>`;
 }
