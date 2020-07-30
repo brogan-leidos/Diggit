@@ -510,7 +510,7 @@ function refreshDebugArea() {
     }
     updateHazardMemory();
     for(var i=0; i < hazardMemory.length; i++) {
-        htmlAppend += `Hazard | ${hazardMemory[i]}`;
+        htmlAppend += `Hazard | ${hazardMemory[i]} <br>`;
     }
     area.innerHTML = htmlAppend;
 }
