@@ -12,6 +12,8 @@ export default class Forest extends Biome {
     this.GridBackgroundColor = "#4a70ed";
     this.GridBorderColor = "#535b75"
     
+    this.OilSpillsEnabled = true;
+    
     this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
   }
   
