@@ -74,19 +74,18 @@ function processEvents() {
 }
 
 function processOil() {
-//     if (hazardMemory.length == 0) {
+//  EXPAND current revealed oil tiles
     updateHazardMemory("3");            
     
     for (var i=0; i < hazardMemory.length; i++) {
         var seekX = hazardMemory[i][0];
         var seekY = hazardMemory[i][1];
-        if (gameGrid.hazardGrid[seekX][seekY] <= 0) {
-            //Expand
-            gameGrid.hazardGrid[Math.min(seekX+1, gameGrid.upperGrid.length)][seekY] = "3";
-            gameGrid.hazardGrid[Math.max(seekX-1, 0)][seekY] = "3";
-            gameGrid.hazardGrid[seekX][Math.min(seekY+1, gameGrid.upperGrid[0].length)] = "3";
-            gameGrid.hazardGrid[seekX][Math.max(seekY-1, 0)] = "3";
-        }
+
+        gameGrid.hazardGrid[Math.min(seekX+1, gameGrid.upperGrid.length)][seekY] = "3";
+        gameGrid.hazardGrid[Math.max(seekX-1, 0)][seekY] = "3";
+        gameGrid.hazardGrid[seekX][Math.min(seekY+1, gameGrid.upperGrid[0].length)] = "3";
+        gameGrid.hazardGrid[seekX][Math.max(seekY-1, 0)] = "3";
+        
     }        
 }
 
