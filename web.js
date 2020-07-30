@@ -76,8 +76,7 @@ function refreshGrid() {
 function processEvents() {
     if (gameGrid.settings.biome.OilSpillsEnabled) {
         processOil();
-    }
-    
+    }    
 }
 
 function processOil() {
@@ -281,33 +280,6 @@ function highlightRevealvedObjects() {
     }
 }
 
-// Updates info bar to give info on what the mouse is over
-function updateInfoSection(spotId) {
-    spotId = spotId.split(",");
-    var x = parseInt(spotId[0]);
-    var y = parseInt(spotId[1]);   
-    var infoSection = document.getElementsByClassName("infoSection")[0];
-    
-    var object = gameGrid.lowerGrid[x][y];
-    if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.hazardGrid[x][y] == "3") { // Spilled oil coveres everything
-        infoSection.innerHTML = `Oil: Obscures the ground beneath it.`;
-    }
-    else if (object != "0") {
-        infoSection.innerHTML = object.Name + ": " + object.description;
-    }
-    else if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.hazardGrid[x][y] == "1") {
-        infoSection.innerHTML = `Pressure Point: Hitting this will damage the wall further.`;
-    }
-    else {
-        infoSection.innerHTML = "Empty";
-    }
-}
-
-function displayInInfoSection(message) {
-    var infoSection = document.getElementsByClassName("infoSection")[0];
-    infoSection.innerHTML = message;
-}
-
 // Destroy the appropriate dirt layer, lower tool durability, damage the wall, and reveal objects as necessary
 function mineClickedSpot(spotId) {
     if(!checkIfStillStanding()) {
@@ -374,15 +346,6 @@ function breakCurrentTool() {
     refreshToolArea();
 }
 
-function refreshDurabilityArea() {    
-    var area = document.getElementById("toolDurability");
-    area.innerHTML = "";
-    if (selectedTool.durability < 0) {
-        return;
-    }
-    area.innerHTML = selectedTool.durability + " durability";   
-}
-
 // This is called after a change to the tools array is made, either with the addition or deletion of a tool
 function refreshToolArea() {
     var area = document.getElementById("toolArea");
@@ -400,6 +363,42 @@ function refreshToolArea() {
             refreshDurabilityArea();
         });    
     }    
+}
+
+function refreshDurabilityArea() {    
+    var area = document.getElementById("toolDurability");
+    area.innerHTML = "";
+    if (selectedTool.durability < 0) {
+        return;
+    }
+    area.innerHTML = selectedTool.durability + " durability";   
+}
+
+// Updates info bar to give info on what the mouse is over
+function updateInfoSection(spotId) {
+    spotId = spotId.split(",");
+    var x = parseInt(spotId[0]);
+    var y = parseInt(spotId[1]);   
+    var infoSection = document.getElementsByClassName("infoSection")[0];
+    
+    var object = gameGrid.lowerGrid[x][y];
+    if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.hazardGrid[x][y] == "3") { // Spilled oil coveres everything
+        infoSection.innerHTML = `Oil: Obscures the ground beneath it.`;
+    }
+    else if (object != "0") {
+        infoSection.innerHTML = object.Name + ": " + object.description;
+    }
+    else if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.hazardGrid[x][y] == "1") {
+        infoSection.innerHTML = `Pressure Point: Hitting this will damage the wall further.`;
+    }
+    else {
+        infoSection.innerHTML = "Empty";
+    }
+}
+
+function displayInInfoSection(message) {
+    var infoSection = document.getElementsByClassName("infoSection")[0];
+    infoSection.innerHTML = message;
 }
 
 // This is called after the addition or use of an item
@@ -456,6 +455,28 @@ function refreshHealthBar() {
     }
 }
 
+function harvestWall() {
+    var htmlAppend = ""
+    for (var i=0; i < gameGrid.objects.length; i++) {
+        if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
+            htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
+            player.addToInventory(gameGrid.objects[i]);
+        }        
+    }
+    document.getElementById("debugArea").innerHTML = htmlAppend;
+}
+
+function checkIfObjectIsRevealed(object) {
+    var occupiedSpots = object.getOccupiedSpots();
+    var fullyUncovered = true;
+    for (var spot=0; spot < occupiedSpots.length; spot++) {
+        if (parseInt(gameGrid.upperGrid[occupiedSpots[spot][0]][occupiedSpots[spot][1]]) > 0) {
+            fullyUncovered = false;
+        }
+    }
+    return fullyUncovered;
+}
+
 // NOTE: Likely temporary as we debug
 function refreshBiomeTab() {
     var biomeSelect = document.getElementById("biomeSelect");
@@ -486,28 +507,6 @@ function switchBiome(biomeName) {
     document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
     document.getElementById("gameSection").style.backgroundSize = `contain`;
     refreshBiomeTab();
-}
-
-function harvestWall() {
-    var htmlAppend = ""
-    for (var i=0; i < gameGrid.objects.length; i++) {
-        if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
-            htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
-            player.addToInventory(gameGrid.objects[i]);
-        }        
-    }
-    document.getElementById("debugArea").innerHTML = htmlAppend;
-}
-
-function checkIfObjectIsRevealed(object) {
-    var occupiedSpots = object.getOccupiedSpots();
-    var fullyUncovered = true;
-    for (var spot=0; spot < occupiedSpots.length; spot++) {
-        if (parseInt(gameGrid.upperGrid[occupiedSpots[spot][0]][occupiedSpots[spot][1]]) > 0) {
-            fullyUncovered = false;
-        }
-    }
-    return fullyUncovered;
 }
 
 function showInventory() {
