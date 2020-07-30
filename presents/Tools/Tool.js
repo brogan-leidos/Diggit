@@ -13,5 +13,9 @@ export default class Tool {
     mineSpot(spot, height, width) {
         return;
     }
+    
+    rotateTool(sign) {
+        return;
+    }
               
 }
