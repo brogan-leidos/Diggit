@@ -12,9 +12,9 @@ var selectedTool = new Tool();
 var player = new Player();
 var biomeManager = new BiomeManager();
 
-var highlightedSpots = [];
-var hazardMemory = [];
-var spotMemory = "";
+var highlightedSpots = []; // Spots to color given the current tool and position
+var hazardMemory = []; // Optimizaion for processing hazards
+var spotMemory = ""; // The last spot the mouse was on
 
 export default () => {
     firstLaunch();
