@@ -198,7 +198,8 @@ function generatePressurePoints(hazardGrid, lowerGrid, settings) {
    
 }
 
-// Hazgrid Value 2 is a oil spill -- Tries to place 3% points as spills
+// Hazgrid Value 2 is an inert oil spill -- Tries to place 3% points as spills
+// After its been mined, the 2 will be changed to a 3
 function generateOilSpills(hazardGrid, lowerGrid, settings) {
     var numPointsToPlace = Math.ceil(lowerGrid.length * lowerGrid[0].length * .03);
     var attempts = 0;
