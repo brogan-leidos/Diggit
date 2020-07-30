@@ -200,7 +200,7 @@ function generatePressurePoints(hazardGrid, lowerGrid, settings) {
 
 // Hazgrid Value 2 is a oil spill -- Tries to place 3% points as spills
 function generateOilSpills(hazardGrid, lowerGrid, settings) {
-    var numPointsToPlace = Math.ceiling(lowerGrid.length * lowerGrid[0].length * .03);
+    var numPointsToPlace = Math.ceil(lowerGrid.length * lowerGrid[0].length * .03);
     var attempts = 0;
     for (var i=0; i < numPointsToPlace; i++) {
         while (attempts < lowerGrid.length * lowerGrid[0].length) {
