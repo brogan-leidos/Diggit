@@ -15,7 +15,7 @@ export default class Biome {
 
   rollTemperature(temp) {
     if (temp == "cold") {
-      this.Temperature = this.Temperature + Math.floor(Math.random() * 7);
+      this.Temperature = this.Temperature + Math.floor(Math.random() * 5);
     }
     else if (temp == "hot") {
       this.Temperature = this.Temperature + Math.floor(Math.random() * 20);
