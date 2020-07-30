@@ -9,7 +9,7 @@ export default class Volcano extends Biome {
     this.MaxHardness = 5;
     this.ImagePath = "./biome/biomeimages/volcano.jpg";
 
-    this.LavaplumesEnabled = true;
+    this.LavaPlumesEnabled = true;
     
     this.GridBackgroundColor = "#700b0b";
     this.GridBorderColor = "#b8621c"
