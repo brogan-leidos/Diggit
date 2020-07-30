@@ -30,7 +30,7 @@ export default () => {
     });
     
     document.addEventListener("wheel", (e) => {
-        alert(`deltaY: ${e.deltaY});
+        alert(`deltaY: ${e.deltaY}`);
     });
     
 };
