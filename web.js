@@ -305,7 +305,7 @@ function processMinableSpot(spot) {
     }
     
     if (gameGrid.settings.biome.IceSheetsEnabled) {
-        processIceSheet(mineX, mineY, gameGrid.upperGrid[mineX][mineY]);
+        hazardMemory = hazardMemory.concat(processIceSheet(mineX, mineY, gameGrid.upperGrid[mineX][mineY], spotMemory, gameGrid));
     }
         
     gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
