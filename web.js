@@ -380,7 +380,7 @@ function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
         if (!checkIfSpotExistsInArray(expectedAdjacent[i], alreadyExplored)) {
             var exploreResult = exploreSheet(expectedAdjacent[i][0], expectedAdjacent[i][1], sheetValue, alreadyExplored); 
             if (exploreResult != -1) {
-                beingExplored.push(exploreResult); 
+                beingExplored = beingExplored.concat(exploreResult); 
             }
         }
     }
