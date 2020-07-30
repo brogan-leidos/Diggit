@@ -29,6 +29,11 @@ export default () => {
         showInventory();
     });
     
+    document.addEventListener("wheel", (e) => {
+        var a = e;
+        alert("beeg scroll inbound");
+    });
+    
 };
 
 function firstLaunch() {
