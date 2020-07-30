@@ -362,7 +362,7 @@ function mineIceSheet(mineX, mineY, sheetValue) {
 // Loop de loop de loop de loop
 function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
     if (gameGrid.upperGrid[mineX][mineY] != sheetValue) {
-        return alreadyExplored;
+        return;// alreadyExplored;
     }
 
     var beingExplored = [[mineX, mineY]];
@@ -377,7 +377,7 @@ function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
 
     for (var i=0; i < 4; i++) {
         if (!checkIfSpotExistsInArray(expectedAdjacent[i], alreadyExplored)) {
-            beingExplored.concat(exploreSheet(expectedAdjacent[i][0], expectedAdjacent[i][1], sheetValue, alreadyExplored)); 
+            beingExplored.push(exploreSheet(expectedAdjacent[i][0], expectedAdjacent[i][1], sheetValue, alreadyExplored)); 
         }
     }
     
