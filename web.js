@@ -6,7 +6,7 @@ import { Tool, Pick, Hammer, Drill, Vaporizer, Shovel, Chisel } from './presents
 import Support from './presents/items/Support.js'
 import BiomeManager from './biome/BiomeManager.js'
 import { tintTextColor, tintBgColor, tintHex } from './utils/ColorUtil.js'
-import { processIceSheet, exploreSheet, checkIfSpotExistsInArray, damageIceSheets } from './utils/HazardUtil.js'
+import { processIceSheet, damageIceSheets } from './utils/HazardUtil.js'
 
 
 var gameGrid = new GameGrid();
