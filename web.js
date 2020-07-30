@@ -22,7 +22,7 @@ export default () => {
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
-        refreshBiomeTab(); // Biomes don't show up till this happens -- they get initialized with the board creation
+//         refreshBiomeTab(); // Biomes don't show up till this happens -- they get initialized with the board creation
         document.getElementById("gameSection").addEventListener('wheel', (e) => {           
             selectedTool.rotateTool(Math.sign(e.deltaY));
             highlightValidSpaces(spotMemory);
@@ -46,7 +46,7 @@ function firstLaunch() {
     refreshToolArea();
     refreshItemArea();
     refreshHealthBar();
-//     refreshBiomeTab();
+    refreshBiomeTab();
 
 }
 
@@ -477,9 +477,9 @@ function refreshBiomeTab() {
                 var biomeName = e.target.id.split("-")[1];
                 var newBiome = biomeManager.Biomes.filter(a => a.Name == biomeName)[0];
                 biomeManager.selectedBiome = newBiome;
-                document.getElementById("gameSection").style.background = `url(${newBiome.ImagePath}) no-repeat contain`;
-//                 document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
-//                 document.getElementById("gameSection").style.backgroundSize = `contain`;
+                document.getElementById("gameSection").style.background = `url(${newBiome.ImagePath})`;
+                document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
+                document.getElementById("gameSection").style.backgroundSize = `contain`;
                 refreshBiomeTab();
             });
         }
