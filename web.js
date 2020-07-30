@@ -345,6 +345,7 @@ function processMinableSpot(spot) {
 }
 
 function mineIceSheet(mineX, mineY, sheetValue) {
+    var spotId = spotMemory;
     spotId = spotMemory.split(",");
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
