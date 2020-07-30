@@ -14,6 +14,7 @@ var biomeManager = new BiomeManager();
 
 var highlightedSpots = [];
 var hazardMemory = [];
+var spotMemory = "";
 
 export default () => {
     firstLaunch();
@@ -24,7 +25,7 @@ export default () => {
         refreshBiomeTab(); // Biomes don't show up till this happens -- they get initialized with the board creation
         document.getElementById("gameSection").addEventListener('wheel', (e) => {           
             selectedTool.rotateTool(Math.sign(e.deltaY));
-            highlightValidSpaces();
+            highlightValidSpaces(spotMemory);
         });
 
     });
@@ -239,6 +240,7 @@ function assignEventsToGrid() {
 
 // Highlights spaces that the current tool can mine
 function highlightValidSpaces(spotId) {
+    spotMemory = spotId;
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
