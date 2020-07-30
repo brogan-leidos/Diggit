@@ -84,7 +84,7 @@ function processOil() {
             //Expand
             gameGrid.hazardGrid[Math.min(seekX+1, gameGrid.upperGrid.length)][seekY] = "3";
             gameGrid.hazardGrid[Math.max(seekX-1, 0)][seekY] = "3";
-            gameGrid.hazardGrid[seekX][Math.min(seekY+1, gameGrid.upperGrid[0].length] = "3";
+            gameGrid.hazardGrid[seekX][Math.min(seekY+1, gameGrid.upperGrid[0].length)] = "3";
             gameGrid.hazardGrid[seekX][Math.max(seekY-1, 0)] = "3";
         }
     }        
