@@ -377,7 +377,7 @@ function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
 
     for (var i=0; i < 4; i++) {
         if (!checkIfSpotExistsInArray(expectedAdjacent[i], alreadyExplored)) {
-            beingExplored.concat(exploreSheet(expectedAdjacent[i][0], expectedAdjacent[i][1], alreadyExplored)); 
+            beingExplored.concat(exploreSheet(expectedAdjacent[i][0], expectedAdjacent[i][1], sheetValue, alreadyExplored)); 
         }
     }
     
