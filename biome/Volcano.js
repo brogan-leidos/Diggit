@@ -7,7 +7,7 @@ export default class Volcano extends Biome {
     this.Name = "Volcano";
     this.Temperature = 90;
     this.MaxHardness = 5;
-    this.ImagePath = "./biome/biomeimages/forest.jpg";
+    this.ImagePath = "./biome/biomeimages/volcano.jpg";
 
     this.LavaplumesEnabled = true;
     
