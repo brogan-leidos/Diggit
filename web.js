@@ -348,11 +348,12 @@ function processMinableSpot(spot) {
     if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
         gameGrid.healthRemaining -= Math.floor((selectedTool.damage - player.Precision) / 2);            
     }
+        
+    gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
     
     if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "2") {            
         gameGrid.hazardGrid[mineX][mineY] = "3"; // 2 is inert oil, 3 is spilled oil that will expand           
     }
-    gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
 }
 
 function checkIfStillStanding() {
