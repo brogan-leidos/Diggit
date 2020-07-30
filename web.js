@@ -75,17 +75,17 @@ function processEvents() {
 
 function processOil() {
 //     if (hazardMemory.length == 0) {
-    updateHazardMemory("2");            
+    updateHazardMemory("3");            
     
     for (var i=0; i < hazardMemory.length; i++) {
         var seekX = hazardMemory[i][0];
         var seekY = hazardMemory[i][1];
         if (gameGrid.upperGrid[seekX][seekY] <= 0) {
             //Expand
-            gameGrid.hazardGrid[seekX+1][seekY] = "2";
-            gameGrid.hazardGrid[seekX-1][seekY] = "2";
-            gameGrid.hazardGrid[seekX][seekY+1] = "2";
-            gameGrid.hazardGrid[seekX][seekY-1] = "2";
+            gameGrid.hazardGrid[seekX+1][seekY] = "3";
+            gameGrid.hazardGrid[seekX-1][seekY] = "3";
+            gameGrid.hazardGrid[seekX][seekY+1] = "3";
+            gameGrid.hazardGrid[seekX][seekY-1] = "3";
         }
     }        
 }
@@ -115,40 +115,12 @@ function drawGridWithOverlay() {
             var styles = ""
             var bgColor = "";
             var image = "";                
-            var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`
+            var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`                                   
             if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color                                   
-                if (gameGrid.hazardGrid[i][j] == "1") { // 1 is a pressure point
-                    border = `border: 2px dotted black`;
-                    bgColor = "#404752";                
-                }
-                else if (gameGrid.hazardGrid[i][j] == "2") // 2 is an oil spill
-                {
-                    border = `border: 2px dotted black`;
-                    bgColor = "#000";    
-                }                
-                else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
-                    bgColor = gameGrid.lowerGrid[i][j].Color;
-                    image = gameGrid.lowerGrid[i][j].ImagePath;                                                        
-                }
-                styles += `background-color:${bgColor};`;
-                if (image != "") {
-                    styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
-                }
-                styles += border;
-
-                htmlResult += `<td id="${i},${j}" class="exposed" style="${styles}"></td>`
-            }
+                htmlResult += drawLowerSpot(i,j);
+            }            
             else {
-                var bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[i][j]);
-                styles += `background-color:${bgColor};`;
-                styles += border;
-                var textColor = tintTextColor(bgColor);
-                styles += `color: ${textColor};`;
-                var shadowColor = textColor == "black" ? "white" : "black";
-                styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
-                htmlResult += `<td id="${i},${j}" class="dirt" style="${styles}">
-                                   ${gameGrid.upperGrid[i][j].toString()}
-                               </td>`;
+                htmlResult += drawUpperSpot(i,j);
             }
         }
         htmlResult += "</tr>";
@@ -159,6 +131,57 @@ function drawGridWithOverlay() {
     
     gameSection.innerHTML = "";
     gameSection.insertAdjacentHTML('beforeend', htmlResult);
+}
+
+function drawLowerSpot(x,y) {
+    var styles = "";
+    var bgColor = "";
+    var image = "";                
+    var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
+    
+    if (gameGrid.hazardGrid[i][j] == "3") { // Spilled oil draws over everything else
+        border = `border: 2px dotted black`;
+        bgColor = "#000";
+    } 
+    else if (gameGrid.hazardGrid[i][j] == "1") { // 1 is a pressure point
+        border = `border: 2px dotted black`;
+        bgColor = "#404752";                
+    }  
+    else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
+        bgColor = gameGrid.lowerGrid[i][j].Color;
+        image = gameGrid.lowerGrid[i][j].ImagePath;                                                        
+    }
+    styles += `background-color:${bgColor};`;
+    if (image != "") {
+        styles += `background:url(${image}); background-repeat:no-repeat; background-size:contain;`
+    }
+    styles += border;
+    
+    return `<td id="${x},${y}" class="exposed" style="${styles}"></td>`;
+}
+
+function drawUpperSpot(x,y) {
+    var image = "";
+    var styles = "";
+    var bgColor = "";
+    var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
+    
+    if (gameGrid.hazardGrid[x][y] == "3") { // Spilled oil draws over everything else
+        border = `border: 2px dotted black`;
+        bgColor = "#000";
+    }
+    else {   
+        var bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[x][y]);
+        styles += `background-color:${bgColor};`;
+        styles += border;
+        var textColor = tintTextColor(bgColor);
+        styles += `color: ${textColor};`;
+        var shadowColor = textColor == "black" ? "white" : "black";
+        styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
+        var text = gameGrid.upperGrid[x][y].toString();
+    }
+        
+    return `<td id="${x},${y}" class="dirt" style="${styles}"> ${text} </td>`;
 }
 
 function tintTextColor(bgColor) {
@@ -324,6 +347,10 @@ function processMinableSpot(spot) {
 
     if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
         gameGrid.healthRemaining -= Math.floor((selectedTool.damage - player.Precision) / 2);            
+    }
+    
+    if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "2") {            
+        gameGrid.hazardGrid[mineX][mineY] = "3"; // 2 is inert oil, 3 is spilled oil that will expand           
     }
     gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
 }
