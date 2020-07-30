@@ -334,7 +334,7 @@ function processMinableSpot(spot) {
     }
     
     if (gameGrid.settings.biome.IceSheetsEnabled) {
-        mineIceSheet(mineX, mineY, gameGrid.upperGrid[mineX][mineY]);
+        processIceSheet(mineX, mineY, gameGrid.upperGrid[mineX][mineY]);
     }
         
     gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
@@ -344,7 +344,7 @@ function processMinableSpot(spot) {
     }
 }
 
-function mineIceSheet(mineX, mineY, sheetValue) {
+function processIceSheet(mineX, mineY, sheetValue) {
     var spotId = spotMemory;
     spotId = spotMemory.split(",");
     var x = parseInt(spotId[0]);
@@ -355,9 +355,7 @@ function mineIceSheet(mineX, mineY, sheetValue) {
     var originalSpots = selectedTool.getMinableSpots(x,y);
     originalSpots = originalSpots.map(a => [a[0], a[1]]);
     
-    var a = (exploreSheet(mineX, mineY, sheetValue, originalSpots));
-    hazardMemory = a;
-  
+    hazardMemory = hazardMemory.concat(exploreSheet(mineX, mineY, sheetValue, originalSpots));      
 }
 
 // Loop de loop de loop de loop
