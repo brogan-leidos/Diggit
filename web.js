@@ -21,17 +21,16 @@ export default () => {
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
         refreshGrid();
-        refreshBiomeTab();
+//         refreshBiomeTab();
+        document.getElementById("gameSection").addEventListener('wheel', (e) => {           
+            player.selectedTool.rotateTool(Math.sign(e.deltaY));
+        }
 
     });
     
     document.getElementById('showInventoryButton').addEventListener('click', () => {
         showInventory();
-    });
-    
-    document.addEventListener("wheel", (e) => {
-        alert(`deltaY: ${e.deltaY}`);
-    });
+    });        
     
 };
 
@@ -114,11 +113,7 @@ function drawGridWithOverlay() {
     htmlResult += "<table><tbody>";    
     for (var i=0; i < gameGrid.upperGrid.length; i++) {
         htmlResult += "<tr>";
-        for (var j=0; j < gameGrid.upperGrid[i].length; j++) {
-            var styles = ""
-            var bgColor = "";
-            var image = "";                
-            var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`                                   
+        for (var j=0; j < gameGrid.upperGrid[i].length; j++) {                                  
             if (gameGrid.upperGrid[i][j] <= 0) { // in areas without dirt covereing them //#363940 -- old bg color                                   
                 htmlResult += drawLowerSpot(i,j);
             }            
@@ -477,9 +472,9 @@ function refreshBiomeTab() {
                 var biomeName = e.target.id.split("-")[1];
                 var newBiome = biomeManager.Biomes.filter(a => a.Name == biomeName)[0];
                 biomeManager.selectedBiome = newBiome;
-                document.getElementById("gameSection").style.background = `url(${newBiome.ImagePath})`;
-                document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
-                document.getElementById("gameSection").style.backgroundSize = `contain`;
+                document.getElementById("gameSection").style.background = `url(${newBiome.ImagePath}) no-repeat contain`;
+//                 document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
+//                 document.getElementById("gameSection").style.backgroundSize = `contain`;
                 refreshBiomeTab();
             });
         }
