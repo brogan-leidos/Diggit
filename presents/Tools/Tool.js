@@ -4,7 +4,7 @@ export default class Tool {
         this.Name = "Default Tool";
         this.Description = "Default tool description";
         this.power = 0;
-        tihs.MaxDurability = 0;
+        this.MaxDurability = 0;
         this.durability = 0;
         this.damage = 0;
     }
