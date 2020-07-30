@@ -5,8 +5,8 @@ export default class Glacier extends Biome {
   constructor() {
     super();
     this.Name = "Glacier";
-    this.Temperature = 5;
-    this.MaxHardness = 2;
+    this.Temperature = -5;
+    this.MaxHardness = 5;
     this.ImagePath = "./biome/biomeimages/glacier.jpg";
     
     this.GridBackgroundColor = "#90f7fc";
