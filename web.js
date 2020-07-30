@@ -24,7 +24,7 @@ export default () => {
         refreshBiomeTab(); // Biomes don't show up till this happens -- they get initialized with the board creation
         document.getElementById("gameSection").addEventListener('wheel', (e) => {           
             selectedTool.rotateTool(Math.sign(e.deltaY));
-            highlightValidSpaces
+            highlightValidSpaces();
         });
 
     });
