@@ -365,8 +365,7 @@ function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
         return -1;
     }
 
-    var beingExplored = new Array();
-    beingExplored.push([mineX, mineY]);
+    var beingExplored = [mineX, mineY];
     alreadyExplored.push([mineX, mineY]);
 
     var expectedAdjacent = [
