@@ -400,7 +400,7 @@ function checkIfSpotExistsInArray(spot, array) {
 }
 
 function damageIceSheets() {
-    hazardMemory.filter((item, index) = > hazardMemory.indexOf(item) === index); // Remove duplicates
+    hazardMemory.filter((item, index) => hazardMemory.indexOf(item) === index); // Remove duplicates
     for (var i=0; i < hazardMemory.length; i++) {
         gameGrid.upperGrid[hazardMemory[i][0]][hazardMemory[i][1]]--;
     }
