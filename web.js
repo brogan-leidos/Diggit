@@ -80,7 +80,7 @@ function processOil() {
     for (var i=0; i < hazardMemory.length; i++) {
         var seekX = hazardMemory[i][0];
         var seekY = hazardMemory[i][1];
-        if (gameGrid.upperGrid[seekX][seekY] <= 0) {
+        if (gameGrid.hazardGrid[seekX][seekY] <= 0) {
             //Expand
             gameGrid.hazardGrid[Math.min(seekX+1, gameGrid.upperGrid.length)][seekY] = "3";
             gameGrid.hazardGrid[Math.max(seekX-1, 0)][seekY] = "3";
