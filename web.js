@@ -386,7 +386,7 @@ function exploreSheet(mineX, mineY, sheetValue, alreadyExplored) {
          
 function checkIfSpotExistsInArray(spot, array) {
     for (var i=0; i < array.length; i++) {
-        if (spot.toString() == array.toString()) {
+        if (spot.toString() == array[i].toString()) {
             return true;
         }        
     }
