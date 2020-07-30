@@ -2,7 +2,7 @@ import GameGrid from './engine/GameGrid.js'
 import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Player from './engine/Player.js'
-import { Tool, Pick, Hammer, Drill, Vaporizer } from './presents/Tools/index.js' 
+import { Tool, Pick, Hammer, Drill, Vaporizer, Shovel } from './presents/Tools/index.js' 
 import Support from './presents/items/Support.js'
 import BiomeManager from './biome/BiomeManager.js'
 
@@ -31,7 +31,7 @@ export default () => {
 };
 
 function firstLaunch() {
-    player.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer());
+    player.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer(), new Shovel());
     player.availableItems.push(new Support());
     selectedTool = player.availableTools[0];
     
