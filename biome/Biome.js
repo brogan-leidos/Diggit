@@ -13,8 +13,16 @@ export default class Biome {
     
   }
 
-  rollTemperature() {
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 20);
+  rollTemperature(temp) {
+    if (temp == "cold") {
+      this.Temperature = this.Temperature + Math.floor(Math.random() * 7);
+    }
+    else if (temp == "hot") {
+      this.Temperature = this.Temperature + Math.floor(Math.random() * 20);
+    }
+    else {
+      this.Temperature = this.Temperature + Math.floor(Math.random() * 10);
+    }
   }
   
   getLargeObjects() { return; }
