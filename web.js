@@ -23,12 +23,7 @@ export default () => {
 
     document.getElementById('generateButton').addEventListener('click', () => {
         gameGrid = createGameGrid();
-        refreshGrid();
-        document.getElementById("gameSection").addEventListener('wheel', (e) => {           
-            selectedTool.rotateTool(Math.sign(e.deltaY));
-            highlightValidSpaces(spotMemory);
-        });
-
+        refreshGrid();        
     });
     
     document.getElementById('showInventoryButton').addEventListener('click', () => {
@@ -48,6 +43,11 @@ function firstLaunch() {
     refreshItemArea();
     refreshHealthBar();
     refreshBiomeTab();
+    
+    document.getElementById("gameSection").addEventListener('wheel', (e) => {           
+        selectedTool.rotateTool(Math.sign(e.deltaY));
+        highlightValidSpaces(spotMemory);
+    });
 
 }
 
