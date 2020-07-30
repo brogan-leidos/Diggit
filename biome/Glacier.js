@@ -12,9 +12,7 @@ export default class Glacier extends Biome {
     this.GridBackgroundColor = "#90f7fc";
     this.GridBorderColor = "#729ea1"
     
-    this.IceSheetsEnabled = true;
-    
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 10)
+    this.IceSheetsEnabled = true;    
   }
   
   getSmallObjects() {
