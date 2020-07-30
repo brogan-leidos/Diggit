@@ -7,8 +7,8 @@ IN PROGRESS:
    -> ~~Desert (Pressure points)~~ *high temp, low hardness, med rarity*
    -> Volcano (lava plumes that fill the site) *high temp, high hardness, high rarity*
    -> Forest (high vegatation, vegtables baby) *med temp, low hardness, low rarity*
-   -> Lakeside/Ocean (oil can spill, clouding visibility) *Lower temp, low hardness, higher rarity overall*
-   -> Frozen area (Ice sheets that crack as one unit. someting like all of layer 2 will crack at once if adjacent) *low temp, low hardness, need to combo with ice sheets to do well, good rarity*
+   -> ~~Lakeside/Ocean (oil can spill, clouding visibility)~~ *Lower temp, low hardness, higher rarity overall*
+   -> ~~Frozen area (Ice sheets that crack as one unit)~~ *low temp, low hardness, need to combo with ice sheets to do well, good rarity*
    
 TODO: (prioritized from highest to lowest)
  - Add stats (STR: more tool power, DEX: less wall damage, LUCK: higher rarity)
