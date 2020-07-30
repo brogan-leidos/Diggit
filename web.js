@@ -139,17 +139,17 @@ function drawLowerSpot(x,y) {
     var image = "";                
     var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
     
-    if (gameGrid.hazardGrid[i][j] == "3") { // Spilled oil draws over everything else
+    if (gameGrid.hazardGrid[x][y] == "3") { // Spilled oil draws over everything else
         border = `border: 2px dotted black`;
         bgColor = "#000";
     } 
-    else if (gameGrid.hazardGrid[i][j] == "1") { // 1 is a pressure point
+    else if (gameGrid.hazardGrid[x][y] == "1") { // 1 is a pressure point
         border = `border: 2px dotted black`;
         bgColor = "#404752";                
     }  
-    else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
-        bgColor = gameGrid.lowerGrid[i][j].Color;
-        image = gameGrid.lowerGrid[i][j].ImagePath;                                                        
+    else if (gameGrid.lowerGrid[x][y] != "0") { // If the spot is not empty
+        bgColor = gameGrid.lowerGrid[x][y].Color;
+        image = gameGrid.lowerGrid[x][y].ImagePath;                                                        
     }
     styles += `background-color:${bgColor};`;
     if (image != "") {
