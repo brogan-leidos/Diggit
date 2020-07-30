@@ -355,7 +355,8 @@ function mineIceSheet(mineX, mineY, sheetValue) {
     var originalSpots = selectedTool.getMinableSpots(x,y);
     originalSpots = originalSpots.map(a => [a[0], a[1]]);
     
-    hazardMemory.concat(exploreSheet(mineX, mineY, sheetValue, originalSpots));
+    var a = (exploreSheet(mineX, mineY, sheetValue, originalSpots));
+    hazardMemory = a;
   
 }
 
