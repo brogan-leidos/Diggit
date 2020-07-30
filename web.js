@@ -30,8 +30,7 @@ export default () => {
     });
     
     document.addEventListener("wheel", (e) => {
-        var a = e;
-        alert("beeg scroll inbound");
+        alert(`deltaY: ${e.deltaY});
     });
     
 };
