@@ -165,6 +165,7 @@ function drawUpperSpot(x,y) {
     var styles = "";
     var bgColor = "";
     var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
+    var text = "";
     
     if (gameGrid.hazardGrid[x][y] == "3") { // Spilled oil draws over everything else
         border = `border: 2px dotted black`;
@@ -176,7 +177,7 @@ function drawUpperSpot(x,y) {
         styles += `color: ${textColor};`;
         var shadowColor = textColor == "black" ? "white" : "black";
         styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
-        var text = gameGrid.upperGrid[x][y].toString();
+        text = gameGrid.upperGrid[x][y].toString();
     }
     
     styles += `background-color:${bgColor};`;
