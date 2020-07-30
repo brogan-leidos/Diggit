@@ -32,6 +32,10 @@ export function generateGrid(gameGrid) {
   if (settings.biome.PressurePointsEnabled) {
     gameGrid.hazardGrid = generatePressurePoints(gameGrid.hazardGrid, gameGrid.lowerGrid, settings);
   }
+    
+  if (settings.biome.OilSpillsEnabled) {
+    gameGrid.hazardGrid = generateOilSpills(gameGrid.hazardGrid, gameGrid.lowerGrid, settings);
+  }
   
   return gameGrid;
 }
@@ -188,6 +192,25 @@ function generatePressurePoints(hazardGrid, lowerGrid, settings) {
         var y = Math.floor(Math.random() * settings.height);
         if (lowerGrid[x][y] == "0") {
             hazardGrid[x][y] = "1";
+        }
+    }
+    return hazardGrid;
+   
+}
+
+// Hazgrid Value 2 is a oil spill -- Tries to place 3% points as spills
+function generateOilSpills(hazardGrid, lowerGrid, settings) {
+    var numPointsToPlace = Math.ceiling(lowerGrid.length * lowerGrid[0].length * .03);
+    var attempts = 0;
+    for (var i=0; i < numPointsToPlace; i++) {
+        while (attempts < lowerGrid.length * lowerGrid[0].length) {
+            var x = Math.floor(Math.random() * settings.width);
+            var y = Math.floor(Math.random() * settings.height);
+            if (lowerGrid[x][y] == "0") {
+                hazardGrid[x][y] = "2";
+                break;
+            }
+            attempts++;
         }
     }
     return hazardGrid;
