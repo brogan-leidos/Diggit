@@ -443,7 +443,6 @@ function refreshHealthBar() {
     var red = 0;
     var green = 200;
     
-    //each 1% is 5.1 to red
     red += Math.min((100 - percentRemaining) * 5.1, 255);
     if (percentRemaining <= 50) {
         green -= Math.max((50 - percentRemaining) * 4, 0);
@@ -473,22 +472,22 @@ function refreshBiomeTab() {
     for (var i=0; i < player.availableBiomes.length; i++) {
         if (player.availableBiomes[i] != biomeManager.selectedBiome.Name) {
             document.getElementById(`Biome-${player.availableBiomes[i]}`).addEventListener('click', (e) => {
-                // TODO put all this in its own function            
                 var biomeName = e.target.id.split("-")[1];
-                var newBiome = biomeManager.Biomes.filter(a => a.Name == biomeName)[0];
-                biomeManager.selectedBiome = newBiome;
-                document.getElementById("gameSection").style.background = `url(${newBiome.ImagePath})`;
-                document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
-                document.getElementById("gameSection").style.backgroundSize = `contain`;
-                refreshBiomeTab();
+                switchBiome(biomeName);  
             });
         }
-    }
-    
-    
+    }        
 }
 
-// collect the LOOT
+function switchBiome(biomeName) {
+    var newBiome = biomeManager.Biomes.filter(a => a.Name == biomeName)[0];
+    biomeManager.selectedBiome = newBiome;
+    document.getElementById("gameSection").style.background = `url(${newBiome.ImagePath})`;
+    document.getElementById("gameSection").style.backgroundRepeat = `no-repeat`;
+    document.getElementById("gameSection").style.backgroundSize = `contain`;
+    refreshBiomeTab();
+}
+
 function harvestWall() {
     var htmlAppend = ""
     for (var i=0; i < gameGrid.objects.length; i++) {
