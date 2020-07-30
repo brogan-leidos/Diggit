@@ -13,6 +13,7 @@ var player = new Player();
 var biomeManager = new BiomeManager();
 
 var highlightedSpots = [];
+var hazardMemory = [];
 
 export default () => {
     firstLaunch();
@@ -56,11 +57,48 @@ function createGameGrid() {
     return gameGrid;
 }
 
-function refreshGrid() {    
+function refreshGrid() {
+    processEvents();
     drawGridWithOverlay(); 
     assignEventsToGrid();
     highlightRevealvedObjects();
     refreshHealthBar();
+}
+
+// Processes things like timers and expanding spaces
+function processEvents() {
+    if (gameGrid.settings.biome.OilSpillsEnabled) {
+        processOil();
+    }
+    
+}
+
+function processOil() {
+//     if (hazardMemory.length == 0) {
+    updateHazardMemory("2");            
+    
+    for (var i=0; i < hazardMemory.length; i++) {
+        var seekX = hazardMemory[i][0];
+        var seekY = hazardMemory[i][1];
+        if (gameGrid.upperGrid[seekX][seekY] <= 0) {
+            //Expand
+            gameGrid.hazardGrid[seekX+1][seekY] = "2";
+            gameGrid.hazardGrid[seekX-1][seekY] = "2";
+            gameGrid.hazardGrid[seekX][seekY+1] = "2";
+            gameGrid.hazardGrid[seekX][seekY-1] = "2";
+        }
+    }        
+}
+
+function updateHazardMemory(searchValue) {
+    hazardMemory = [];
+    for (var x=0; x < gameGrid.hazardGrid.length; x++) {
+        for (var y=0; y < gameGrid.hazardGrid[x].length; y++) {
+            if (gameGrid.hazardGrid[x][y] == "2") {
+                hazardMemory.push([x,y]);
+            }
+        }
+    }
 }
 
 // Replaces gameSection with new HTML representing current gameGrid
@@ -80,6 +118,11 @@ function drawGridWithOverlay() {
                     border = `border: 2px dotted black`;
                     bgColor = "#404752";                
                 }
+                else if (gameGrid.hazardGrid[i][j] == "2") // 2 is an oil spill
+                {
+                    border = `border: 2px dotted black`;
+                    bgColor = "#000";    
+                }                
                 else if (gameGrid.lowerGrid[i][j] != "0") { // If the spot is not empty
                     bgColor = gameGrid.lowerGrid[i][j].Color;
                     image = gameGrid.lowerGrid[i][j].ImagePath;                                                        
