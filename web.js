@@ -54,7 +54,7 @@ function firstLaunch() {
 function createGameGrid() {
     var width = document.getElementById("width").value;
     var height = document.getElementById("height").value;
-    var rarity = document.getElementById("rarity").value + player.Luck;
+    var rarity = document.getElementById("rarity").value + player.Luck + player.LuckMod;
     
     gameGrid.settings = new GameGridSettings(width, height, rarity, biomeManager.selectedBiome);
     gameGrid = generateGrid(gameGrid);
@@ -301,14 +301,14 @@ function processMinableSpot(spot) {
     }
 
     if (gameGrid.settings.biome.PressurePointsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "1") {            
-        gameGrid.healthRemaining -= Math.floor((selectedTool.damage - player.Precision) / 2);            
+        gameGrid.healthRemaining -= Math.floor((selectedTool.damage - (player.Precision + player.PrecisionMod)) / 2);            
     }
     
     if (gameGrid.settings.biome.IceSheetsEnabled) {
         hazardMemory = hazardMemory.concat(processIceSheet(mineX, mineY, gameGrid.upperGrid[mineX][mineY], spotMemory, gameGrid, selectedTool));
     }
         
-    gameGrid.upperGrid[mineX][mineY] -= power + player.Power;
+    gameGrid.upperGrid[mineX][mineY] -= power + player.Power + player.PowerMod;
     
     if (gameGrid.settings.biome.OilSpillsEnabled && gameGrid.upperGrid[mineX][mineY] <= 0 && gameGrid.hazardGrid[mineX][mineY] == "2") {            
         gameGrid.hazardGrid[mineX][mineY] = "3"; // 2 is inert oil, 3 is spilled oil that will expand           
@@ -400,7 +400,7 @@ function refreshItemArea() {
 function assignEventsToItem(elementName) {
     document.getElementById(elementName).addEventListener('click', (e) => {
         var eventId = parseInt(e.target.id.split("-")[1]);
-        player.availableItems[eventId].behavior(gameGrid);
+        player.availableItems[eventId].behavior(gameGrid, player);
         player.availableItems[eventId].NumberRemaining--;
         if (player.availableItems[eventId].NumberRemaining == 0) {
             player.availableItems = player.availableItems.filter(a => a.NumberRemaining > 0);
@@ -531,4 +531,8 @@ function refreshDebugArea() {
         htmlAppend += `Hazard | ${hazardMemory[i]} <br>`;
     }
     area.innerHTML = htmlAppend;
+}
+
+function alterPlayerStats() {
+       
 }
