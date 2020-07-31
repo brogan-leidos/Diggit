@@ -543,7 +543,7 @@ function testTooltip(e) {
     tip.style.top = `${y}px`;
     tip.style.left = `${x}px`;
     
-    faceAwayToolTip(tip, 1);
+    fadeAwayToolTip(tip, 1);
 }
 
 function fadeAwayToolTip(element, alpha) {
@@ -551,5 +551,5 @@ function fadeAwayToolTip(element, alpha) {
         return;
     }
     element.style.color = `rgb(0, 255, 0, ${alpha})`;
-    fadeAwayToolTip(element, alpha - .01);
+    setTimeout(fadeAwayToolTip(element, alpha - .01), 500);
 }
