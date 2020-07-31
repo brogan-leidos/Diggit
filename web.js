@@ -545,7 +545,8 @@ function testTooltip(e) {
     tip.style.top = `${y}px`;
     tip.style.left = `${x}px`;
     
-    setTimeout(fadeAwayToolTip, 1000);
+    toolTipAlpha = 1;
+    setTimeout(fadeAwayToolTip, 100);
 }
 
 function fadeAwayToolTip() {
