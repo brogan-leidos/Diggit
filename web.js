@@ -540,10 +540,10 @@ function testTooltip(e) {
     var x = e.clientX;
     var y = e.clientY;
     
-    document.body.insertAdjacentHTML('beforeend', `<div id="toolTip">X:${x}, Y:${y}</div>`);
+    document.body.insertAdjacentHTML('beforeend', `<div id="toolTip">CRIT</div>`);
     var tip = document.getElementById("toolTip");    
-    tip.style.top = `${y}px`;
-    tip.style.left = `${x}px`;
+    tip.style.top = `${y-40}px`;
+    tip.style.left = `${x-40}px`;
     
     toolTipAlpha = 1;
     setTimeout(fadeAwayToolTip, 100);
@@ -557,6 +557,6 @@ function fadeAwayToolTip() {
     }
     toolTipAlpha -= .1;
 
-    tip.style.color = `rgba(0, 255, 50, ${toolTipAlpha})`;
+    tip.style.color = `rgba(0, 200, 0, ${toolTipAlpha})`;
     setTimeout(fadeAwayToolTip, 100);
 }
