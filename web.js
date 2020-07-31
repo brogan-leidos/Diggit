@@ -527,7 +527,7 @@ function processPlayerBuffs() {
 
 function checkIfCrit() {
     var roll = Math.floor(Math.random() * 100);
-    if (roll <= 1 + player.Luck + player.LuckMod) {
+    if (roll <= 5 + (player.Luck + player.LuckMod)*5) {
         displayCritToolTip();
         return true;
     }
