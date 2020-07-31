@@ -528,22 +528,28 @@ function processPlayerBuffs() {
 
 function checkIfCrit() {
     var roll = Math.floor(Math.random() * 100);
-    return (roll <= 1 + player.Luck + player.LuckMod);       
+    if (roll <= 1 + player.Luck + player.LuckMod) {
+        displayCritToolTip();
+        return true;
+    }
+    return false;
 }
 
-function testTooltip(e) {
+function displayCritToolTip() {
     var exists = document.getElementById("toolTip");
     if (exists) {
         exists.remove();
     }
+    
+    var spot = document.getElementById(spotMemory);
     
     var x = e.clientX;
     var y = e.clientY;
     
     document.body.insertAdjacentHTML('beforeend', `<div id="toolTip">CRIT</div>`);
     var tip = document.getElementById("toolTip");    
-    tip.style.top = `${y-40}px`;
-    tip.style.left = `${x-40}px`;
+    tip.style.top = `${y-10}px`;
+    tip.style.left = `${x-10}px`;
     
     toolTipAlpha = 1;
     setTimeout(fadeAwayToolTip, 100);
