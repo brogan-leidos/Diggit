@@ -1,20 +1,20 @@
 # Grid TEst
 
 IN PROGRESS:
- - Make it "cost" something to dig, prevent the player from spamming hammer and collecting loot
+ - Cost for digging: Currently trying to make the time investment the cost, make spamming hammer not very productive unless you're straight power or something
  - Adding a shop (Buy new items, repair items(?), Upgrade existing items
  - Adding new biomes
    -> ~~Desert (Pressure points)~~ *high temp, low hardness, med rarity*
-   -> Volcano (lava plumes that fill the site) *high temp, high hardness, high rarity*
-   -> Forest (high vegatation, vegtables baby) *med temp, low hardness, low rarity*
+   -> Volcano (lava plumes that fill the site) *high temp, high hardness, high rarity -- good space for power players*
+   -> Forest (high vegatation, vegtables baby, trees?) *med temp, low hardness, low rarity -- accessable to all*
    -> ~~Lakeside/Ocean (oil can spill, clouding visibility)~~ *Lower temp, low hardness, higher rarity overall*
-   -> ~~Frozen area (Ice sheets that crack as one unit)~~ *low temp, low hardness, need to combo with ice sheets to do well, good rarity*
+   -> ~~Frozen area (Ice sheets that crack as one unit)~~ *low temp, low hardness, need to combo with ice sheets to do well, good rarity -- good space for dex players*
    
 TODO: (prioritized from highest to lowest)
- - Add stats (STR: more tool power, DEX: less wall damage, LUCK: higher rarity)
  - Add a shop or something where you can spend your loot
  - Revamp inventory to use like... a material system or something? Idk, crafting and building whatever
  - World map to travel between biomes
+ - Make tool rotation a purchasable ability
  
  - Generate pressure points using noise (hurt the wall more when hit)
  - Update the soil building algorithm to use noise instead of random assignment
@@ -26,17 +26,15 @@ TODO: (prioritized from highest to lowest)
    -- with transparency!
  - Upgrade revealed highlight to track edges
  - Think/Add some more tools
-   -> A tool that lets you mine in an X (foil to the pick)
    -> "line" bombs
-   -> A shovel
  
  - Add debug things as "Features" :)
    -> Show number of treasures/kinds of treasures
    -> Current durability of a space
-   -> Mouse wheel to change tools?
 
 BUGS:
  - Pressure point border colors get overwritten sometimes
+ - Vaporizer straight up acts like a crazy guy when used
  - Not a bug, but need to change hitting system to account for future pressure points
 
 
