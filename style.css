@@ -75,4 +75,5 @@
   bottom: right;
   color: rgba(0, 200, 0, 1);
   position: fixed;
+  font-weight: bolder;
 }
