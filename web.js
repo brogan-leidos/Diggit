@@ -18,6 +18,8 @@ var highlightedSpots = []; // Spots to color given the current tool and position
 var hazardMemory = []; // Optimizaion for processing hazards
 var spotMemory = ""; // The last spot the mouse was on
 
+var toolTipAlpha = 1;
+
 export default () => {
     firstLaunch();
 
@@ -543,19 +545,17 @@ function testTooltip(e) {
     tip.style.top = `${y}px`;
     tip.style.left = `${x}px`;
     
-    fadeAwayToolTip(tip, 1);
-    
-    var myVar = setInterval(myTimer, 1000);
+    setTimeout(fadeAwayToolTip, 1000);
 }
-function myTimer() {
-  var d = new Date();
-  document.getElementsByClassName("infoSection")[0].innerHTML = d.toLocaleTimeString();
-} 
-function fadeAwayToolTip(element, alpha) {
-    if (alpha <= 0) {
-        element.remove();
+
+function fadeAwayToolTip() {
+   var tip = document.getElementById("toolTip");    
+    if (toolTipAlpha <= 0) {
+        tip.remove();
         return;
     }
-    element.style.color = `rgba(0, 255, 0, ${alpha})`;
-    setTimeout(fadeAwayToolTip(element, alpha - .01), 3000);
+    toolTipAlpha -= .1;
+
+    tip.style.color = `rgba(0, 255, 50, ${alpha})`;
+    setTimeout(fadeAwayToolTip, 1000);
 }
