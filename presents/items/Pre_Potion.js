@@ -3,6 +3,7 @@ import Item from './Item.js'
 export default class Pre_Potion extends Item {
     
     constructor () {
+      super();
       this.Name = "Potion of Precision";
       this.Description = "Gives you insight into the walls structure, allowing you to deal almost no damage for your next few swings!";
       this.Power = 0;
