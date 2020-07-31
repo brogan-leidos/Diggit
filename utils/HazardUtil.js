@@ -19,7 +19,7 @@ export function processOil(gameGrid) {
     return hazardMemory;
 }
 
-function updateHazardMemory(searchValue= -1, gameGrid) {
+export function updateHazardMemory(searchValue= -1, gameGrid) {
     hazardMemory = [];
     for (var x=0; x < gameGrid.hazardGrid.length; x++) {
         for (var y=0; y < gameGrid.hazardGrid[x].length; y++) {
