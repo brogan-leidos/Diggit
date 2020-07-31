@@ -1,5 +1,4 @@
 var gameGrid = null;
-var hazardMemory = []
 
 export function processOil(gameGrid) {
 //  EXPAND current revealed oil tiles
@@ -20,17 +19,19 @@ export function processOil(gameGrid) {
 }
 
 export function updateHazardMemory(searchValue= -1, gameGrid) {
-    hazardMemory = [];
+    var memory = [];
     for (var x=0; x < gameGrid.hazardGrid.length; x++) {
         for (var y=0; y < gameGrid.hazardGrid[x].length; y++) {
             if (gameGrid.hazardGrid[x][y] != 0 && searchValue == -1) {
-                hazardMemory.push([x,y]);
+                memory.push([x,y]);
             }
             else if (gameGrid.hazardGrid[x][y] == searchValue) {
-                hazardMemory.push([x,y]);
+                memory.push([x,y]);
             }            
         }
     }
+    
+    return memory;
 }
 
 
