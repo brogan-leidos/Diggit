@@ -529,12 +529,12 @@ function checkIfCrit() {
     return (roll <= 1 + player.Luck + player.LuckMod);       
 }
 
-function testTooltip(e) {
-    var tip = document.getElementById("toolTip");
+function testTooltip(e) {   
     var x = e.clientX;
     var y = e.clientY;
     
-    tip.innerHTML = `X:${x}, Y:${y}`;
+    document.insertAdjacentHTML('beforeend', `<div id="toolTip">X:${x}, Y:${y}</div>`);
+    var tip = document.getElementById("toolTip");    
     tip.style.top = `${y}px`;
     tip.style.left = `${x}px`;
     
