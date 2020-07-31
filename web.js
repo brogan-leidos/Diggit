@@ -255,6 +255,11 @@ function mineClickedSpot(spotId) {
     if(!checkIfStillStanding()) {
         return;
     }
+    var crit = checkIfCrit();
+    if (crit) {
+       player.buffStats(20,20,0);
+       displayInInfoSection("CRITICAL HIT!");
+    }
     
     spotId = spotId.split(",");
     var x = parseInt(spotId[0]);
@@ -285,6 +290,10 @@ function mineClickedSpot(spotId) {
         if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             gameGrid.objects[i].FullyRevealed = true;
         }            
+    }
+    
+    if (crit) {
+        player.debuffStats(20,20,0);
     }
     
     processPlayerBuffs();
@@ -541,6 +550,10 @@ function processPlayerBuffs() {
     }
     else {
         player.normalizeStats();
-    }
-    
+    }    
+}
+
+function checkIfCrit() {
+    var roll = Math.floor(Math.random() * 100);
+    return (roll <= 1 + player.Luck + player.LuckMod);       
 }
