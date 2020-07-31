@@ -9,7 +9,7 @@ export default class Support extends Item {
     this.NumberRemaining = 1;
   } 
   
-  behavior(gameGrid) {
+  behavior(gameGrid, player) {
     gameGrid.healthRemaining += this.power;
   }  
  
