@@ -73,6 +73,6 @@
 #toolTip { 
   text-align: right;
   bottom: right;
-  color: green;
+  color: rgba(0, 200, 0, 1);
   position: fixed;
 }
