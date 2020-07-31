@@ -543,13 +543,13 @@ function displayCritToolTip() {
     
     var spot = document.getElementById(spotMemory);
     
-    var x = e.clientX;
-    var y = e.clientY;
+    var x = spot.offsetLeft;
+    var y = spot.offsetTop;
     
     document.body.insertAdjacentHTML('beforeend', `<div id="toolTip">CRIT</div>`);
     var tip = document.getElementById("toolTip");    
-    tip.style.top = `${y-10}px`;
-    tip.style.left = `${x-10}px`;
+    tip.style.top = `${y}px`;
+    tip.style.left = `${x}px`;
     
     toolTipAlpha = 1;
     setTimeout(fadeAwayToolTip, 100);
