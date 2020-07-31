@@ -70,3 +70,8 @@
   background-color: grey;
 }
 
+#tooltip { 
+  text-align: right;
+  bottom: right;
+  color: green;
+}
