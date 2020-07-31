@@ -9,6 +9,10 @@ export default class Player {
     this.Power = 0;
     this.Precision = 0;
     this.Luck = 0;
+    
+    this.PowerMod = 0;
+    this.PrecisionMod = 0;
+    this.LuckMod = 0;
   }
   
   addToInventory(object) {
@@ -27,5 +31,23 @@ export default class Player {
       this.inventory.delete(objectName);
     }
     return retItem;
+  }
+  
+  buffStats(pow=0, pre=0, luck=0) {
+    this.PowerMod += pow;
+    this.PrecisionMod += pre;
+    this.LuckMod += luck;
+  }
+  
+  debuffStats(pow=0, pre=0, luck=0) {
+    this.PowerMod -= pow;
+    this.PrecisionMod -= pre;
+    this.LuckMod -= luck;
+  }
+  
+  normalizeStats() {
+    this.PowerMod = 0;
+    this.PrecisionMod = 0;
+    this.LuckMod = 0;
   }
 }
