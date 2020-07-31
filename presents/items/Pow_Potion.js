@@ -10,7 +10,7 @@ export default class Pow_Potion extends Item {
       this.NumberRemaining = 1;
     }
     
-    behavior(gameGrid) {
+    behavior(gameGrid, player) {
       gameGrid.alterPlayerStats(20, 0, 0);
     }
               
