@@ -3,7 +3,7 @@ import {generateGrid} from './engine/Generate-Grid.js'
 import GameGridSettings from './engine/GameGridSettings.js'
 import Player from './engine/Player.js'
 import { Tool, Pick, Hammer, Drill, Vaporizer, Shovel, Chisel } from './presents/Tools/index.js' 
-import { Support, Pow_Potion } from './presents/items/index.js'
+import { Support, Pow_Potion, Pre_Potion } from './presents/items/index.js'
 import BiomeManager from './biome/BiomeManager.js'
 import { tintTextColor, tintBgColor, tintHex } from './utils/ColorUtil.js'
 import { processIceSheet, damageIceSheets } from './utils/HazardUtil.js'
@@ -34,7 +34,7 @@ export default () => {
 
 function firstLaunch() {
     player.availableTools.push(new Pick(), new Hammer(), new Drill(), new Vaporizer(), new Shovel(), new Chisel());
-    player.availableItems.push(new Support(), new Pow_Potion());
+    player.availableItems.push(new Support(), new Pow_Potion(), new Pre_Potion());
     selectedTool = player.availableTools[0];
     
     player.availableBiomes = ["Generic", "Forest", "Ocean", "Desert", "Volcano", "Glacier"];
