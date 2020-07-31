@@ -556,6 +556,6 @@ function fadeAwayToolTip() {
     }
     toolTipAlpha -= .1;
 
-    tip.style.color = `rgba(0, 255, 50, ${alpha})`;
+    tip.style.color = `rgba(0, 255, 50, ${toolTipAlpha})`;
     setTimeout(fadeAwayToolTip, 1000);
 }
