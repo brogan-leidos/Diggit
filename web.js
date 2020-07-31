@@ -514,7 +514,7 @@ function assignEventsToInventory() {
         });
         
         document.getElementById(`Sell-${key}`).addEventListener('mouseover', (e) => {            
-            var item = player.inventory.get(key);
+            var item = player.inventory.get(key)[0];
             displayInInfoSection(`Should sell for around ${item.Value}`);
         });
     }
