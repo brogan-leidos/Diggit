@@ -529,7 +529,12 @@ function checkIfCrit() {
     return (roll <= 1 + player.Luck + player.LuckMod);       
 }
 
-function testTooltip(e) {   
+function testTooltip(e) {
+    var exists = document.getElementById("toolTip");
+    if (exists) {
+        exists.remove();
+    }
+    
     var x = e.clientX;
     var y = e.clientY;
     
@@ -538,4 +543,13 @@ function testTooltip(e) {
     tip.style.top = `${y}px`;
     tip.style.left = `${x}px`;
     
+    faceAwayToolTip(tip, 1);
+}
+
+function fadeAwayToolTip(element, alpha) {
+    if (alpha == 0) {
+        return;
+    }
+    element.style.color = `rgb(0, 255, 0, ${alpha})`;
+    fadeAwayToolTip(element, alpha - .01);
 }
