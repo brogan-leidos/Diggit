@@ -537,7 +537,5 @@ function testTooltip(e) {
     tip.innerHTML = `X:${x}, Y:${y}`;
     tip.style.height = `${y}px`;
     tip.style.width = `${x}px`;
-    tip.style.bottom = 0;
-    tip.style.position = "fixed";
     
 }
