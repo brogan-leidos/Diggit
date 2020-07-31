@@ -547,7 +547,8 @@ function testTooltip(e) {
 }
 
 function fadeAwayToolTip(element, alpha) {
-    if (alpha == 0) {
+    if (alpha <= 0) {
+        element.remove();
         return;
     }
     element.style.color = `rgb(0, 255, 0, ${alpha})`;
