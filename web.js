@@ -47,6 +47,7 @@ function firstLaunch() {
     document.getElementById("gameSection").addEventListener('wheel', (e) => {           
         selectedTool.rotateTool(Math.sign(e.deltaY));
         highlightValidSpaces(spotMemory);
+        testTooltip(e);
     });
 
 }
@@ -526,4 +527,16 @@ function processPlayerBuffs() {
 function checkIfCrit() {
     var roll = Math.floor(Math.random() * 100);
     return (roll <= 1 + player.Luck + player.LuckMod);       
+}
+
+function testTooltip(e) {
+    var tip = document.getElementById("toolTip");
+    var x = e.clientX;
+    var y = e.clientY;
+    
+    tip.innerHTML = `X:${x}, Y:${y}`;
+    tip.style.height = `${y}px`;
+    tip.style.width = `${x}px`;
+    tip.style.position = "fixed";
+    
 }
