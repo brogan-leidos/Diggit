@@ -7,6 +7,7 @@ export default class Tool {
         this.MaxDurability = 0;
         this.durability = 0;
         this.damage = 0;
+        this.Angle = 0;
     }
     
     // Given a point (x,y) return all spots affected by the mine
