@@ -8,7 +8,7 @@ export default class Item {
       this.NumberRemaining = 0;
     }
     
-    behavior(gameGrid) {
+    behavior(gameGrid, player) {
       return;
     }
               
