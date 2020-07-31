@@ -6,7 +6,7 @@ import { Tool, Pick, Hammer, Drill, Vaporizer, Shovel, Chisel } from './presents
 import { Support, Pow_Potion, Pre_Potion } from './presents/items/index.js'
 import BiomeManager from './biome/BiomeManager.js'
 import { tintTextColor, tintBgColor, tintHex } from './utils/ColorUtil.js'
-import { processIceSheet, damageIceSheets, processOil } from './utils/HazardUtil.js'
+import { processIceSheet, damageIceSheets, processOil, updateHazardMemory } from './utils/HazardUtil.js'
 
 
 var gameGrid = new GameGrid();
@@ -536,7 +536,7 @@ function refreshDebugArea() {
     for(var i=0; i < gameGrid.objects.length; i++) {
         htmlAppend += gameGrid.objects[i].Name + " | " + gameGrid.objects[i].origin + "<br>";
     }
-    updateHazardMemory();
+    updateHazardMemory(-1, gameGrid);
     for(var i=0; i < hazardMemory.length; i++) {
         htmlAppend += `Hazard | ${hazardMemory[i]} <br>`;
     }
