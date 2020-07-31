@@ -536,7 +536,7 @@ function refreshDebugArea() {
     for(var i=0; i < gameGrid.objects.length; i++) {
         htmlAppend += gameGrid.objects[i].Name + " | " + gameGrid.objects[i].origin + "<br>";
     }
-    updateHazardMemory(-1, gameGrid);
+    hazardMemory = updateHazardMemory(-1, gameGrid);
     for(var i=0; i < hazardMemory.length; i++) {
         htmlAppend += `Hazard | ${hazardMemory[i]} <br>`;
     }
