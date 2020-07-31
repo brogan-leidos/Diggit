@@ -13,6 +13,8 @@ export default class Player {
     this.PowerMod = 0;
     this.PrecisionMod = 0;
     this.LuckMod = 0;
+    
+    this.BuffTimer = 0;
   }
   
   addToInventory(object) {
