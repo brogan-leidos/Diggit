@@ -544,8 +544,13 @@ function testTooltip(e) {
     tip.style.left = `${x}px`;
     
     fadeAwayToolTip(tip, 1);
+    
+    var myVar = setInterval(myTimer, 1000);
 }
-
+function myTimer() {
+  var d = new Date();
+  document.getElementById("infoSection").innerHTML = d.toLocaleTimeString();
+} 
 function fadeAwayToolTip(element, alpha) {
     if (alpha <= 0) {
         element.remove();
