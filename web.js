@@ -535,7 +535,7 @@ function testTooltip(e) {
     var y = e.clientY;
     
     tip.innerHTML = `X:${x}, Y:${y}`;
-    tip.style.bottom = `${y}px`;
+    tip.style.top = `${y}px`;
     tip.style.left = `${x}px`;
     
 }
