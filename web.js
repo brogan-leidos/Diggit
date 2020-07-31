@@ -547,8 +547,8 @@ function displayCritToolTip() {
     
     document.body.insertAdjacentHTML('beforeend', `<div id="toolTip">CRIT</div>`);
     var tip = document.getElementById("toolTip");    
-    tip.style.top = `${y + 160}px`;
-    tip.style.left = `${x + 200}px`;
+    tip.style.top = `${y + 100}px`;
+    tip.style.left = `${x + 220}px`;
     
     toolTipAlpha = 1;
     setTimeout(fadeAwayToolTip, 100);
