@@ -12,6 +12,7 @@ export default class Pow_Potion extends Item {
     
     behavior(gameGrid, player) {
       player.buffStats(20, 0, 0);
+      player.BuffTimer = 3;
     }
               
 }
