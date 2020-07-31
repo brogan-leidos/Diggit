@@ -11,7 +11,7 @@ export default class Pow_Potion extends Item {
     }
     
     behavior(gameGrid, player) {
-      gameGrid.alterPlayerStats(20, 0, 0);
+      player.buffStats(20, 0, 0);
     }
               
 }
