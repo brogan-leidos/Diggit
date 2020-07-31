@@ -9,6 +9,8 @@ export default class Pick extends Tool {
     this.MaxDurability = -1;
     this.durability = this.MaxDurability;
     this.damage = 8;
+    
+    this.Angle = 0;
   } 
     
   getMinableSpots(x, y) {
