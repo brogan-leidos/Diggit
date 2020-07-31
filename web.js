@@ -49,7 +49,6 @@ function firstLaunch() {
     document.getElementById("gameSection").addEventListener('wheel', (e) => {           
         selectedTool.rotateTool(Math.sign(e.deltaY));
         highlightValidSpaces(spotMemory);
-        testTooltip(e);
     });
 
 }
