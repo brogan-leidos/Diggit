@@ -8,7 +8,7 @@ export default class Player {
     
     this.Power = 0;
     this.Precision = 0;
-    this.Luck = 0;
+    this.Luck = 50;
     
     this.PowerMod = 0;
     this.PrecisionMod = 0;
