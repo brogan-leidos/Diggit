@@ -6,7 +6,7 @@ import { Tool, Pick, Hammer, Drill, Vaporizer, Shovel, Chisel } from './presents
 import { Support, Pow_Potion, Pre_Potion } from './presents/items/index.js'
 import BiomeManager from './biome/BiomeManager.js'
 import { tintTextColor, tintBgColor, tintHex } from './utils/ColorUtil.js'
-import { processIceSheet, damageIceSheets } from './utils/HazardUtil.js'
+import { processIceSheet, damageIceSheets, processOil } from './utils/HazardUtil.js'
 
 
 var gameGrid = new GameGrid();
@@ -76,39 +76,39 @@ function refreshGrid() {
 // Processes things like timers and expanding spaces
 function processEvents() {
     if (gameGrid.settings.biome.OilSpillsEnabled) {
-        processOil();
+        hazardMemory = processOil(gameGrid);
     }    
 }
 
-function processOil() {
-//  EXPAND current revealed oil tiles
-    updateHazardMemory("3");            
+// function processOil() {
+// //  EXPAND current revealed oil tiles
+//     updateHazardMemory("3");            
     
-    for (var i=0; i < hazardMemory.length; i++) {
-        var seekX = hazardMemory[i][0];
-        var seekY = hazardMemory[i][1];
+//     for (var i=0; i < hazardMemory.length; i++) {
+//         var seekX = hazardMemory[i][0];
+//         var seekY = hazardMemory[i][1];
 
-        gameGrid.hazardGrid[Math.min(seekX+1, gameGrid.upperGrid.length - 1)][seekY] = "3";
-        gameGrid.hazardGrid[Math.max(seekX-1, 0)][seekY] = "3";
-        gameGrid.hazardGrid[seekX][Math.min(seekY+1, gameGrid.upperGrid[0].length - 1)] = "3";
-        gameGrid.hazardGrid[seekX][Math.max(seekY-1, 0)] = "3";
+//         gameGrid.hazardGrid[Math.min(seekX+1, gameGrid.upperGrid.length - 1)][seekY] = "3";
+//         gameGrid.hazardGrid[Math.max(seekX-1, 0)][seekY] = "3";
+//         gameGrid.hazardGrid[seekX][Math.min(seekY+1, gameGrid.upperGrid[0].length - 1)] = "3";
+//         gameGrid.hazardGrid[seekX][Math.max(seekY-1, 0)] = "3";
         
-    }        
-}
+//     }        
+// }
 
-function updateHazardMemory(searchValue= -1) {
-    hazardMemory = [];
-    for (var x=0; x < gameGrid.hazardGrid.length; x++) {
-        for (var y=0; y < gameGrid.hazardGrid[x].length; y++) {
-            if (gameGrid.hazardGrid[x][y] != 0 && searchValue == -1) {
-                hazardMemory.push([x,y]);
-            }
-            else if (gameGrid.hazardGrid[x][y] == searchValue) {
-                hazardMemory.push([x,y]);
-            }            
-        }
-    }
-}
+// function updateHazardMemory(searchValue= -1) {
+//     hazardMemory = [];
+//     for (var x=0; x < gameGrid.hazardGrid.length; x++) {
+//         for (var y=0; y < gameGrid.hazardGrid[x].length; y++) {
+//             if (gameGrid.hazardGrid[x][y] != 0 && searchValue == -1) {
+//                 hazardMemory.push([x,y]);
+//             }
+//             else if (gameGrid.hazardGrid[x][y] == searchValue) {
+//                 hazardMemory.push([x,y]);
+//             }            
+//         }
+//     }
+// }
 
 // Replaces gameSection with new HTML representing current gameGrid
 function drawGridWithOverlay() {
