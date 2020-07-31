@@ -3,6 +3,7 @@ import Item from './Item.js'
 export default class Pow_Potion extends Item {
     
     constructor () {
+      super();
       this.Name = "Potion of Power";
       this.Description = "Maximizes the power of your next few swings!";
       this.Power = 0;
