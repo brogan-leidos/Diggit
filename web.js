@@ -273,7 +273,7 @@ function mineClickedSpot(spotId) {
         damageIceSheets(hazardMemory, gameGrid);
     }
     
-    gameGrid.healthRemaining -= selectedTool.damage - player.Precision * 2;
+    gameGrid.healthRemaining -= Math.max(selectedTool.damage - (player.Precision + player.PrecisionMod) * 2, 0);
     selectedTool.durability--;
     refreshDurabilityArea();
 
