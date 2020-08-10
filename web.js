@@ -432,7 +432,7 @@ function harvestWall() {
                 for (var j=0; j < gameGrid.objects[i].Breakdown.length; j++) {
                     var numToAdd = gameGrid.objects[i].Breakdown[j][1];
                     for (var k=0; k < numToAdd; k++) {
-                        player.addToInventory(gmaeGrid.objects[i].Breakdown[j][0]);
+                        player.addToInventory(gameGrid.objects[i].Breakdown[j][0]);
                     }
                 }
             }
