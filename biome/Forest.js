@@ -1,5 +1,5 @@
 import Biome from './Biome.js'
-import { Loot, Sapphire, Diamond, Ruby, Emerald, Amythest, Fossil_A, Copper_Large, Copper_Medium, Copper } from './objects/index.js';
+import { Loot, Sapphire, Diamond, Ruby, Emerald, Amethyst, Fossil_A, Copper_Large, Copper_Medium, Copper } from './objects/index.js';
 
 export default class Forest extends Biome {
   constructor() {
@@ -20,7 +20,7 @@ export default class Forest extends Biome {
     objects.push(new Ruby(.05));
     objects.push(new Sapphire(.05));
     objects.push(new Emerald(.05));
-    objects.push(new Amythest(.05));
+    objects.push(new Amethyst(.05));
     objects.push(new Diamond(.01));
     objects.push(new Loot("Black Diamond", "An extremely rare, extremely precious gem", .001, 1, 1, "#d3d3d3"));    
     objects.push(new Copper(.3));
