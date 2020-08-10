@@ -6,13 +6,13 @@ export default class Forest extends Biome {
     super();
     this.Name = "Forest";
     this.Temperature = 30;
+    this.MaxTempVariance = 5;
     this.MaxHardness = 2;
     this.ImagePath = "./biome/biomeimages/forest.jpg";
     
     this.GridBackgroundColor = "#236e45";
     this.GridBorderColor = "#567564"
     
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 5);
   }    
 
   getSmallObjects() {
