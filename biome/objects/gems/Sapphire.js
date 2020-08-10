@@ -1,4 +1,4 @@
-import Loot from './Loot.js'
+import Loot from '../Loot.js'
 
 export default class Sapphire extends Loot {
   constructor(rarity) {
