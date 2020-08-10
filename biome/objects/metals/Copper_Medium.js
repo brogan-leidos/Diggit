@@ -1,4 +1,4 @@
-import Loot from './Loot.js'
+import Loot from '../Loot.js'
 import Copper from './Copper.js'
 
 export default class Copper_Medium extends Loot {
