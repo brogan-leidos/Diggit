@@ -1,4 +1,4 @@
-import Loot from './Loot.js'
+import Loot from '../Loot.js'
 
 export default class Copper extends Loot {
   constructor(rarity) {
