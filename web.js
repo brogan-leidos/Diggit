@@ -7,7 +7,7 @@ import { Support, Pow_Potion, Pre_Potion } from './presents/items/index.js'
 import BiomeManager from './biome/BiomeManager.js'
 import { tintTextColor, tintBgColor, tintHex } from './utils/ColorUtil.js'
 import { processIceSheet, damageIceSheets, processOil, updateHazardMemory } from './utils/HazardUtil.js'
-
+import { getMapTemplate, assignMapEvents } from './templates/Travel.js' 
 
 var gameGrid = new GameGrid();
 var selectedTool = new Tool();
@@ -30,7 +30,11 @@ export default () => {
     
     document.getElementById('showInventoryButton').addEventListener('click', () => {
         showInventory();
-    });        
+    });
+    
+    document.getElementById('showMapButton').addEventListener('click', () => {
+        showMap();
+    }); 
     
 };
 
@@ -564,4 +568,14 @@ function fadeAwayToolTip() {
 
     tip.style.color = `rgba(0, 200, 0, ${toolTipAlpha})`;
     setTimeout(fadeAwayToolTip, 100);
+}
+
+function showMap() { 
+    var section = document.getElementById("gameSection");    
+    section.innerHTML = getMapTemplate(player, biomeManager);
+    assignMapEvents(player, biomeManager);
+}
+
+function travelToBiome(biome) {
+    alert("Traveling to" + biome);   
 }
