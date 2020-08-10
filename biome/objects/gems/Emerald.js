@@ -1,4 +1,4 @@
-import Loot from './Loot.js'
+import Loot from '../Loot.js'
 
 export default class Emerald extends Loot {
   constructor(rarity) {
