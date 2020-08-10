@@ -1,5 +1,5 @@
 import Biome from './Biome.js'
-import { Loot, Sapphire, Diamond, Fossil_A, Copper_Large, Copper_Medium } from './objects/index.js';
+import { Loot, Sapphire, Diamond, Fossil_A, Copper_Large, Copper_Medium, Copper } from './objects/index.js';
 
 export default class Forest extends Biome {
   constructor() {
@@ -17,13 +17,13 @@ export default class Forest extends Biome {
 
   getSmallObjects() {
     var objects = [];
-    objects.push(new Loot("Ruby", "A sparkling red gem",                   .05, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
+    objects.push(new Ruby(.05));
     objects.push(new Sapphire(.05));
-    objects.push(new Loot("Emerald", "A sparkling green gem",              .05, 1, 1, "#0ef083"));
-    objects.push(new Loot("Amythest", "A sparkling violet gem",            .05, 1, 1, "#9c56c4"));
+    objects.push(new Emerald(.05));
+    objects.push(new Amythest(.05));
     objects.push(new Diamond(.01));
     objects.push(new Loot("Black Diamond", "An extremely rare, extremely precious gem", .001, 1, 1, "#d3d3d3"));    
-    objects.push(new Loot("Copper Node", "A small node of copper",         .3, 1, 1, "#d4ad22"));
+    objects.push(new Copper(.3));
     objects.push(new Loot("Iron Node", "A small node of iron",             .2, 1, 1, "#949494"));
     objects.push(new Loot("Gold Nugget", "A small gold nugget",            .07, 1, 1, "#ffea00"));
     objects.push(new Loot("Green Moss", "A patch of common green moss",    .65, 1, 1, "#154518"));
