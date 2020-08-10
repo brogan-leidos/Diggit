@@ -429,7 +429,7 @@ function harvestWall() {
         if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
             if (gameGrid.objects[i].Breakdown.length != 0) {
-                for (var j=0; j < gameGrid.objects[i].Breakdown; j++) {
+                for (var j=0; j < gameGrid.objects[i].Breakdown.length; j++) {
                     var numToAdd = gameGrid.objects[i].Breakdown[j][1];
                     for (var k=0; k < numToAdd; k++) {
                         player.addToInventory(gmaeGrid.objects[i].Breakdown[j][0]);
