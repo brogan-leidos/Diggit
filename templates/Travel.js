@@ -23,3 +23,13 @@ export function getMapTemplate(player, biomeManager) {
   
   return retValue;
 }
+
+export function assignMapEvents(player, biomeManager) {
+  for (var i=0; i < player.availableBiomes.length; i++) {
+    var biome = player.availableBiomes[i];
+    document.getElementById(`Travel-${biome.Name}`).addEventListener('click', (e) => {            
+        travelToBiome(e.target.id);
+    });
+  }
+  
+}
