@@ -429,12 +429,7 @@ function harvestWall() {
         if (checkIfObjectIsRevealed(gameGrid.objects[i])) {
             htmlAppend += "Fully uncovered:" + gameGrid.objects[i].Name + "!<br>";
             if (gameGrid.objects[i].Breakdown.length != 0) {
-                for (var j=0; j < gameGrid.objects[i].Breakdown.length; j++) {
-                    var numToAdd = gameGrid.objects[i].Breakdown[j][1];
-                    for (var k=0; k < numToAdd; k++) {
-                        player.addToInventory({Name: gameGrid.objects[i].Breakdown[j][0]});
-                    }
-                }
+                breakdownObject(gameGrid.objects[i]);                
             }
             else {
                 player.addToInventory(gameGrid.objects[i]);
@@ -442,6 +437,15 @@ function harvestWall() {
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
+}
+
+function breakdownObject(object) {
+    for (var j=0; j < object.Breakdown.length; j++) {
+        var numToAdd = object.Breakdown[j][1];
+        for (var k=0; k < numToAdd; k++) {
+            player.addToInventory({Name: object.Breakdown[j][0]});
+        }
+    }
 }
 
 function checkIfObjectIsRevealed(object) {
