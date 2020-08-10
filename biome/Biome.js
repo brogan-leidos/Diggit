@@ -1,6 +1,7 @@
 export default class Biome {
   constructor() {    
-    this.Temperature = 0; 
+    this.Temperature = 0;
+    this.MaxTempVariance = 5;
     this.MaxHardness = 0;
     
     this.GridBorderColor = "#ddd";
@@ -13,16 +14,8 @@ export default class Biome {
     
   }
 
-  rollTemperature(temp) {
-    if (temp == "cold") {
-      this.Temperature = this.Temperature + Math.floor(Math.random() * 5);
-    }
-    else if (temp == "hot") {
-      this.Temperature = this.Temperature + Math.floor(Math.random() * 20);
-    }
-    else {
-      this.Temperature = this.Temperature + Math.floor(Math.random() * 10);
-    }
+  rollTemperature() {
+    this.Temperature = this.Temperature + Math.floor(Math.random() * this.MaxTempVariance);    
   }
   
   getLargeObjects() { return; }
