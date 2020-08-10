@@ -6,6 +6,7 @@ export default class Forest extends Biome {
     super();
     this.Name = "Ocean";
     this.Temperature = 10;
+    this.MaxTempVariance = 3;
     this.MaxHardness = 2;
     this.ImagePath = "./biome/biomeimages/ocean.jpg";
     
@@ -14,7 +15,6 @@ export default class Forest extends Biome {
     
     this.OilSpillsEnabled = true;
     
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
   }
   
   getSmallObjects() {
