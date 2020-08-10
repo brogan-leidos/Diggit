@@ -6,6 +6,7 @@ export default class Desert extends Biome {
     super();
     this.Name = "Desert";
     this.Temperature = 70;
+    this.MaxTempVariance = 10;
     this.MaxHardness = 2;
     this.ImagePath = "./biome/biomeimages/desert.jfif";
     
@@ -14,7 +15,6 @@ export default class Desert extends Biome {
     
     this.PressurePointsEnabled = true;
     
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
   }
   
   getSmallObjects() {
