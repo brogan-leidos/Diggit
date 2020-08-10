@@ -14,6 +14,7 @@ export default class Loot {
     this.ImagePath = imagepath;
     
     this.Shape = []; // Used when conventional shapes wont work, w/h should both be -1 when this is used
+    this.Breakdown = []; // Used when something has multiple objects in it
   }
   
   getDimensions() {
