@@ -15,7 +15,7 @@ export function getMapTemplate(player, biomeManager) {
   var availableLocations = "";
   for (var i=0; i < player.availableBiomes.length; i++) {
     var biome = player.availableBiomes[i];
-    availableLocations += `<button id="Travel-${biome.Name}">${biome.Name}</button> 3 days away<br>`;
+    availableLocations += `<button id="Travel-${biome}">${biome}</button> 3 days away<br>`;
   }
   
   var retValue = travelTemplate.replace("FILLER-LOCATION", currentLocation);
@@ -27,7 +27,7 @@ export function getMapTemplate(player, biomeManager) {
 export function assignMapEvents(player, biomeManager) {
   for (var i=0; i < player.availableBiomes.length; i++) {
     var biome = player.availableBiomes[i];
-    document.getElementById(`Travel-${biome.Name}`).addEventListener('click', (e) => {            
+    document.getElementById(`Travel-${biome}`).addEventListener('click', (e) => {            
         travelToBiome(e.target.id);
     });
   }
