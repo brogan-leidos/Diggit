@@ -11,9 +11,9 @@ export default class Copper_Large extends Loot {
     
     // x = origin, . = empty space, anything else = part of the object
     this.Shape = [
-    ["x","o","o"],
-    ["o","o","."],
+    [".","x","o"],
+    ["o","o","o"],
     [".","o","o"],
-    ["o","o","o"]];
+    ["o","o","."]];
   }
 }
