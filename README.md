@@ -1,4 +1,4 @@
-# Grid TEst
+# Digget
 
 IN PROGRESS:
  - Cost for digging: Currently trying to make the time investment the cost, make spamming hammer not very productive unless you're straight power or something
@@ -41,5 +41,3 @@ BUGS:
 
 Link to the application:
 https://brogan-leidos.github.io/Grid-Test/
-
-https://www.mtggoldfish.com/deck/3244407
