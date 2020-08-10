@@ -573,7 +573,17 @@ function fadeAwayToolTip() {
 function showMap() { 
     var section = document.getElementById("gameSection");    
     section.innerHTML = getMapTemplate(player, biomeManager);
-    assignMapEvents(player, biomeManager);
+    assignMapEvents();
+}
+
+function assignMapEvents() {
+  for (var i=0; i < player.availableBiomes.length; i++) {
+    var biome = player.availableBiomes[i];
+    document.getElementById(`Travel-${biome}`).addEventListener('click', (e) => {            
+        travelToBiome(e.target.id);
+    });
+  }
+  
 }
 
 function travelToBiome(biome) {
