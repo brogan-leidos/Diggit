@@ -5,7 +5,7 @@ IN PROGRESS:
  - Adding a shop (Buy new items, repair items(?), Upgrade existing items
  - Adding new biomes
    -> ~~Desert (Pressure points)~~ *high temp, low hardness, med rarity*
-   -> Volcano (lava plumes that fill the site) *high temp, high hardness, high rarity -- good space for power players*
+   -> Volcano (armored portions, take half damage) *high temp, high hardness, high rarity -- good space for power players*
    -> Forest (high vegatation, vegtables baby, trees?) *med temp, low hardness, low rarity -- accessable to all*
    -> ~~Lakeside/Ocean (oil can spill, clouding visibility)~~ *Lower temp, low hardness, higher rarity overall*
    -> ~~Frozen area (Ice sheets that crack as one unit)~~ *low temp, low hardness, need to combo with ice sheets to do well, good rarity -- good space for dex players*
@@ -18,7 +18,6 @@ TODO: (prioritized from highest to lowest)
  
  - Generate pressure points using noise (hurt the wall more when hit)
  - Update the soil building algorithm to use noise instead of random assignment
- - Change how soil layer works, something like an armor value when the durability is higher, or armored patches that are easier to mine with certain tools
 
  - Replace solid colors with images
  - Add rotation to parts with unique shapes
