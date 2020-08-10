@@ -436,7 +436,9 @@ function harvestWall() {
                     }
                 }
             }
-            player.addToInventory(gameGrid.objects[i]);
+            else {
+                player.addToInventory(gameGrid.objects[i]);
+            }
         }        
     }
     document.getElementById("debugArea").innerHTML = htmlAppend;
