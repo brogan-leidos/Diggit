@@ -1,5 +1,5 @@
 import Biome from './Biome.js'
-import { Loot, Sapphire, Fossil_A, Copper_Large, Copper_Medium } from './objects/index.js';
+import { Loot, Sapphire, Diamond, Fossil_A, Copper_Large, Copper_Medium } from './objects/index.js';
 
 export default class Forest extends Biome {
   constructor() {
