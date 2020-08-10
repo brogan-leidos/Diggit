@@ -6,6 +6,7 @@ export default class Volcano extends Biome {
     super();
     this.Name = "Volcano";
     this.Temperature = 90;
+    this.MaxTempVariance = 20;
     this.MaxHardness = 5;
     this.ImagePath = "./biome/biomeimages/volcano.jpg";
 
@@ -14,7 +15,6 @@ export default class Volcano extends Biome {
     this.GridBackgroundColor = "#700b0b";
     this.GridBorderColor = "#b8621c"
     
-    this.Temperature = this.Temperature + Math.floor(Math.random() * 20)
   }
   
   getSmallObjects() {
