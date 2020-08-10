@@ -1,22 +1,22 @@
-export const travelTemplate = `
-<div id="currentLocation">
-Current Location: FILLER-LOCATION
+const inventoryTemplate = `
+<div id="equipSlots">
+Currently Equip: <select id="equipSelect"></select>
 </div>
 <div id="availableLocations">
 Available Locations: FILLER-AVAILABLE-LOCATIONS
 </div>
 `;
 
-export function getInventoryTemplate(player, biomeManager) {
-  var currentLocation = biomeManager.selectedBiome.Name;
-  var availableLocations = "";
-  for (var i=0; i < player.availableBiomes.length; i++) {
-    var biome = player.availableBiomes[i];
-    availableLocations += `<button id="Travel-${biome}">${biome}</button> 3 days away<br>`;
+export function getInventoryTemplate() {
+  var area = document.getElementById("gameSection");
+  var htmlAppend = inventoryTemplate;
+  for(let key of player.inventory.keys()) {
+      htmlAppend += `<button id="Sell-${key}">Sell</button> ${player.inventory.get(key).length}x ${key} <br>`;
   }
-  
-  var retValue = travelTemplate.replace("FILLER-LOCATION", currentLocation);
-  var retValue = retValue.replace("FILLER-AVAILABLE-LOCATIONS", availableLocations);
-  
-  return retValue;
+
+  area.innerHTML = htmlAppend;
+  area.style.background = "";
+  area.style.backgroundColor = "#e3e2d1";
 }
+
+
