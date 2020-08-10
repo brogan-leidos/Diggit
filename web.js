@@ -443,7 +443,7 @@ function breakdownObject(object) {
     for (var j=0; j < object.Breakdown.length; j++) {
         var numToAdd = object.Breakdown[j][1];
         for (var k=0; k < numToAdd; k++) {
-            player.addToInventory({Name: object.Breakdown[j][0]});
+            player.addToInventory(object.Breakdown[j][0]);
         }
     }
 }
