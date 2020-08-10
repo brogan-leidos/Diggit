@@ -587,5 +587,6 @@ function assignMapEvents() {
 }
 
 function travelToBiome(biome) {
-    alert("Traveling to" + biome);   
+    // Decrement travel time and eat fooooooooood
+    switchBiome(biome.split("-")[1]);
 }
