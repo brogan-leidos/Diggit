@@ -39,4 +39,4 @@ BUGS:
 
 
 Link to the application:
-https://brogan-leidos.github.io/Grid-Test/
+https://brogan-leidos.github.io/Diggit/
