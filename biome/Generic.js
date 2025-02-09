@@ -13,11 +13,11 @@ export default class Generic extends Biome {
   
   getSmallObjects() {
     var objects = [];
-    objects.push(new Loot("Ruby", "A sparkling red gem",                   .1, 1, 1, "#de283a", "biome/objects/images/ruby.png"));
-    objects.push(new Loot("Sapphire", "A sparkling blue gem",              .1, 1, 1, "#3063f0", "biome/objects/images/sapphire.png"));
-    objects.push(new Loot("Emerald", "A sparkling green gem",              .1, 1, 1, "#0ef083"));
-    objects.push(new Loot("Amythest", "A sparkling violet gem",            .1, 1, 1, "#9c56c4"));
-//     objects.push(new Diamond(0.1));
+    objects.push(new Ruby(.05));
+    objects.push(new Sapphire(.05));
+    objects.push(new Emerald(.05));
+    objects.push(new Amethyst(.05));
+    objects.push(new Diamond(.01));
     objects.push(new Loot("Black Diamond", "An extremely rare, extremely precious gem", .005, 1, 1, "#d3d3d3"));    
     objects.push(new Loot("Copper Node", "A small node of copper",         .4, 1, 1, "#d4ad22"));
     objects.push(new Loot("Iron Node", "A small node of iron",             .3, 1, 1, "#949494"));
