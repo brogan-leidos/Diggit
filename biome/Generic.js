@@ -1,6 +1,7 @@
 import Loot from './objects/Loot.js'
 import Biome from './Biome.js'
 import Fossil_A from './objects/Fossil_A.js'
+import { Loot, Sapphire, Diamond, Ruby, Emerald, Amethyst, Fossil_A, Copper_Large, Copper_Medium, Copper } from './objects/index.js';
 
 export default class Generic extends Biome {
   constructor() {
