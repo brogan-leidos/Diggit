@@ -262,6 +262,7 @@ function highlightRevealvedObjects() {
             var spots = object.getOccupiedSpots();
             for (var j=0; j < spots.length; j++) {
                 // document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.borderColor = "#36c95e";
+                document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.position = "relative";
                 document.getElementById(`${spots[j][0]},${spots[j][1]}`).classList.add("tint");
             }
         }
