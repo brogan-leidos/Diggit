@@ -113,7 +113,7 @@ function drawGridWithOverlay() {
 
 function drawLowerSpot(x,y) {
     var styles = "";
-    var bgColor = "";
+    var bgColor = "#00000090";
     var image = "";                
     var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
     
