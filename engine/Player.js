@@ -26,7 +26,7 @@ export default class Player {
   
   removeFromInventory(objectName) {
     if (this.inventory.has(objectName) == false){
-      // Something very wrong has happened, please god someone save us
+      throw new Error("Something very wrong has happened, please god someone save us");
     }
     var retItem = this.inventory.get(objectName).pop();
     if (this.inventory.get(objectName).length == 0) {
