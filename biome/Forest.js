@@ -26,7 +26,7 @@ export default class Forest extends Biome {
     objects.push(new Copper(.3));
     objects.push(new Loot("Iron Node", "A small node of iron",             .2, 1, 1, "#949494"));
     objects.push(new Loot("Gold Nugget", "A small gold nugget",            .07, 1, 1, "#ffea00"));
-    objects.push(new Loot("Green Moss", "A patch of common green moss",    .65, 1, 1, "#154518"));
+    objects.push(new Loot("Green Moss", "A patch of common green moss",    .65, 1, 1, "#154518", "assets/items/vegtable/green_moss.png"));
     objects.push(new Loot("Carrot", "An orange carrot",                    .5, 2, 1, "#e6b010"));
     objects.push(new Loot("Potato", "A dirty potato",                      .5, 1, 1, "#948866"));
     objects.push(new Loot("Acorns", "A squirrel's future lunch",           .8, 1, 1, "#5e513e"));
