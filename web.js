@@ -158,6 +158,7 @@ function drawUpperSpot(x,y) {
         text = gameGrid.upperGrid[x][y].toString();
         styles += `background-image: url(assets/dirt/dirt_${text}.png);`;
         styles += `background-size: contain;`;
+        styles += `background-blend-mode: multiply;`;
     }
     
     styles += `background-color:${bgColor};`;
