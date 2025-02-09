@@ -186,6 +186,35 @@ function assignEventsToGrid() {
 }
 
 // Highlights spaces that the current tool can mine
+// function highlightValidSpaces(spotId) {
+//     spotMemory = spotId;
+//     spotId = spotId.split(",");
+//     var x = parseInt(spotId[0]);
+//     var y = parseInt(spotId[1]);
+    
+//     var highlightMemory = [];    
+    
+//     if (highlightedSpots.length != 0) {
+//         highlightMemory = highlightedSpots;        
+//     }
+
+//     var potentialSpots = selectedTool.getMinableSpots(x,y);    
+//     highlightedSpots = potentialSpots.filter(a => a[0] < gameGrid.settings.width && a[0] >= 0 && a[1] < gameGrid.settings.height && a[1] >= 0);
+    
+//     for (var i=0; i < highlightMemory.length; i++) {
+//         var spotToDim = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
+//         spotToDim.style.borderColor = highlightMemory[i][2];
+//     }
+    
+//     for (var i=0; i < highlightedSpots.length; i++) {     
+//         var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
+//         highlightedSpots[i][2] = spotToLight.style.borderColor;
+//         spotToLight.style.borderColor = 'red';
+//     }
+
+//     highlightRevealvedObjects();
+// }
+
 function highlightValidSpaces(spotId) {
     spotMemory = spotId;
     spotId = spotId.split(",");
@@ -193,27 +222,37 @@ function highlightValidSpaces(spotId) {
     var y = parseInt(spotId[1]);
     
     var highlightMemory = [];    
-    
+
     if (highlightedSpots.length != 0) {
         highlightMemory = highlightedSpots;        
     }
 
-    var potentialSpots = selectedTool.getMinableSpots(x,y);    
-    highlightedSpots = potentialSpots.filter(a => a[0] < gameGrid.settings.width && a[0] >= 0 && a[1] < gameGrid.settings.height && a[1] >= 0);
-    
-    for (var i=0; i < highlightMemory.length; i++) {
+    var potentialSpots = selectedTool.getMinableSpots(x, y);    
+    highlightedSpots = potentialSpots.filter(a => 
+        a[0] < gameGrid.settings.width && a[0] >= 0 && 
+        a[1] < gameGrid.settings.height && a[1] >= 0
+    );
+
+    // Remove tint from previously highlighted spaces
+    for (var i = 0; i < highlightMemory.length; i++) {
         var spotToDim = document.getElementById(`${highlightMemory[i][0]},${highlightMemory[i][1]}`);
-        spotToDim.style.borderColor = highlightMemory[i][2];
+        if (spotToDim) {
+            spotToDim.classList.remove("tint-tool");
+        }
     }
-    
-    for (var i=0; i < highlightedSpots.length; i++) {     
+
+    // Apply tint to new highlighted spaces
+    for (var i = 0; i < highlightedSpots.length; i++) {     
         var spotToLight = document.getElementById(`${highlightedSpots[i][0]},${highlightedSpots[i][1]}`);
-        highlightedSpots[i][2] = spotToLight.style.borderColor;
-        spotToLight.style.borderColor = 'red';
+        if (spotToLight) {
+            spotToLight.classList.add("tint-tool");
+            spotToLight.style.position = "relative"; // Ensure the ::after works
+        }
     }
 
     highlightRevealvedObjects();
 }
+
 
 // Adds a green border to objects that are fully revealed
 function highlightRevealvedObjects() {
@@ -222,7 +261,8 @@ function highlightRevealvedObjects() {
         if (object.FullyRevealed) {
             var spots = object.getOccupiedSpots();
             for (var j=0; j < spots.length; j++) {
-                document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.borderColor = "#36c95e";
+                // document.getElementById(`${spots[j][0]},${spots[j][1]}`).style.borderColor = "#36c95e";
+                document.getElementById(`${spots[j][0]},${spots[j][1]}`).classList.add("tint");
             }
         }
     }
