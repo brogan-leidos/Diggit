@@ -167,10 +167,14 @@ function drawUpperSpot(x, y) {
     var shadows = [];
     var currentLayer = gameGrid.getLayer(x, y);
 
-    if (getLayer(x, y - 1) > currentLayer) shadows.push("0px -5px 5px rgba(0, 0, 0, 0.5)"); // Top shadow
-    if (getLayer(x, y + 1) > currentLayer) shadows.push("0px 5px 5px rgba(0, 0, 0, 0.5)");  // Bottom shadow
-    if (getLayer(x - 1, y) > currentLayer) shadows.push("-5px 0px 5px rgba(0, 0, 0, 0.5)"); // Left shadow
-    if (getLayer(x + 1, y) > currentLayer) shadows.push("5px 0px 5px rgba(0, 0, 0, 0.5)");  // Right shadow
+    function getLayer(x, y) {
+        return (gameGrid.upperGrid[x] && gameGrid.upperGrid[x][y]) !== undefined ? gameGrid.upperGrid[x][y] : -1;
+    }
+
+    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.6)"); // Top shadow
+    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.6)"); // Bottom shadow
+    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.6)"); // Left shadow
+    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.6)"); // Right shadow
 
     if (shadows.length > 0) {
         styles += `box-shadow: ${shadows.join(", ")};`;
@@ -178,6 +182,7 @@ function drawUpperSpot(x, y) {
 
     return `<td id="${x},${y}" class="dirt" style="${styles}"> ${text} </td>`;
 }
+
 
 
 function assignEventsToGrid() {
