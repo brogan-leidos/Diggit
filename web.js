@@ -47,6 +47,7 @@ function firstLaunch() {
     
     refreshToolArea();
     refreshItemArea();
+    refreshStatsArea();
     refreshHealthBar();
     refreshBiomeTab();
     
@@ -451,6 +452,16 @@ function displayInInfoSection(message) {
     infoSection.innerHTML = message;
 }
 
+function refreshStatsArea() {
+    var area = document.getElementById("statsArea");
+    var newHTML = ""
+    newHTML += `Power: ${player.Power} + ${player.PowerMod}<br>`
+    newHTML += `Precision: ${player.Precision} + ${player.PrecisionMod}<br>`
+    newHTML += `Luck: ${player.Luck} + ${player.LuckMod}<br>`
+    
+    area.innerHTML = newHTML;        
+}
+
 // This is called after the addition or use of an item
 function refreshItemArea() {
     var area = document.getElementById("itemArea");
@@ -518,7 +529,7 @@ function harvestWall() {
             }
         }        
     }
-    document.getElementById("debugArea").innerHTML = htmlAppend;
+    document.getElementById("debugArea").innerHTML = htmlAppend;    
 }
 
 function breakdownObject(object) {
