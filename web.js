@@ -186,9 +186,6 @@ function drawUpperSpot(x, y) {
     if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px -6px rgba(0, 0, 0, 0.2)"); // Top shadow
     if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px -6px rgba(0, 0, 0, 0.2)"); // Bottom shadow
     
-    var currentLayer = getLayer(x, y);
-    var shadows = [];    
-
     if (shadows.length > 0) {
         styles += `box-shadow: ${shadows.join(", ")};`;
     }
