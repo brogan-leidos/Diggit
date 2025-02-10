@@ -138,19 +138,18 @@ function drawLowerSpot(x,y) {
     return `<td id="${x},${y}" class="exposed" style="${styles}"></td>`;
 }
 
-function drawUpperSpot(x,y) {
+function drawUpperSpot(x, y) {
     var image = "";
     var styles = "";
     var bgColor = "";
     var border = `border: 2px solid ${biomeManager.selectedBiome.GridBorderColor};`;
     var text = "";
-    
+
     if (gameGrid.hazardGrid[x][y] == "3") { // Spilled oil draws over everything else
         border = `border: 2px dotted black`;
         bgColor = "#000";
-    }
-    else {   
-        bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[x][y]);        
+    } else {
+        bgColor = tintBgColor(biomeManager.selectedBiome.GridBackgroundColor, gameGrid.upperGrid[x][y]);
         var textColor = tintTextColor(bgColor);
         styles += `color: ${textColor};`;
         var shadowColor = textColor == "black" ? "white" : "black";
@@ -160,12 +159,31 @@ function drawUpperSpot(x,y) {
         styles += `background-size: contain;`;
         styles += `background-blend-mode: multiply;`;
     }
-    
+
     styles += `background-color:${bgColor};`;
     styles += border;
-        
+
+    // Determine shadow directions based on neighboring cells
+    var shadows = [];
+
+    function getLayer(x, y) {
+        return (gameGrid.upperGrid[x] && gameGrid.upperGrid[x][y]) !== undefined ? gameGrid.upperGrid[x][y] : -1;
+    }
+
+    var currentLayer = getLayer(x, y);
+
+    if (getLayer(x, y - 1) > currentLayer) shadows.push("0px -5px 5px rgba(0, 0, 0, 0.5)"); // Top shadow
+    if (getLayer(x, y + 1) > currentLayer) shadows.push("0px 5px 5px rgba(0, 0, 0, 0.5)");  // Bottom shadow
+    if (getLayer(x - 1, y) > currentLayer) shadows.push("-5px 0px 5px rgba(0, 0, 0, 0.5)"); // Left shadow
+    if (getLayer(x + 1, y) > currentLayer) shadows.push("5px 0px 5px rgba(0, 0, 0, 0.5)");  // Right shadow
+
+    if (shadows.length > 0) {
+        styles += `box-shadow: ${shadows.join(", ")};`;
+    }
+
     return `<td id="${x},${y}" class="dirt" style="${styles}"> ${text} </td>`;
 }
+
 
 function assignEventsToGrid() {
     var dirtList = document.getElementsByClassName("dirt");
