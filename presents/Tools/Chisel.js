@@ -6,7 +6,7 @@ export default class Chisel extends Tool {
     this.Name = "Chisel";
     this.Description = "Good for lightly scraping away small areas";
     this.power = 1;
-    this.MaxDurability = 20;
+    this.MaxDurability = 99;
     this.durability = this.MaxDurability;
     this.damage = 3;
     this.Angle = 0;

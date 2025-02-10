@@ -6,7 +6,7 @@ export default class Shovel extends Tool {
     this.Name = "Shovel";
     this.Description = "Useful for lightly uncovering large areas";
     this.power = 1;
-    this.MaxDurability = 20;
+    this.MaxDurability = 99;
     this.durability = this.MaxDurability;
     this.damage = 5;
     this.Angle = 0;

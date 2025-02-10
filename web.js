@@ -285,6 +285,8 @@ function mineClickedSpot(spotId) {
     var x = parseInt(spotId[0]);
     var y = parseInt(spotId[1]);
     
+    createRipple(x, y);
+
     if (gameGrid.settings.biome.IceSheetsEnabled) {
         hazardMemory = []; // TODO: This might make ice incompatable with oil -- but we will see
     }
@@ -318,6 +320,10 @@ function mineClickedSpot(spotId) {
     
     processPlayerBuffs();
     refreshGrid();
+}
+
+function createRipple(x, y) {
+    
 }
 
 // Checks spot validity, and lowers the toughness of the spot and does any extra things needed for hazards

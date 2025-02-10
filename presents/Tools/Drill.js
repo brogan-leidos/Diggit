@@ -6,7 +6,7 @@ export default class Drill extends Tool {
     this.Name = "Drill";
     this.Description = "Lightly burrows through a small point in the wall";
     this.power = 1;
-    this.MaxDurability = 15;
+    this.MaxDurability = 99;
     this.durability = this.MaxDurability;
     this.damage = 2;
   } 
