@@ -169,7 +169,7 @@ function drawUpperSpot(x, y) {
         styles += `background-color: ${dirtLevels[text]};`;
     }
 
-    styles += `background-color:${bgColor};`;
+    // styles += `background-color:${bgColor};`;
     styles += border;
 
     // Determine shadow directions based on neighboring cells
