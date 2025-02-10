@@ -46,8 +46,9 @@ function firstLaunch() {
     player.availableBiomes = ["Generic", "Forest", "Ocean", "Desert", "Volcano", "Glacier"];
     
     refreshToolArea();
-    refreshItemArea();
     refreshStatsArea();
+    refreshItemArea();
+    
     refreshHealthBar();
     refreshBiomeTab();
     
