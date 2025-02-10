@@ -5,7 +5,7 @@ export default class Generic extends Biome {
   constructor() {
     super();
     this.Name = "Generic";
-    this.Temperature = 50;
+    this.Temperature = 55;
     this.MaxHardness = 3;
     
   }

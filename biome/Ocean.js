@@ -5,7 +5,7 @@ export default class Forest extends Biome {
   constructor() {
     super();
     this.Name = "Ocean";
-    this.Temperature = 10;
+    this.Temperature = 20;
     this.MaxTempVariance = 3;
     this.MaxHardness = 2;
     this.ImagePath = "./biome/biomeimages/ocean.jpg";
