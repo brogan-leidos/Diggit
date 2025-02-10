@@ -181,10 +181,10 @@ function drawUpperSpot(x, y) {
 
     var currentLayer = getLayer(x, y);
 
-    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.6)"); // Left shadow
-    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.6)"); // Right shadow
-    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.6)"); // Top shadow
-    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.6)"); // Bottom shadow
+    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.2)"); // Left shadow
+    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.2)"); // Right shadow
+    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.2)"); // Top shadow
+    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.2)"); // Bottom shadow
 
     if (shadows.length > 0) {
         styles += `box-shadow: ${shadows.join(", ")};`;
