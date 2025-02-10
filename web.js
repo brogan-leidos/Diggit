@@ -200,10 +200,10 @@ function drawUpperSpot(x, y) {
     if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.2)"); // Bottom shadow
     
     // Corner shadows (for smoother depth transitions)
-    if (getLayer(x - 1, y - 1) > currentLayer) shadows.push("inset 6px 6px 8px rgba(0, 0, 0, 0.15)");   // Top-left
-    if (getLayer(x - 1, y + 1) > currentLayer) shadows.push("inset -6px 6px 8px rgba(0, 0, 0, 0.15)");  // Top-right
-    if (getLayer(x + 1, y - 1) > currentLayer) shadows.push("inset 6px -6px 8px rgba(0, 0, 0, 0.15)");  // Bottom-left
-    if (getLayer(x + 1, y + 1) > currentLayer) shadows.push("inset -6px -6px 8px rgba(0, 0, 0, 0.15)"); // Bottom-right
+    // if (getLayer(x - 1, y - 1) > currentLayer) shadows.push("inset 6px 6px 8px rgba(0, 0, 0, 0.15)");   // Top-left
+    // if (getLayer(x - 1, y + 1) > currentLayer) shadows.push("inset -6px 6px 8px rgba(0, 0, 0, 0.15)");  // Top-right
+    // if (getLayer(x + 1, y - 1) > currentLayer) shadows.push("inset 6px -6px 8px rgba(0, 0, 0, 0.15)");  // Bottom-left
+    // if (getLayer(x + 1, y + 1) > currentLayer) shadows.push("inset -6px -6px 8px rgba(0, 0, 0, 0.15)"); // Bottom-right
         
 
     if (shadows.length > 0) {
