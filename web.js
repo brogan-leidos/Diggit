@@ -31,6 +31,10 @@ export default () => {
     document.getElementById('showInventoryButton').addEventListener('click', () => {
         showInventory();
     });
+
+    document.getElementById('showShopButton').addEventListener('click', () => {
+        showShop();
+    });
     
     document.getElementById('showMapButton').addEventListener('click', () => {
         showMap();
@@ -47,8 +51,7 @@ function firstLaunch() {
     
     refreshToolArea();
     refreshStatsArea();
-    refreshItemArea();
-    
+    refreshItemArea();    
     refreshHealthBar();
     refreshBiomeTab();
     
@@ -614,6 +617,50 @@ function assignEventsToInventory() {
     }
 }
 
+function showShop() {
+    var area = document.getElementById("gameSection");
+    var htmlAppend = "";
+    htmlAppend += `<button id="Buy-Power>Buy</button> +1 Power (2000 gold)`;
+    htmlAppend += `<button id="Buy-Precision>Buy</button> +1 Precision (2000 gold)`;
+    htmlAppend += `<button id="Buy-Luck>Buy</button> +1 Luck (2000 gold)`;    
+    
+    area.innerHTML = htmlAppend;
+    area.style.background = "";
+    area.style.backgroundColor = "#e3e2ff";
+    assignEventsToShop();   
+}
+
+function assignEventsToShop() {
+    document.getElementById(`Buy-Power`).addEventListener('click', (e) => {
+        if (player.money < 2000) {
+            return;
+        }
+        player.power += 1;
+        player.money -= 2000;
+        showShop();
+    });
+    
+    document.getElementById(`Buy-Precision`).addEventListener('click', (e) => {
+        if (player.money < 2000) {
+            return;
+        }
+        player.precision += 1;
+        player.money -= 2000;
+        showShop();
+    });
+    
+    document.getElementById(`Buy-Luck`).addEventListener('click', (e) => {
+        if (player.money < 2000) {
+            return;
+        }
+        player.luck += 1;
+        player.money -= 2000;
+        showShop();
+    });
+    refreshStatsArea();
+}
+
+
 function refreshDebugArea() {
     var area = document.getElementById("debugArea");
     var htmlAppend = "";
@@ -627,14 +674,15 @@ function refreshDebugArea() {
     area.innerHTML = htmlAppend;
 }
 
-function processPlayerBuffs() {
+function processPlayerBuffs() {    
     if (player.BuffTimer > 0) {
         player.BuffTimer--;
         return;
     }
     else {
         player.normalizeStats();
-    }    
+    }
+    refreshStatsArea();    
 }
 
 function checkIfCrit() {
