@@ -155,9 +155,18 @@ function drawUpperSpot(x, y) {
         var shadowColor = textColor == "black" ? "white" : "black";
         styles += `text-shadow: 0px 0px 5px ${shadowColor};`;
         text = gameGrid.upperGrid[x][y].toString();
-        styles += `background-image: url(assets/dirt/dirt_${text}.png);`;
-        styles += `background-size: contain;`;
-        styles += `background-blend-mode: multiply;`;
+        // styles += `background-image: url(assets/dirt/dirt_${text}.png);`;
+        // styles += `background-size: contain;`;
+        // styles += `background-blend-mode: multiply;`;
+
+        var dirtLevels = {
+            1: "#b3ad9f",
+            2: "#ad9463",
+            3: "#837260",
+            4: "#574f41"
+        }
+
+        styles += `background-color: ${dirtLevels[text]};`;
     }
 
     styles += `background-color:${bgColor};`;
