@@ -175,23 +175,17 @@ function drawUpperSpot(x, y) {
     // Determine shadow directions based on neighboring cells
     var shadows = [];
     
-    function getLayer(r, c) {
-        return (gameGrid.upperGrid[r] && gameGrid.upperGrid[r][c]) !== undefined ? gameGrid.upperGrid[r][c] : -1;
+    function getLayer(x, y) {
+        return (gameGrid.upperGrid[x] && gameGrid.upperGrid[x][y]) !== undefined ? gameGrid.upperGrid[x][y] : -1;
     }
-    
-    var currentLayer = getLayer(r, c);
-    
-    var shadows = [];
-    
-    if (getLayer(r - 1, c) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.6)"); // Top shadow
-    if (getLayer(r + 1, c) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.6)"); // Bottom shadow
-    if (getLayer(r, c - 1) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.6)"); // Left shadow
-    if (getLayer(r, c + 1) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.6)"); // Right shadow
-    
-    if (shadows.length > 0) {
-        styles += `box-shadow: ${shadows.join(", ")};`;
-    }
-    
+
+    var currentLayer = getLayer(x, y);
+
+    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.6)"); // Left shadow
+    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.6)"); // Right shadow
+    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.6)"); // Top shadow
+    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.6)"); // Bottom shadow
+
     if (shadows.length > 0) {
         styles += `box-shadow: ${shadows.join(", ")};`;
     }
