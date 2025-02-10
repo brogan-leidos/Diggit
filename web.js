@@ -181,30 +181,13 @@ function drawUpperSpot(x, y) {
 
     var currentLayer = getLayer(x, y);
 
-    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.2)"); // Left shadow
-    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.2)"); // Right shadow
-    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.2)"); // Top shadow
-    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.2)"); // Bottom shadow
-
-    function getLayer(x, y) {
-        return (gameGrid.upperGrid[x] && gameGrid.upperGrid[x][y]) !== undefined ? gameGrid.upperGrid[x][y] : -1;
-    }
+    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 6px 0px 8px -6px rgba(0, 0, 0, 0.2)"); // Left shadow
+    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset -6px 0px 8px -6px rgba(0, 0, 0, 0.2)"); // Right shadow
+    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px -6px rgba(0, 0, 0, 0.2)"); // Top shadow
+    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px -6px rgba(0, 0, 0, 0.2)"); // Bottom shadow
     
     var currentLayer = getLayer(x, y);
-    var shadows = [];
-    
-    // Edge shadows
-    if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 6px 0px 8px rgba(0, 0, 0, 0.2)");  // Left shadow
-    if (getLayer(x, y + 1) > currentLayer) shadows.push("inset -6px 0px 8px rgba(0, 0, 0, 0.2)"); // Right shadow
-    if (getLayer(x - 1, y) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.2)");  // Top shadow
-    if (getLayer(x + 1, y) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.2)"); // Bottom shadow
-    
-    // Corner shadows (for smoother depth transitions)
-    // if (getLayer(x - 1, y - 1) > currentLayer) shadows.push("inset 6px 6px 8px rgba(0, 0, 0, 0.15)");   // Top-left
-    // if (getLayer(x - 1, y + 1) > currentLayer) shadows.push("inset -6px 6px 8px rgba(0, 0, 0, 0.15)");  // Top-right
-    // if (getLayer(x + 1, y - 1) > currentLayer) shadows.push("inset 6px -6px 8px rgba(0, 0, 0, 0.15)");  // Bottom-left
-    // if (getLayer(x + 1, y + 1) > currentLayer) shadows.push("inset -6px -6px 8px rgba(0, 0, 0, 0.15)"); // Bottom-right
-        
+    var shadows = [];    
 
     if (shadows.length > 0) {
         styles += `box-shadow: ${shadows.join(", ")};`;
