@@ -174,11 +174,12 @@ function drawUpperSpot(x, y) {
 
     // Determine shadow directions based on neighboring cells
     var shadows = [];
-    var currentLayer = gameGrid.getLayer(x, y);
-
+    
     function getLayer(x, y) {
         return (gameGrid.upperGrid[x] && gameGrid.upperGrid[x][y]) !== undefined ? gameGrid.upperGrid[x][y] : -1;
     }
+
+    var currentLayer = getLayer(x, y);
 
     if (getLayer(x, y - 1) > currentLayer) shadows.push("inset 0px 6px 8px rgba(0, 0, 0, 0.6)"); // Top shadow
     if (getLayer(x, y + 1) > currentLayer) shadows.push("inset 0px -6px 8px rgba(0, 0, 0, 0.6)"); // Bottom shadow
