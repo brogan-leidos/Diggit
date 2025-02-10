@@ -167,6 +167,7 @@ function drawUpperSpot(x, y) {
         }
 
         styles += `background-color: ${dirtLevels[text]};`;
+        styles += `z-index: ${text}`;
 
         styles += `transform: scale(1.0${text * 2 - 1});`;
     }
