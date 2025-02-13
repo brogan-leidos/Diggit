@@ -168,7 +168,9 @@ function drawUpperSpot(x, y) {
             1: "#b3ad9f",
             2: "#ad9463",
             3: "#837260",
-            4: "#574f41"
+            4: "#574f41",
+            4: "#463e30",
+            4: "#240a00"
         }
 
         styles += `background-color: ${dirtLevels[text]};`;
