@@ -175,10 +175,10 @@ function drawUpperSpot(x, y) {
         styles += `z-index: ${text}`;
 
         styles += `transform: scale(1.0${text * 2 - 1});`;
-        border = `none`
+        // border = `none`
     }
 
-    // styles += `background-color:${bgColor};`;
+    styles += `background-color:${bgColor};`;
     styles += border;
 
     // Determine shadow directions based on neighboring cells
